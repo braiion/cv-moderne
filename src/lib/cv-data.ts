@@ -104,7 +104,7 @@ export const education: Education[] = [
   {
     id: "cesi",
     diploma: "Titre RNCP Niv. 6 — Responsable en Ingénierie des Logiciels",
-    school: "CESI École d'Ingénieurs",
+    school: "CESI École d'Ingénieurs, Rouen",
     year: "2018",
     description:
       "Formation en alternance couvrant la gestion de projet, l'architecture logicielle et le développement full-stack.",
@@ -112,7 +112,7 @@ export const education: Education[] = [
   {
     id: "bts-sio",
     diploma: "BTS SIO — Option SLAM",
-    school: "Lycée Les Fontenelles, Louviers",
+    school: "Lycée La Châtaigneraie, Mesnil-Esnard (76)",
     year: "2016",
     description:
       "Solutions Logicielles et Applications Métiers. Spécialisation en développement web et bases de données.",

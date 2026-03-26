@@ -8,6 +8,7 @@ import Experience from "@/components/features/Experience";
 import Formation from "@/components/features/Formation";
 import TechStack from "@/components/features/TechStack";
 import Footer from "@/components/features/Footer";
+import PrintableCV from "@/components/features/PrintableCV";
 
 export default function Home() {
   const printRef = useRef<HTMLDivElement>(null);
@@ -93,8 +94,11 @@ export default function Home() {
         ))}
       </nav>
 
-      {/* Printable area */}
-      <div ref={printRef} className="w-full bg-background">
+      {/* Printable CV (hidden on screen, shown only for print) */}
+      <PrintableCV ref={printRef} />
+
+      {/* Interactive page (visible on screen, hidden during print) */}
+      <div className="print:hidden">
         <Hero onDownload={handleDownload} />
 
         {/* Section divider */}
