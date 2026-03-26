@@ -64,14 +64,9 @@ export default function Home() {
         style={{ width: `${scrollProgress}%` }}
       />
 
-      {/* Theme toggle — fixed */}
-      <div className="no-print">
-        <ThemeToggle />
-      </div>
-
       {/* Navigation anchors — sticky nav bar */}
       <nav
-        className="no-print fixed top-0 left-0 z-40 flex w-full items-center justify-center gap-1 border-b border-slate-200/50 bg-white/70 px-4 py-3 backdrop-blur-xl dark:border-slate-800/50 dark:bg-slate-950/70 sm:gap-2"
+        className="no-print fixed top-0 left-0 z-40 flex w-full items-center justify-center gap-0.5 border-b border-slate-200/50 bg-white/70 px-3 py-2.5 backdrop-blur-xl dark:border-slate-800/50 dark:bg-slate-950/70 sm:gap-2 sm:px-4 sm:py-3"
         role="navigation"
         aria-label="Navigation principale"
       >
@@ -79,7 +74,7 @@ export default function Home() {
           <a
             key={link.href}
             href={link.href}
-            className={`relative rounded-full px-4 py-1.5 text-sm font-medium transition-all duration-300 ${
+            className={`relative rounded-full px-2.5 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${
               activeSection === link.id
                 ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
                 : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
@@ -92,6 +87,9 @@ export default function Home() {
             )}
           </a>
         ))}
+        <div className="flex-shrink-0">
+          <ThemeToggle />
+        </div>
       </nav>
 
       {/* Printable CV (hidden on screen, shown only for print) */}

@@ -13,7 +13,7 @@ const PrintableCV = forwardRef<HTMLDivElement>(function PrintableCV(_, ref) {
   return (
     <div
       ref={ref}
-      className="hidden print:block"
+      className="hidden print:flex print:flex-col"
       style={{
         width: "210mm",
         height: "297mm",
@@ -24,8 +24,6 @@ const PrintableCV = forwardRef<HTMLDivElement>(function PrintableCV(_, ref) {
         color: "#1e293b",
         background: "#fff",
         overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
       }}
     >
       {/* ─── Header ────────────────────────────────────── */}
