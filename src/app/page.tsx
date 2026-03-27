@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useCallback, useEffect, useState } from "react";
-import { useReactToPrint } from "react-to-print";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Hero from "@/components/features/Hero";
 import Experience from "@/components/features/Experience";
@@ -15,31 +14,45 @@ export default function Home() {
   const [scrollProgress, setScrollProgress] = useState(0);
   const [activeSection, setActiveSection] = useState("hero");
 
-  const handlePrint = useReactToPrint({
-    contentRef: printRef,
-    documentTitle: "CV_Bryan_DUPRESSOIR",
-  });
+  const handleDownload = useCallback(async () => {
+    const el = printRef.current;
+    if (!el) return;
 
-  const handleDownload = useCallback(() => {
-    // On mobile, react-to-print's iframe approach silently fails.
-    // Directly download a static PDF instead for a seamless experience.
-    const isMobile =
-      /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
-        navigator.userAgent
-      ) ||
-      (navigator.maxTouchPoints > 0 && window.innerWidth < 768);
+    // Dynamically import heavy libs (code-split)
+    const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
+      import("html2canvas"),
+      import("jspdf"),
+    ]);
 
-    if (isMobile) {
-      const link = document.createElement("a");
-      link.href = "/CV_Bryan_DUPRESSOIR.pdf";
-      link.download = "CV_Bryan_DUPRESSOIR.pdf";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
-    } else {
-      handlePrint();
-    }
-  }, [handlePrint]);
+    // Temporarily make the printable CV visible off-screen for capture
+    el.style.position = "fixed";
+    el.style.left = "-9999px";
+    el.style.top = "0";
+    el.style.display = "flex";
+    el.style.flexDirection = "column";
+
+    const canvas = await html2canvas(el, {
+      scale: 2,
+      useCORS: true,
+      backgroundColor: "#ffffff",
+      width: el.scrollWidth,
+      height: el.scrollHeight,
+    });
+
+    // Restore hidden state
+    el.style.position = "";
+    el.style.left = "";
+    el.style.top = "";
+    el.style.display = "";
+
+    // Generate A4 PDF
+    const imgData = canvas.toDataURL("image/png");
+    const pdf = new jsPDF("portrait", "mm", "a4");
+    const pdfW = pdf.internal.pageSize.getWidth();
+    const pdfH = pdf.internal.pageSize.getHeight();
+    pdf.addImage(imgData, "PNG", 0, 0, pdfW, pdfH);
+    pdf.save("CV_Bryan_DUPRESSOIR.pdf");
+  }, []);
 
   // Scroll progress bar + active section tracking
   useEffect(() => {
