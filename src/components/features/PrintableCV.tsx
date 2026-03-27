@@ -28,20 +28,33 @@ const PrintableCV = forwardRef<HTMLDivElement>(function PrintableCV(_, ref) {
     >
       {/* ─── Header ────────────────────────────────────── */}
       <div style={{ display: "flex", gap: "16px", alignItems: "center", marginBottom: "10px" }}>
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src="/Profil.png"
-          alt="Photo"
+        <div
           style={{
             width: "80px",
             height: "80px",
             borderRadius: "50%",
-            objectFit: "cover",
-            objectPosition: "center 10%",
             border: "3px solid #3b82f6",
             flexShrink: 0,
+            overflow: "hidden",
+            position: "relative",
           }}
-        />
+        >
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/Profil.png"
+            alt="Photo"
+            style={{
+              width: "100%",
+              height: "auto",
+              position: "absolute",
+              top: "-5%",
+              left: "50%",
+              transform: "translateX(-50%)",
+              minHeight: "100%",
+              minWidth: "100%",
+            }}
+          />
+        </div>
 
         <div style={{ flex: 1 }}>
           <h1
