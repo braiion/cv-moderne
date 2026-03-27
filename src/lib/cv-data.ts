@@ -80,7 +80,7 @@ export const experiences: Experience[] = [
       "Création et maintenance du site web vitrine de l'entreprise",
       "Administration des sauvegardes et de la sécurité réseau",
     ],
-    tags: ["Windows Server", "Réseau", "Hardware", "Web"],
+    tags: ["Systèmes", "Réseau", "Hardware", "Web"],
   },
   {
     id: "renault-cleon",
