@@ -21,8 +21,8 @@ export default function Home() {
   });
 
   const handleDownload = useCallback(() => {
-    // Detect mobile: react-to-print uses an iframe approach that often
-    // silently fails on mobile browsers. Fall back to window.print().
+    // On mobile, react-to-print's iframe approach silently fails.
+    // Directly download a static PDF instead for a seamless experience.
     const isMobile =
       /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
         navigator.userAgent
@@ -30,7 +30,12 @@ export default function Home() {
       (navigator.maxTouchPoints > 0 && window.innerWidth < 768);
 
     if (isMobile) {
-      window.print();
+      const link = document.createElement("a");
+      link.href = "/CV_Bryan_DUPRESSOIR.pdf";
+      link.download = "CV_Bryan_DUPRESSOIR.pdf";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
     } else {
       handlePrint();
     }
