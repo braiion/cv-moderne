@@ -21,7 +21,19 @@ export default function Home() {
   });
 
   const handleDownload = useCallback(() => {
-    handlePrint();
+    // Detect mobile: react-to-print uses an iframe approach that often
+    // silently fails on mobile browsers. Fall back to window.print().
+    const isMobile =
+      /Android|iPhone|iPad|iPod|Opera Mini|IEMobile|WPDesktop/i.test(
+        navigator.userAgent
+      ) ||
+      (navigator.maxTouchPoints > 0 && window.innerWidth < 768);
+
+    if (isMobile) {
+      window.print();
+    } else {
+      handlePrint();
+    }
   }, [handlePrint]);
 
   // Scroll progress bar + active section tracking

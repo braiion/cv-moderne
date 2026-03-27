@@ -246,7 +246,7 @@ export default function Hero({ onDownload }: HeroProps) {
             onClick={onDownload}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.97 }}
-            className="group relative flex items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 sm:px-7 sm:py-3.5"
+            className="group relative flex cursor-pointer items-center gap-2 overflow-hidden rounded-full bg-gradient-to-r from-blue-600 to-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-lg shadow-blue-500/25 transition-all duration-300 hover:shadow-xl hover:shadow-blue-500/30 sm:px-7 sm:py-3.5"
             aria-label="Télécharger le CV en PDF"
             tabIndex={0}
           >
