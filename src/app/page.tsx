@@ -54,6 +54,14 @@ export default function Home() {
     pdf.save("CV_Bryan_DUPRESSOIR.pdf");
   }, []);
 
+  // Force scroll to top on load / refresh (override browser scroll restoration)
+  useEffect(() => {
+    if ("scrollRestoration" in history) {
+      history.scrollRestoration = "manual";
+    }
+    window.scrollTo(0, 0);
+  }, []);
+
   // Scroll progress bar + active section tracking
   useEffect(() => {
     const handleScroll = () => {
