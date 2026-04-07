@@ -45,12 +45,12 @@ export default function Home() {
     el.style.top = "";
     el.style.display = "";
 
-    // Generate A4 PDF
-    const imgData = canvas.toDataURL("image/png");
+    // Generate A4 PDF with JPEG compression to reduce file size
+    const imgData = canvas.toDataURL("image/jpeg", 0.8);
     const pdf = new jsPDF("portrait", "mm", "a4");
     const pdfW = pdf.internal.pageSize.getWidth();
     const pdfH = pdf.internal.pageSize.getHeight();
-    pdf.addImage(imgData, "PNG", 0, 0, pdfW, pdfH);
+    pdf.addImage(imgData, "JPEG", 0, 0, pdfW, pdfH, undefined, "FAST");
     pdf.save("CV_Bryan_DUPRESSOIR.pdf");
   }, []);
 

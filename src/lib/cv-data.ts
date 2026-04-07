@@ -76,9 +76,8 @@ export const experiences: Experience[] = [
     missions: [
       "Prédimensionnement de charpente métallo-textile via DLUBAL SOFTWARE (RWIND, RFEM)",
       "Gestion complète du parc informatique (postes, serveurs, réseau)",
-      "Maintenance hardware et support utilisateurs niveau 1 à 3",
+      "Maintenance hardware et support utilisateurs niveau 1 et 2",
       "Création et maintenance du site web vitrine de l'entreprise",
-      "Administration des sauvegardes et de la sécurité réseau",
     ],
     tags: ["Systèmes", "Réseau", "Hardware", "Web"],
   },
