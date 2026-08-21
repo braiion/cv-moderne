@@ -1,64 +1,27 @@
-import { Mail, Phone, MapPin, Heart, ExternalLink } from "lucide-react";
-import { personalInfo } from "@/lib/cv-data";
+import { ArrowUpRight, Code2, Mail, MapPin } from "lucide-react";
+import { cvContent, type Locale } from "@/lib/cv-data";
 
-export default function Footer() {
-  const currentYear = new Date().getFullYear();
+export default function Footer({ locale }: { locale: Locale }) {
+  const { footer, personal } = cvContent[locale];
 
   return (
-    <footer className="relative border-t border-slate-200 px-6 py-16 dark:border-slate-800">
-      {/* Background accent */}
-      <div className="pointer-events-none absolute inset-0 overflow-hidden">
-        <div className="absolute -bottom-20 left-1/2 h-[300px] w-[600px] -translate-x-1/2 rounded-full bg-blue-500/5 blur-[100px]" />
-      </div>
-
-      <div className="relative mx-auto flex max-w-4xl flex-col items-center gap-8 text-center">
-        {/* CTA */}
-        <div>
-          <h3 className="text-xl font-bold text-slate-900 dark:text-white sm:text-2xl">
-            Intéressé par mon profil ?
-          </h3>
-          <p className="mt-2 text-sm text-slate-500 dark:text-slate-400">
-            N&apos;hésitez pas à me contacter pour échanger sur vos projets.
-          </p>
+    <footer id="contact" className="px-5 pb-8 sm:px-8">
+      <div className="contact-panel mx-auto max-w-6xl overflow-hidden rounded-[2rem] px-6 py-12 sm:px-10 sm:py-16">
+        <p className="eyebrow footer-eyebrow">{footer.eyebrow}</p>
+        <div className="mt-4 grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+          <div>
+            <h2 className="max-w-3xl text-4xl font-semibold tracking-[-0.045em] text-white sm:text-6xl">{footer.title}</h2>
+            <p className="mt-5 max-w-2xl text-sm leading-7 text-slate-300 sm:text-base">{footer.text}</p>
+          </div>
+          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
+            <a className="button-light" href={`mailto:${personal.email}`}><Mail size={17} />{footer.email}<ArrowUpRight size={15} /></a>
+            <a className="button-dark" href={personal.github} target="_blank" rel="noreferrer"><Code2 size={17} />{footer.github}<ArrowUpRight size={15} /></a>
+          </div>
         </div>
-
-        {/* Contact links */}
-        <div className="flex flex-wrap items-center justify-center gap-4">
-          <a
-            href={`mailto:${personalInfo.email}`}
-            className="glass-card flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 dark:text-slate-300"
-            aria-label="Email"
-          >
-            <Mail size={14} className="text-blue-500" />
-            {personalInfo.email}
-            <ExternalLink size={12} className="text-slate-400" />
-          </a>
-          <a
-            href={`tel:${personalInfo.phone.replace(/\s/g, "")}`}
-            className="glass-card flex items-center gap-2 rounded-full px-5 py-2.5 text-sm font-medium text-slate-600 transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/10 dark:text-slate-300"
-            aria-label="Téléphone"
-          >
-            <Phone size={14} className="text-blue-500" />
-            {personalInfo.phone}
-          </a>
-          <span className="glass-card flex items-center gap-2 rounded-full px-5 py-2.5 text-sm text-slate-600 dark:text-slate-300">
-            <MapPin size={14} className="text-blue-500" />
-            {personalInfo.address}
-          </span>
+        <div className="mt-12 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs text-slate-400 sm:flex-row sm:items-center sm:justify-between">
+          <span>© 2026 {personal.firstName} {personal.lastName}</span>
+          <span className="flex items-center gap-2"><MapPin size={13} />{personal.address}</span>
         </div>
-
-        {/* Divider */}
-        <div className="flex items-center gap-3">
-          <div className="h-px w-16 bg-gradient-to-r from-transparent to-slate-300 dark:to-slate-700" />
-          <div className="h-1 w-1 rounded-full bg-slate-300 dark:bg-slate-700" />
-          <div className="h-px w-16 bg-gradient-to-l from-transparent to-slate-300 dark:to-slate-700" />
-        </div>
-
-        {/* Copyright */}
-        <p className="flex items-center gap-1.5 text-xs text-slate-400 dark:text-slate-500">
-          © {currentYear} {personalInfo.firstName} {personalInfo.lastName} — Fait avec{" "}
-          <Heart size={12} className="animate-pulse text-red-500" /> et Next.js 16
-        </p>
       </div>
     </footer>
   );

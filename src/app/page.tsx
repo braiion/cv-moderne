@@ -1,168 +1,109 @@
 "use client";
 
-import { useRef, useCallback, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
+import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Hero from "@/components/features/Hero";
+import ProjectShowcase from "@/components/features/ProjectShowcase";
 import Experience from "@/components/features/Experience";
 import Formation from "@/components/features/Formation";
 import TechStack from "@/components/features/TechStack";
 import Footer from "@/components/features/Footer";
-import PrintableCV from "@/components/features/PrintableCV";
+import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function Home() {
-  const printRef = useRef<HTMLDivElement>(null);
-  const [scrollProgress, setScrollProgress] = useState(0);
+  const [locale, setLocale] = useState<Locale>("fr");
   const [activeSection, setActiveSection] = useState("hero");
+  const [menuOpen, setMenuOpen] = useState(false);
+  const content = cvContent[locale];
 
-  const handleDownload = useCallback(async () => {
-    const el = printRef.current;
-    if (!el) return;
-
-    // Dynamically import heavy libs (code-split)
-    const [{ default: html2canvas }, { jsPDF }] = await Promise.all([
-      import("html2canvas"),
-      import("jspdf"),
-    ]);
-
-    // Temporarily make the printable CV visible off-screen for capture
-    el.style.position = "fixed";
-    el.style.left = "-9999px";
-    el.style.top = "0";
-    el.style.display = "flex";
-    el.style.flexDirection = "column";
-
-    const canvas = await html2canvas(el, {
-      scale: 2,
-      useCORS: true,
-      backgroundColor: "#ffffff",
-      width: el.scrollWidth,
-      height: el.scrollHeight,
-    });
-
-    // Restore hidden state
-    el.style.position = "";
-    el.style.left = "";
-    el.style.top = "";
-    el.style.display = "";
-
-    // Generate A4 PDF with JPEG compression to reduce file size
-    const imgData = canvas.toDataURL("image/jpeg", 0.8);
-    const pdf = new jsPDF("portrait", "mm", "a4");
-    const pdfW = pdf.internal.pageSize.getWidth();
-    const pdfH = pdf.internal.pageSize.getHeight();
-    pdf.addImage(imgData, "JPEG", 0, 0, pdfW, pdfH, undefined, "FAST");
-    pdf.save("CV_Bryan_DUPRESSOIR.pdf");
-  }, []);
-
-  // Force scroll to top on load / refresh (override browser scroll restoration)
   useEffect(() => {
-    if ("scrollRestoration" in history) {
-      history.scrollRestoration = "manual";
-    }
-    window.scrollTo(0, 0);
-  }, []);
+    document.documentElement.lang = locale;
+  }, [locale]);
 
-  // Scroll progress bar + active section tracking
   useEffect(() => {
-    const handleScroll = () => {
-      const scrollTop = window.scrollY;
-      const docHeight =
-        document.documentElement.scrollHeight - window.innerHeight;
-      if (docHeight > 0) {
-        setScrollProgress((scrollTop / docHeight) * 100);
-      }
-
-      // Active section detection
-      const sections = ["hero", "experience", "formation", "techstack"];
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const el = document.getElementById(sections[i]);
-        if (el && el.getBoundingClientRect().top <= 150) {
-          setActiveSection(sections[i]);
+    const updateSection = () => {
+      const sections = ["hero", "projects", "experience", "skills", "contact"];
+      for (let index = sections.length - 1; index >= 0; index--) {
+        const section = document.getElementById(sections[index]);
+        if (section && section.getBoundingClientRect().top <= 140) {
+          setActiveSection(sections[index]);
           break;
         }
       }
     };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    return () => window.removeEventListener("scroll", handleScroll);
+    updateSection();
+    window.addEventListener("scroll", updateSection, { passive: true });
+    return () => window.removeEventListener("scroll", updateSection);
   }, []);
 
   const navLinks = [
-    { href: "#hero", id: "hero", label: "Accueil" },
-    { href: "#experience", id: "experience", label: "Expérience" },
-    { href: "#formation", id: "formation", label: "Formation" },
-    { href: "#techstack", id: "techstack", label: "Compétences" },
+    { id: "hero", label: content.nav.home },
+    { id: "projects", label: content.nav.projects },
+    { id: "experience", label: content.nav.experience },
+    { id: "skills", label: content.nav.skills },
   ];
 
   return (
-    <div className="relative w-full min-h-screen overflow-x-hidden">
-      {/* Scroll progress bar */}
-      <div
-        className="scroll-progress no-print"
-        style={{ width: `${scrollProgress}%` }}
-      />
-
-      {/* Navigation anchors — sticky nav bar */}
-      <nav
-        className="no-print fixed top-0 left-0 z-40 flex w-full items-center justify-center gap-0.5 border-b border-slate-200/50 bg-white/70 px-3 py-2.5 backdrop-blur-xl dark:border-slate-800/50 dark:bg-slate-950/70 sm:gap-2 sm:px-4 sm:py-3"
-        role="navigation"
-        aria-label="Navigation principale"
-      >
-        {navLinks.map((link) => (
-          <a
-            key={link.href}
-            href={link.href}
-            className={`relative rounded-full px-2.5 py-1.5 text-xs font-medium transition-all duration-300 sm:px-4 sm:text-sm ${
-              activeSection === link.id
-                ? "bg-blue-500/10 text-blue-600 dark:text-blue-400"
-                : "text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white"
-            }`}
-            aria-label={link.label}
-          >
-            {link.label}
-            {activeSection === link.id && (
-              <span className="absolute bottom-0 left-1/2 h-0.5 w-4 -translate-x-1/2 rounded-full bg-blue-500" />
-            )}
+    <div className="min-h-screen overflow-x-hidden">
+      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
+        <nav className="nav-shell mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-3 py-2" aria-label="Navigation principale">
+          <a href="#hero" className="flex items-center gap-3 rounded-xl px-2 py-1.5" aria-label="Bryan Dupressoir — accueil">
+            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-950 text-xs font-black text-white dark:bg-white dark:text-slate-950">BD</span>
+            <span className="hidden text-sm font-semibold tracking-tight text-slate-900 dark:text-white sm:inline">Bryan Dupressoir</span>
           </a>
-        ))}
-        <div className="flex-shrink-0">
-          <ThemeToggle />
-        </div>
-      </nav>
 
-      {/* Printable CV (hidden on screen, shown only for print) */}
-      <PrintableCV ref={printRef} />
+          <div className="hidden items-center gap-1 md:flex">
+            {navLinks.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                aria-current={activeSection === link.id ? "page" : undefined}
+                className={`nav-link ${activeSection === link.id ? "nav-link-active" : ""}`}
+              >
+                {link.label}
+              </a>
+            ))}
+          </div>
 
-      {/* Interactive page (visible on screen, hidden during print) */}
-      <div className="print:hidden">
-        <Hero onDownload={handleDownload} />
+          <div className="flex items-center gap-1.5">
+            <button
+              type="button"
+              onClick={() => setLocale(locale === "fr" ? "en" : "fr")}
+              className="utility-button font-mono text-xs font-bold"
+              aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
+            >
+              {content.localeLabel}
+            </button>
+            <ThemeToggle />
+            <a href="#contact" className="ml-1 hidden rounded-xl bg-slate-950 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-600 dark:bg-white dark:text-slate-950 dark:hover:bg-blue-300 sm:inline-flex">
+              {content.nav.contact}
+            </a>
+            <button type="button" className="utility-button mobile-menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Menu">
+              {menuOpen ? <X size={17} /> : <Menu size={17} />}
+            </button>
+          </div>
+        </nav>
 
-        {/* Section divider */}
-        <div className="flex items-center justify-center py-4">
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
-          <div className="mx-3 h-1.5 w-1.5 rounded-full bg-blue-500/40" />
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-blue-500/30 to-transparent" />
-        </div>
+        {menuOpen && (
+          <div className="nav-shell mx-auto mt-2 grid max-w-6xl gap-1 rounded-2xl p-2 md:hidden">
+            {navLinks.map((link) => (
+              <a key={link.id} href={`#${link.id}`} onClick={() => setMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
+                {link.label}
+              </a>
+            ))}
+          </div>
+        )}
+      </header>
 
-        <Experience />
-
-        <div className="flex items-center justify-center py-4">
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
-          <div className="mx-3 h-1.5 w-1.5 rounded-full bg-indigo-500/40" />
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-indigo-500/30 to-transparent" />
-        </div>
-
-        <Formation />
-
-        <div className="flex items-center justify-center py-4">
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-          <div className="mx-3 h-1.5 w-1.5 rounded-full bg-cyan-500/40" />
-          <div className="h-px w-32 bg-gradient-to-r from-transparent via-cyan-500/30 to-transparent" />
-        </div>
-
-        <TechStack />
-        <Footer />
-      </div>
+      <main>
+        <Hero locale={locale} downloadHref={`/api/cv?lang=${locale}`} />
+        <ProjectShowcase locale={locale} />
+        <Experience locale={locale} />
+        <TechStack locale={locale} />
+        <Formation locale={locale} />
+      </main>
+      <Footer locale={locale} />
     </div>
   );
 }
