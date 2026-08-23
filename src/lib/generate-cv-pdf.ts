@@ -15,7 +15,7 @@ export function buildCvPdf(locale: Locale) {
     title: `CV - ${personal.firstName} ${personal.lastName}`,
     subject: personal.title,
     author: `${personal.firstName} ${personal.lastName}`,
-    keywords: "Next.js, React, TypeScript, Supabase, Product Engineer, Full-Stack",
+    keywords: "Developpeur Full-Stack, Full-Stack Developer, Product Engineer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, SQL, API REST, CI/CD, Chef de projet technique",
   });
 
   header(doc, locale);
@@ -96,8 +96,8 @@ export function buildCvPdf(locale: Locale) {
   rightY += 1;
   rightY = sectionTitle(doc, locale === "fr" ? "POSITIONNEMENT" : "TARGET ROLES", 143, rightY, 54);
   const targets = locale === "fr"
-    ? ["Développeur full-stack JS/TS", "Frontend React / Next.js", "Product Engineer", "Remote ou Normandie"]
-    : ["Full-stack JS/TS Developer", "React / Next.js Frontend", "Product Engineer", "Remote or Normandy, France"];
+    ? ["Développeur Full-Stack JS/TS", "Product Engineer", "Développeur React / Next.js", "Chef de projet technique web"]
+    : ["Full-Stack JS/TS Developer", "Product Engineer", "React / Next.js Developer", "Technical Web Project Manager"];
   for (const target of targets) {
     rightY = bullet(doc, target, 143, rightY, 54);
   }
