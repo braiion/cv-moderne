@@ -114,8 +114,9 @@ export function buildCvPdf(locale: Locale) {
 
   rightY += 3;
   rightY = sectionTitle(doc, locale === "fr" ? "LIENS" : "LINKS", 143, rightY, 54);
-  link(doc, "bonneoccaz.fr", personal.bonneOccaz, 143, rightY);
-  link(doc, "github.com/braiion", personal.github, 143, rightY + 5);
+  link(doc, "bryandupressoir.vercel.app", personal.portfolio, 143, rightY);
+  link(doc, "bonneoccaz.fr", personal.bonneOccaz, 143, rightY + 5);
+  link(doc, "github.com/braiion", personal.github, 143, rightY + 10);
 
   doc.setDrawColor(...LINE);
   doc.line(13, 286, 197, 286);

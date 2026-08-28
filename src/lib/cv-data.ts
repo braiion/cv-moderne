@@ -41,6 +41,7 @@ const shared = {
   address: "Vandrimare, Normandie",
   phone: "06 17 81 61 32",
   email: "bryandupressoir@live.fr",
+  portfolio: "https://bryandupressoir.vercel.app",
   github: "https://github.com/braiion",
   bonneOccaz: "https://bonneoccaz.fr",
 };
