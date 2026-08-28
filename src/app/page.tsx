@@ -43,22 +43,33 @@ export default function Home() {
     { id: "experience", label: content.nav.experience },
     { id: "skills", label: content.nav.skills },
   ];
+  const labels = locale === "fr"
+    ? {
+        navigation: "Navigation principale",
+        home: "Bryan Dupressoir — accueil",
+        menu: menuOpen ? "Fermer le menu" : "Ouvrir le menu",
+      }
+    : {
+        navigation: "Primary navigation",
+        home: "Bryan Dupressoir — home",
+        menu: menuOpen ? "Close menu" : "Open menu",
+      };
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <header className="fixed inset-x-0 top-0 z-50 px-3 pt-3 sm:px-5 sm:pt-4">
-        <nav className="nav-shell mx-auto flex max-w-6xl items-center justify-between rounded-2xl px-3 py-2" aria-label="Navigation principale">
-          <a href="#hero" className="flex items-center gap-3 rounded-xl px-2 py-1.5" aria-label="Bryan Dupressoir — accueil">
-            <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-950 text-xs font-black text-white dark:bg-white dark:text-slate-950">BD</span>
-            <span className="hidden text-sm font-semibold tracking-tight text-slate-900 dark:text-white sm:inline">Bryan Dupressoir</span>
+      <header className="site-header">
+        <nav className="nav-shell" aria-label={labels.navigation}>
+          <a href="#hero" className="brand-mark" aria-label={labels.home}>
+            <span>BD</span>
+            <span>Bryan Dupressoir</span>
           </a>
 
-          <div className="hidden items-center gap-1 md:flex">
+          <div className="nav-links">
             {navLinks.map((link) => (
               <a
                 key={link.id}
                 href={`#${link.id}`}
-                aria-current={activeSection === link.id ? "page" : undefined}
+                aria-current={activeSection === link.id ? "location" : undefined}
                 className={`nav-link ${activeSection === link.id ? "nav-link-active" : ""}`}
               >
                 {link.label}
@@ -66,29 +77,36 @@ export default function Home() {
             ))}
           </div>
 
-          <div className="flex items-center gap-1.5">
+          <div className="nav-actions">
             <button
               type="button"
               onClick={() => setLocale(locale === "fr" ? "en" : "fr")}
-              className="utility-button font-mono text-xs font-bold"
+              className="utility-button language-button"
               aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
             >
               {content.localeLabel}
             </button>
-            <ThemeToggle />
-            <a href="#contact" className="ml-1 hidden rounded-xl bg-slate-950 px-4 py-2.5 text-xs font-semibold text-white transition hover:bg-blue-600 dark:bg-white dark:text-slate-950 dark:hover:bg-blue-300 sm:inline-flex">
+            <ThemeToggle locale={locale} />
+            <a href="#contact" className="nav-contact">
               {content.nav.contact}
             </a>
-            <button type="button" className="utility-button mobile-menu-button" onClick={() => setMenuOpen(!menuOpen)} aria-expanded={menuOpen} aria-label="Menu">
+            <button
+              type="button"
+              className="utility-button mobile-menu-button"
+              onClick={() => setMenuOpen(!menuOpen)}
+              aria-expanded={menuOpen}
+              aria-controls="mobile-navigation"
+              aria-label={labels.menu}
+            >
               {menuOpen ? <X size={17} /> : <Menu size={17} />}
             </button>
           </div>
         </nav>
 
         {menuOpen && (
-          <div className="nav-shell mx-auto mt-2 grid max-w-6xl gap-1 rounded-2xl p-2 md:hidden">
+          <div id="mobile-navigation" className="nav-shell mobile-nav" aria-label={labels.navigation}>
             {navLinks.map((link) => (
-              <a key={link.id} href={`#${link.id}`} onClick={() => setMenuOpen(false)} className="rounded-xl px-4 py-3 text-sm font-medium text-slate-700 hover:bg-slate-100 dark:text-slate-200 dark:hover:bg-slate-800">
+              <a key={link.id} href={`#${link.id}`} onClick={() => setMenuOpen(false)}>
                 {link.label}
               </a>
             ))}
@@ -96,7 +114,7 @@ export default function Home() {
         )}
       </header>
 
-      <main>
+      <main className="product-page">
         <Hero locale={locale} downloadHref={`/api/cv?lang=${locale}`} />
         <ProjectShowcase locale={locale} />
         <Experience locale={locale} />

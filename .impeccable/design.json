@@ -1,0 +1,409 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-08-28T12:44:24.6234638+02:00",
+  "title": "Design System: Bryan Dupressoir Product Builder CV",
+  "extensions": {
+    "colorMeta": {
+      "mineral-canvas": {
+        "role": "neutral",
+        "displayName": "Mineral Canvas",
+        "canonical": "#edf0eb",
+        "tonalRamp": ["oklch(15% 0.0074 132.4)", "oklch(26% 0.0074 132.4)", "oklch(38% 0.0074 132.4)", "oklch(50% 0.0074 132.4)", "oklch(62% 0.0074 132.4)", "oklch(74% 0.0074 132.4)", "oklch(86% 0.0074 132.4)", "oklch(95% 0.0074 132.4)"]
+      },
+      "graphite-ink": {
+        "role": "neutral",
+        "displayName": "Graphite Ink",
+        "canonical": "#141816",
+        "tonalRamp": ["oklch(15% 0.0073 164.2)", "oklch(26% 0.0073 164.2)", "oklch(38% 0.0073 164.2)", "oklch(50% 0.0073 164.2)", "oklch(62% 0.0073 164.2)", "oklch(74% 0.0073 164.2)", "oklch(86% 0.0073 164.2)", "oklch(95% 0.0073 164.2)"]
+      },
+      "graphite-muted": {
+        "role": "neutral",
+        "displayName": "Graphite Muted",
+        "canonical": "#59635d",
+        "tonalRamp": ["oklch(15% 0.0156 159.5)", "oklch(26% 0.0156 159.5)", "oklch(38% 0.0156 159.5)", "oklch(50% 0.0156 159.5)", "oklch(62% 0.0156 159.5)", "oklch(74% 0.0156 159.5)", "oklch(86% 0.0156 159.5)", "oklch(95% 0.0156 159.5)"]
+      },
+      "graphite-quiet": {
+        "role": "neutral",
+        "displayName": "Graphite Quiet",
+        "canonical": "#636d67",
+        "tonalRamp": ["oklch(15% 0.0153 159.5)", "oklch(26% 0.0153 159.5)", "oklch(38% 0.0153 159.5)", "oklch(50% 0.0153 159.5)", "oklch(62% 0.0153 159.5)", "oklch(74% 0.0153 159.5)", "oklch(86% 0.0153 159.5)", "oklch(95% 0.0153 159.5)"]
+      },
+      "chalk-panel": {
+        "role": "neutral",
+        "displayName": "Chalk Panel",
+        "canonical": "#f8faf6",
+        "tonalRamp": ["oklch(15% 0.0057 128.5)", "oklch(26% 0.0057 128.5)", "oklch(38% 0.0057 128.5)", "oklch(50% 0.0057 128.5)", "oklch(62% 0.0057 128.5)", "oklch(74% 0.0057 128.5)", "oklch(86% 0.0057 128.5)", "oklch(95% 0.0057 128.5)"]
+      },
+      "mineral-panel-muted": {
+        "role": "neutral",
+        "displayName": "Mineral Panel Muted",
+        "canonical": "#e3e8e1",
+        "tonalRamp": ["oklch(15% 0.0108 136.6)", "oklch(26% 0.0108 136.6)", "oklch(38% 0.0108 136.6)", "oklch(50% 0.0108 136.6)", "oklch(62% 0.0108 136.6)", "oklch(74% 0.0108 136.6)", "oklch(86% 0.0108 136.6)", "oklch(95% 0.0108 136.6)"]
+      },
+      "mineral-line": {
+        "role": "neutral",
+        "displayName": "Mineral Line",
+        "canonical": "#ccd3cc",
+        "tonalRamp": ["oklch(15% 0.0122 145.5)", "oklch(26% 0.0122 145.5)", "oklch(38% 0.0122 145.5)", "oklch(50% 0.0122 145.5)", "oklch(62% 0.0122 145.5)", "oklch(74% 0.0122 145.5)", "oklch(86% 0.0122 145.5)", "oklch(95% 0.0122 145.5)"]
+      },
+      "mineral-line-strong": {
+        "role": "neutral",
+        "displayName": "Mineral Line Strong",
+        "canonical": "#aeb8b0",
+        "tonalRamp": ["oklch(15% 0.0158 151.7)", "oklch(26% 0.0158 151.7)", "oklch(38% 0.0158 151.7)", "oklch(50% 0.0158 151.7)", "oklch(62% 0.0158 151.7)", "oklch(74% 0.0158 151.7)", "oklch(86% 0.0158 151.7)", "oklch(95% 0.0158 151.7)"]
+      },
+      "signal-green": {
+        "role": "primary",
+        "displayName": "Signal Green",
+        "canonical": "#28684f",
+        "tonalRamp": ["oklch(15% 0.0777 164.6)", "oklch(26% 0.0777 164.6)", "oklch(38% 0.0777 164.6)", "oklch(50% 0.0777 164.6)", "oklch(62% 0.0777 164.6)", "oklch(74% 0.0777 164.6)", "oklch(86% 0.0777 164.6)", "oklch(95% 0.0777 164.6)"]
+      },
+      "signal-green-hover": {
+        "role": "primary",
+        "displayName": "Signal Green Hover",
+        "canonical": "#1f5942",
+        "tonalRamp": ["oklch(15% 0.072 163.9)", "oklch(26% 0.072 163.9)", "oklch(38% 0.072 163.9)", "oklch(50% 0.072 163.9)", "oklch(62% 0.072 163.9)", "oklch(74% 0.072 163.9)", "oklch(86% 0.072 163.9)", "oklch(95% 0.072 163.9)"]
+      },
+      "signal-lime-soft": {
+        "role": "primary",
+        "displayName": "Soft Signal Lime",
+        "canonical": "#d8f0a5",
+        "tonalRamp": ["oklch(15% 0.1002 122.8)", "oklch(26% 0.1002 122.8)", "oklch(38% 0.1002 122.8)", "oklch(50% 0.1002 122.8)", "oklch(62% 0.1002 122.8)", "oklch(74% 0.1002 122.8)", "oklch(86% 0.1002 122.8)", "oklch(95% 0.1002 122.8)"]
+      },
+      "signal-ink": {
+        "role": "primary",
+        "displayName": "Signal Ink",
+        "canonical": "#153122",
+        "tonalRamp": ["oklch(15% 0.0443 158.4)", "oklch(26% 0.0443 158.4)", "oklch(38% 0.0443 158.4)", "oklch(50% 0.0443 158.4)", "oklch(62% 0.0443 158.4)", "oklch(74% 0.0443 158.4)", "oklch(86% 0.0443 158.4)", "oklch(95% 0.0443 158.4)"]
+      },
+      "ink-board": {
+        "role": "neutral",
+        "displayName": "Ink Board",
+        "canonical": "#151b18",
+        "tonalRamp": ["oklch(15% 0.0107 163.8)", "oklch(26% 0.0107 163.8)", "oklch(38% 0.0107 163.8)", "oklch(50% 0.0107 163.8)", "oklch(62% 0.0107 163.8)", "oklch(74% 0.0107 163.8)", "oklch(86% 0.0107 163.8)", "oklch(95% 0.0107 163.8)"]
+      },
+      "ink-board-raised": {
+        "role": "neutral",
+        "displayName": "Ink Board Raised",
+        "canonical": "#1b231f",
+        "tonalRamp": ["oklch(15% 0.0137 163.6)", "oklch(26% 0.0137 163.6)", "oklch(38% 0.0137 163.6)", "oklch(50% 0.0137 163.6)", "oklch(62% 0.0137 163.6)", "oklch(74% 0.0137 163.6)", "oklch(86% 0.0137 163.6)", "oklch(95% 0.0137 163.6)"]
+      },
+      "board-paper": {
+        "role": "neutral",
+        "displayName": "Board Paper",
+        "canonical": "#f3f6f1",
+        "tonalRamp": ["oklch(15% 0.0073 132.4)", "oklch(26% 0.0073 132.4)", "oklch(38% 0.0073 132.4)", "oklch(50% 0.0073 132.4)", "oklch(62% 0.0073 132.4)", "oklch(74% 0.0073 132.4)", "oklch(86% 0.0073 132.4)", "oklch(95% 0.0073 132.4)"]
+      },
+      "board-muted": {
+        "role": "neutral",
+        "displayName": "Board Muted",
+        "canonical": "#aab5ae",
+        "tonalRamp": ["oklch(15% 0.0157 158.1)", "oklch(26% 0.0157 158.1)", "oklch(38% 0.0157 158.1)", "oklch(50% 0.0157 158.1)", "oklch(62% 0.0157 158.1)", "oklch(74% 0.0157 158.1)", "oklch(86% 0.0157 158.1)", "oklch(95% 0.0157 158.1)"]
+      },
+      "live-lime": {
+        "role": "primary",
+        "displayName": "Live Lime",
+        "canonical": "#c9f68c",
+        "tonalRamp": ["oklch(15% 0.142 127.8)", "oklch(26% 0.142 127.8)", "oklch(38% 0.142 127.8)", "oklch(50% 0.142 127.8)", "oklch(62% 0.142 127.8)", "oklch(74% 0.142 127.8)", "oklch(86% 0.142 127.8)", "oklch(95% 0.142 127.8)"]
+      },
+      "build-lime": {
+        "role": "primary",
+        "displayName": "Build Lime",
+        "canonical": "#c5f681",
+        "tonalRamp": ["oklch(15% 0.1547 127.9)", "oklch(26% 0.1547 127.9)", "oklch(38% 0.1547 127.9)", "oklch(50% 0.1547 127.9)", "oklch(62% 0.1547 127.9)", "oklch(74% 0.1547 127.9)", "oklch(86% 0.1547 127.9)", "oklch(95% 0.1547 127.9)"]
+      },
+      "build-ink": {
+        "role": "neutral",
+        "displayName": "Build Ink",
+        "canonical": "#14200f",
+        "tonalRamp": ["oklch(15% 0.0358 136.9)", "oklch(26% 0.0358 136.9)", "oklch(38% 0.0358 136.9)", "oklch(50% 0.0358 136.9)", "oklch(62% 0.0358 136.9)", "oklch(74% 0.0358 136.9)", "oklch(86% 0.0358 136.9)", "oklch(95% 0.0358 136.9)"]
+      },
+      "white": {
+        "role": "neutral",
+        "displayName": "Action White",
+        "canonical": "white",
+        "tonalRamp": ["oklch(15% 0 0)", "oklch(26% 0 0)", "oklch(38% 0 0)", "oklch(50% 0 0)", "oklch(62% 0 0)", "oklch(74% 0 0)", "oklch(86% 0 0)", "oklch(95% 0 0)"]
+      }
+    },
+    "themeVariants": {
+      "dark": {
+        "mineral-canvas": "#0d1110",
+        "graphite-ink": "#f0f4ef",
+        "graphite-muted": "#a8b2ac",
+        "graphite-quiet": "#98a49d",
+        "chalk-panel": "#151a18",
+        "mineral-panel-muted": "#1c231f",
+        "mineral-line": "#2b342f",
+        "mineral-line-strong": "#465249",
+        "signal-green": "#b7ec70",
+        "signal-green-hover": "#c8f58e",
+        "signal-lime-soft": "#27371e",
+        "signal-ink": "#12200f",
+        "ink-board": "#171d1a",
+        "ink-board-raised": "#1d2521",
+        "board-paper": "#f3f6f1",
+        "board-muted": "#abb6af"
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Opening product promise only; short, balanced lines around 12ch."
+      },
+      "headline": {
+        "displayName": "Section Headline",
+        "purpose": "Major editorial section statements around 16ch."
+      },
+      "title": {
+        "displayName": "Experience Title",
+        "purpose": "Role identities and secondary anchors."
+      },
+      "body": {
+        "displayName": "Reading Body",
+        "purpose": "Explanations and summaries kept near a 65–70ch measure."
+      },
+      "label": {
+        "displayName": "Control Label",
+        "purpose": "Primary and secondary actions."
+      },
+      "mono-label": {
+        "displayName": "Operational Mono",
+        "purpose": "Dates, indices, language state, live state, and architecture labels."
+      }
+    },
+    "shadows": [
+      {
+        "name": "navigation-glass",
+        "value": "0 14px 40px rgba(24, 34, 29, 0.08)",
+        "purpose": "Quiet separation for the fixed translucent navigation shell."
+      },
+      {
+        "name": "reading-panel-light",
+        "value": "0 24px 65px rgba(36, 47, 40, 0.12)",
+        "purpose": "Light-theme BonneOccaz case-study container."
+      },
+      {
+        "name": "reading-panel-dark",
+        "value": "0 28px 75px rgba(0, 0, 0, 0.32)",
+        "purpose": "Dark-theme BonneOccaz case-study container."
+      },
+      {
+        "name": "workbench",
+        "value": "0 32px 80px rgba(12, 19, 15, 0.32)",
+        "purpose": "The live product build board."
+      },
+      {
+        "name": "contact-board",
+        "value": "0 30px 75px rgba(9, 15, 11, 0.28)",
+        "purpose": "The final dark action surface."
+      },
+      {
+        "name": "signal-action",
+        "value": "0 12px 28px color-mix(in srgb, var(--signal) 22%, transparent)",
+        "purpose": "Primary action at rest."
+      },
+      {
+        "name": "signal-action-hover",
+        "value": "0 17px 34px color-mix(in srgb, var(--signal) 25%, transparent)",
+        "purpose": "Primary action while handled."
+      }
+    ],
+    "motion": [
+      {
+        "name": "press-fast",
+        "value": "120ms ease-out",
+        "purpose": "Utility-button press feedback."
+      },
+      {
+        "name": "tactile-lift",
+        "value": "140ms ease-out",
+        "purpose": "Button lift and press feedback."
+      },
+      {
+        "name": "state-standard",
+        "value": "160ms ease-out",
+        "purpose": "Color, border, background, and shadow state changes."
+      },
+      {
+        "name": "theme-transition",
+        "value": "280ms ease-out",
+        "purpose": "Page background and foreground theme change."
+      },
+      {
+        "name": "workbench-spring",
+        "value": "spring; bounce: 0; duration: 0.4s",
+        "purpose": "Framer Motion press and build-board hover behavior."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "0.01ms",
+        "purpose": "Preference override for all animation and transition durations."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "action-row",
+        "value": "520px"
+      },
+      {
+        "name": "editorial-grid",
+        "value": "720px"
+      },
+      {
+        "name": "full-navigation",
+        "value": "840px"
+      },
+      {
+        "name": "workbench-split",
+        "value": "960px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Action",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The signal-green action used for the main product or contact path.",
+      "html": "<a class=\"ds-button-primary\" href=\"#\">VIEW BONNEOCCAZ <svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M7 7h10v10M7 17 17 7\"/></svg></a>",
+      "css": ".ds-button-primary { display:inline-flex; min-height:3.15rem; align-items:center; justify-content:center; gap:0.58rem; border:0; border-radius:0.86rem; background:var(--signal); padding:0.78rem 1.05rem; color:white; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; font-size:0.8rem; font-weight:750; text-decoration:none; box-shadow:0 12px 28px color-mix(in srgb,var(--signal) 22%,transparent); transition:transform 140ms ease-out,background 160ms ease-out,color 160ms ease-out,box-shadow 160ms ease-out; } .ds-button-primary svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; } .ds-button-primary:hover { background:var(--signal-hover); transform:translateY(-2px); box-shadow:0 17px 34px color-mix(in srgb,var(--signal) 25%,transparent); } .ds-button-primary:focus-visible { outline:3px solid color-mix(in srgb,var(--signal) 72%,transparent); outline-offset:3px; } .ds-button-primary:active { transform:scale(0.97); }"
+    },
+    {
+      "name": "Secondary Action",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "The bordered paper action used for CV download and secondary routes.",
+      "html": "<a class=\"ds-button-secondary\" href=\"#\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3v12m0 0 4-4m-4 4-4-4M5 21h14\"/></svg> DOWNLOAD CV</a>",
+      "css": ".ds-button-secondary { display:inline-flex; min-height:3.15rem; align-items:center; justify-content:center; gap:0.58rem; border:1px solid var(--line-strong); border-radius:0.86rem; background:color-mix(in srgb,var(--panel) 70%,transparent); padding:0.78rem 1.05rem; color:var(--ink); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; font-size:0.8rem; font-weight:750; text-decoration:none; transition:transform 140ms ease-out,background 160ms ease-out,color 160ms ease-out,border-color 160ms ease-out; } .ds-button-secondary svg { width:17px; height:17px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; } .ds-button-secondary:hover { border-color:var(--signal); background:var(--panel); color:var(--signal); transform:translateY(-2px); } .ds-button-secondary:focus-visible { outline:3px solid color-mix(in srgb,var(--signal) 72%,transparent); outline-offset:3px; } .ds-button-secondary:active { transform:scale(0.97); }"
+    },
+    {
+      "name": "Utility Square Button",
+      "kind": "button",
+      "refersTo": "utility-button",
+      "description": "Compact language, theme, and mobile-menu control.",
+      "html": "<button class=\"ds-utility-button\" aria-label=\"Toggle theme\"><svg viewBox=\"0 0 24 24\" aria-hidden=\"true\"><path d=\"M12 3a7 7 0 1 0 9 9 8 8 0 0 1-9-9Z\"/></svg></button>",
+      "css": ".ds-utility-button { display:inline-grid; width:2.75rem; height:2.75rem; place-items:center; border:1px solid var(--line); border-radius:0.78rem; background:color-mix(in srgb,var(--panel) 78%,transparent); color:var(--muted); cursor:pointer; transition:transform 120ms ease-out,border-color 160ms ease-out,color 160ms ease-out,background 160ms ease-out; } .ds-utility-button svg { width:16px; height:16px; fill:none; stroke:currentColor; stroke-width:2; stroke-linecap:round; stroke-linejoin:round; } .ds-utility-button:hover { border-color:var(--line-strong); background:var(--panel); color:var(--ink); } .ds-utility-button:focus-visible { outline:3px solid color-mix(in srgb,var(--signal) 72%,transparent); outline-offset:3px; } .ds-utility-button:active { transform:scale(0.94); }"
+    },
+    {
+      "name": "Availability Badge",
+      "kind": "chip",
+      "refersTo": "availability-chip",
+      "description": "A non-interactive functional state announcing availability.",
+      "html": "<span class=\"ds-availability-badge\"><i aria-hidden=\"true\"></i> AVAILABLE FOR A NEW ROLE</span>",
+      "css": ".ds-availability-badge { display:inline-flex; align-items:center; gap:0.58rem; border:1px solid color-mix(in srgb,var(--signal) 30%,var(--line)); border-radius:999px; background:color-mix(in srgb,var(--signal-soft) 48%,var(--panel)); padding:0.48rem 0.72rem; color:color-mix(in srgb,var(--signal) 80%,var(--ink)); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; font-size:0.72rem; font-weight:720; } .ds-availability-badge i { width:0.46rem; height:0.46rem; border-radius:50%; background:var(--signal); box-shadow:0 0 0 0.28rem color-mix(in srgb,var(--signal) 16%,transparent); }"
+    },
+    {
+      "name": "Navigation Shell",
+      "kind": "nav",
+      "refersTo": "navigation-shell",
+      "description": "The fixed glass-like notebook index with active location and a compact contact action.",
+      "html": "<nav class=\"ds-nav-shell\" aria-label=\"Primary navigation\"><a class=\"ds-brand-mark\" href=\"#\"><span>BD</span><b>Bryan Dupressoir</b></a><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-link-active\" href=\"#\">HOME</a><a class=\"ds-nav-link\" href=\"#\">PROJECTS</a><a class=\"ds-nav-link\" href=\"#\">EXPERIENCE</a></div><a class=\"ds-nav-contact\" href=\"#\">CONTACT</a></nav>",
+      "css": ".ds-nav-shell { display:flex; width:min(calc(100% - 1rem),72rem); min-height:3.65rem; align-items:center; justify-content:space-between; gap:1rem; border:1px solid color-mix(in srgb,var(--line) 82%,transparent); border-radius:1.15rem; background:color-mix(in srgb,var(--panel) 82%,transparent); box-shadow:0 14px 40px rgba(24,34,29,0.08); padding:0.45rem 0.55rem; backdrop-filter:blur(22px) saturate(145%); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; } .ds-brand-mark { display:inline-flex; align-items:center; gap:0.7rem; color:var(--ink); font-size:0.8rem; font-weight:720; text-decoration:none; } .ds-brand-mark span { display:grid; width:2.25rem; height:2.25rem; place-items:center; border-radius:0.68rem; background:var(--ink); color:var(--canvas); font-size:0.7rem; } .ds-nav-links { display:flex; align-items:center; gap:0.15rem; } .ds-nav-link { border-radius:0.72rem; padding:0.7rem 0.85rem; color:var(--muted); font-size:0.76rem; font-weight:650; text-decoration:none; transition:color 160ms ease-out,background 160ms ease-out; } .ds-nav-link:hover,.ds-nav-link-active { background:var(--panel-muted); color:var(--ink); } .ds-nav-contact { min-height:2.75rem; display:inline-flex; align-items:center; border-radius:0.78rem; background:var(--ink); padding:0.6rem 1rem; color:var(--canvas); font-size:0.76rem; font-weight:720; text-decoration:none; transition:transform 140ms ease-out,background 160ms ease-out; } .ds-nav-contact:hover { background:var(--signal); color:white; } .ds-nav-contact:active { transform:scale(0.97); } .ds-nav-shell a:focus-visible { outline:3px solid color-mix(in srgb,var(--signal) 72%,transparent); outline-offset:3px; }"
+    },
+    {
+      "name": "Product Case Card",
+      "kind": "card",
+      "refersTo": "product-card",
+      "description": "The editorial BonneOccaz proof container with status, promise, and capability tags.",
+      "html": "<article class=\"ds-product-card\"><div class=\"ds-product-meta\"><span>SHIPPED</span><b>PRODUCT BUILDER</b></div><h3>BonneOccaz</h3><p class=\"ds-product-tagline\">Automotive decisions, made clearer.</p><p class=\"ds-product-copy\">A delivered product that joins discovery, interface, data, and a focused RAG/CAG advisory flow.</p><div class=\"ds-product-tags\"><span>Next.js</span><span>Supabase</span><span>RAG/CAG</span></div></article>",
+      "css": ".ds-product-card { overflow:hidden; border:1px solid var(--line); border-radius:1.75rem; background:var(--panel); color:var(--ink); box-shadow:var(--shadow); padding:2rem 1.4rem; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; } .ds-product-meta { display:flex; flex-wrap:wrap; align-items:center; gap:0.6rem; color:var(--quiet); font-size:0.7rem; font-weight:650; } .ds-product-meta span { border-radius:999px; background:var(--signal-soft); padding:0.38rem 0.6rem; color:var(--signal-ink); } .ds-product-card h3 { margin:2rem 0 0; color:var(--ink); font-size:clamp(2.7rem,4.5vw,4rem); font-weight:760; letter-spacing:-0.04em; line-height:0.95; } .ds-product-tagline { margin:0.7rem 0 0; color:var(--signal); font-size:1.05rem; font-weight:720; } .ds-product-copy { max-width:65ch; margin:1.35rem 0 0; color:var(--muted); font-size:0.92rem; line-height:1.72; } .ds-product-tags { display:flex; flex-wrap:wrap; gap:0.42rem; margin-top:1.8rem; } .ds-product-tags span { border:1px solid var(--line); border-radius:0.58rem; background:var(--panel-muted); padding:0.42rem 0.58rem; color:var(--muted); font-size:0.68rem; font-weight:650; }"
+    },
+    {
+      "name": "Live Build Board",
+      "kind": "custom",
+      "refersTo": "build-board",
+      "description": "The signature workbench that makes the five-step product loop visible before chronology.",
+      "html": "<aside class=\"ds-build-board\"><div class=\"ds-board-topline\"><span>PRODUCT LOOP</span><span class=\"ds-live-state\"><i></i> LIVE</span></div><ol class=\"ds-build-loop\"><li><span class=\"ds-loop-index\">01</span><span class=\"ds-loop-icon\">⌕</span><span><b>Discover</b><small>Frame the need</small></span></li><li><span class=\"ds-loop-index\">02</span><span class=\"ds-loop-icon\">▦</span><span><b>Design</b><small>Shape the flow</small></span></li><li class=\"ds-loop-current\"><span class=\"ds-loop-index\">04</span><span class=\"ds-loop-icon\">↗</span><span><b>Ship</b><small>Deliver the product</small></span><em>SHIPPED</em></li></ol><div class=\"ds-release-note\">✦ Product proof stays in the reading path.</div></aside>",
+      "css": ".ds-build-board { width:min(100%,30rem); overflow:hidden; border:1px solid color-mix(in srgb,white 12%,transparent); border-radius:1.7rem; background:var(--board); color:var(--board-ink); box-shadow:0 32px 80px rgba(12,19,15,0.32); padding:1rem; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; transition:transform 140ms ease-out; } .ds-build-board:hover { transform:translateY(-4px); } .ds-board-topline { display:flex; align-items:center; justify-content:space-between; border-bottom:1px solid rgba(255,255,255,0.1); padding:0.3rem 0.3rem 0.9rem; color:var(--board-muted); font-family:'Cascadia Code','SFMono-Regular',Consolas,monospace; font-size:0.66rem; font-weight:700; letter-spacing:0.08em; } .ds-live-state { display:inline-flex; align-items:center; gap:0.38rem; color:#c9f68c; } .ds-live-state i { width:0.42rem; height:0.42rem; border-radius:50%; background:#b7ec70; box-shadow:0 0 0 0.24rem rgba(183,236,112,0.12); } .ds-build-loop { display:grid; gap:0.42rem; margin:1rem 0 0; padding:0; list-style:none; } .ds-build-loop li { display:grid; min-height:3.25rem; grid-template-columns:1.8rem 2.05rem minmax(0,1fr) auto; align-items:center; gap:0.55rem; border:1px solid rgba(255,255,255,0.08); border-radius:0.88rem; background:var(--board-2); padding:0.52rem 0.65rem; } .ds-loop-index { color:var(--board-muted); font-family:'Cascadia Code','SFMono-Regular',Consolas,monospace; font-size:0.58rem; } .ds-loop-icon { display:grid; width:2.05rem; height:2.05rem; place-items:center; border-radius:0.62rem; background:rgba(255,255,255,0.07); color:#d8e0db; } .ds-build-loop b,.ds-build-loop small { display:block; } .ds-build-loop b { font-size:0.78rem; font-weight:740; } .ds-build-loop small { margin-top:0.1rem; color:var(--board-muted); font-size:0.62rem; } .ds-build-loop .ds-loop-current { border-color:#b7ec70; background:#c5f681; color:#14200f; box-shadow:0 12px 28px rgba(138,185,72,0.16); } .ds-loop-current .ds-loop-index,.ds-loop-current small { color:#4b6836; } .ds-loop-current .ds-loop-icon { background:rgba(20,32,15,0.1); color:#172713; } .ds-loop-current em { border-radius:999px; background:#172713; padding:0.35rem 0.48rem; color:#dfffb6; font-family:'Cascadia Code','SFMono-Regular',Consolas,monospace; font-size:0.54rem; font-style:normal; font-weight:700; } .ds-release-note { margin-top:0.75rem; border-radius:0.86rem; background:rgba(255,255,255,0.06); padding:0.75rem 0.85rem; color:#dbe3de; font-size:0.68rem; line-height:1.45; }"
+    },
+    {
+      "name": "Context Cache State",
+      "kind": "custom",
+      "refersTo": "context-cache",
+      "description": "The build-lime result strip inside the focused RAG/CAG architecture view.",
+      "html": "<div class=\"ds-context-cache\"><span>CACHE</span><strong>CAG · REUSED CONTEXT</strong><div aria-hidden=\"true\"><i></i><i></i><i></i><i></i></div></div>",
+      "css": ".ds-context-cache { display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:0.65rem; border-radius:0.88rem; background:#c5f681; padding:0.85rem; color:#14200f; font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; } .ds-context-cache>span { border-radius:0.42rem; background:#172713; padding:0.32rem 0.42rem; color:#dfffb6; font-family:'Cascadia Code','SFMono-Regular',Consolas,monospace; font-size:0.5rem; font-weight:700; } .ds-context-cache strong { font-size:0.68rem; } .ds-context-cache>div { display:flex; align-items:end; gap:0.2rem; } .ds-context-cache i { width:0.22rem; border-radius:999px; background:#42602f; } .ds-context-cache i:nth-child(1) { height:0.5rem; } .ds-context-cache i:nth-child(2) { height:0.85rem; } .ds-context-cache i:nth-child(3) { height:0.65rem; } .ds-context-cache i:nth-child(4) { height:1rem; }"
+    },
+    {
+      "name": "Capability Tag",
+      "kind": "chip",
+      "refersTo": "capability-tag",
+      "description": "A quiet descriptive tag used for technology and responsibility evidence.",
+      "html": "<span class=\"ds-capability-tag\">Next.js</span>",
+      "css": ".ds-capability-tag { display:inline-flex; border:1px solid var(--line); border-radius:0.58rem; background:var(--panel-muted); padding:0.42rem 0.58rem; color:var(--muted); font-family:-apple-system,BlinkMacSystemFont,'Segoe UI Variable','Segoe UI',sans-serif; font-size:0.68rem; font-weight:650; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Product Field Notebook",
+    "overview": "The interface feels like a working product notebook made presentable for a hiring conversation: mineral paper outside, graphite and ink work surfaces inside, and a controlled signal green marking only what is live, actionable, current, or verified. It is editorial rather than ornamental, with broad reading space, short high-impact headlines, visible construction logic, and enough asymmetry to feel authored without slowing the scan.\n\nThe workbench is the thesis. The first reading path introduces the builder and his operating loop before conventional résumé chronology; BonneOccaz then becomes the concrete proof, including its deliberately focused RAG/CAG module, before experience and capability rows verify breadth. Download and contact actions remain in the reading path. Motion is tactile and restrained, themes are equally intentional, and accessibility preferences override atmosphere.",
+    "keyCharacteristics": [
+      "Mineral light canvas and chalk panels with graphite text and rules.",
+      "Ink workbench surfaces for product proof, architecture, and contact moments.",
+      "Signal green reserved for functional state, focus, actions, and live delivery cues.",
+      "Native system typography with compressed editorial display rhythm and monospace operational labels.",
+      "Asymmetric desktop compositions that collapse into a direct single-column mobile sequence.",
+      "Small lifts and press states that make controls feel handled, never theatrical."
+    ],
+    "rules": [
+      {
+        "name": "The Functional Signal Rule",
+        "body": "Signal green marks availability, action, focus, live state, or delivered work; it is not a decorative wash.",
+        "section": "colors"
+      },
+      {
+        "name": "The Ink-Surface Rule",
+        "body": "Dark ink surfaces carry product operations and proof, not generic brand decoration.",
+        "section": "colors"
+      },
+      {
+        "name": "The Editorial Measure Rule",
+        "body": "Keep display lines short and balanced, and keep explanatory copy within the observed 65–70-character measure.",
+        "section": "typography"
+      },
+      {
+        "name": "The Operational Mono Rule",
+        "body": "Monospace communicates process or system state; it never replaces the reading face for ordinary prose.",
+        "section": "typography"
+      },
+      {
+        "name": "The Proof-Before-Chronology Rule",
+        "body": "The build loop and BonneOccaz evidence precede the conventional résumé timeline; new compositions preserve that narrative order.",
+        "section": "layout"
+      },
+      {
+        "name": "The Asymmetry-with-Alignment Rule",
+        "body": "Desktop columns may carry unequal weight, but headings, rules, and evidence share the same `72rem` frame and collapse without reordering essential information.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-Until-Handled Rule",
+        "body": "Ordinary reading surfaces rely on tone and rules; pronounced elevation belongs to workbenches, primary actions, and handled states.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Tactile Restraint Rule",
+        "body": "Hover lifts stop at `2px` for controls and `4px` for the build board; press states use a small `0.94–0.97` scale and yield entirely to reduced-motion preferences.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Corner Hierarchy Rule",
+        "body": "Radius grows with object scale and permanence; tags should never look as soft as a major product board.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do lead with the product promise and build loop, then use BonneOccaz and its focused RAG/CAG flow as concrete evidence before résumé chronology.",
+      "Do preserve the semantic color mapping across light and dark themes, including readable signal-ink text on soft or bright signal surfaces.",
+      "Do use graphite rules, tonal fields, and generous section rhythm for structure before adding shadow.",
+      "Do keep display copy short, explanatory measures near 65–70 characters, and operational metadata in the mono face.",
+      "Do preserve visible keyboard focus and all reduced-motion, reduced-transparency, and increased-contrast accommodations."
+    ],
+    "donts": [
+      "Don't use signal green as a decorative background wash or a general brand gradient.",
+      "Don't turn every résumé item into a floating card; timeline and capability content remain row-based and editorial.",
+      "Don't put technology lists before product proof or inflate the focused RAG/CAG module into an unverified large-scale AI claim.",
+      "Don't introduce display fonts, ornamental serif pairings, or icon-font dependencies; the system is native, direct, and self-contained.",
+      "Don't add parallax, bounce, or long entrance choreography; motion communicates handling and state only."
+    ]
+  }
+}
