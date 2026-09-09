@@ -3,8 +3,8 @@ import { shared, type Locale } from "./cv-data";
 
 export function portfolioMetadata(locale: Locale): Metadata {
   const title = locale === "fr"
-    ? "Bryan Dupressoir — Full Stack Builder · Développement agentique"
-    : "Bryan Dupressoir — Full Stack Builder · Agentic Development";
+    ? "Bryan Dupressoir — Full Stack Builder AI-native · Développeur JS/TS"
+    : "Bryan Dupressoir — Full Stack Builder AI-native · JS/TS Developer";
   const description = locale === "fr"
     ? "Full Stack Builder JS/TS. Pratique intensive des agents de code, du cadrage à la livraison. Découvrez BonneOccaz, mes expériences et mon CV."
     : "Full Stack Builder using JS/TS. Extensive coding agent experience, from scoping to delivery. Explore BonneOccaz, my experience and my résumé.";

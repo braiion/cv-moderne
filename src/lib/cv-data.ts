@@ -53,7 +53,7 @@ export const cvContent = {
     nav: { home: "Profil", projects: "Projets", experience: "Parcours", skills: "Compétences", contact: "Me contacter" },
     personal: {
       ...shared,
-      title: "Full Stack Builder · Développeur JS/TS",
+      title: "Full Stack Builder AI-native · Développeur JS/TS",
       subtitle: "Développement agentique · IA générative · React · Next.js · Supabase",
       summary: "Développeur full-stack JS/TS, avec un parcours IT depuis 2016 et 7 ans de pilotage SI. Depuis 2024, je construis des produits automobiles avec l’IA dès leur démarrage. Pratique intensive des agents de code : cadrage, instructions de projet, développement, tests, revue et livraison.",
     },
@@ -193,7 +193,7 @@ export const cvContent = {
     nav: { home: "Profile", projects: "Work", experience: "Experience", skills: "Skills", contact: "Contact me" },
     personal: {
       ...shared,
-      title: "Full Stack Builder · JS/TS Developer",
+      title: "Full Stack Builder AI-native · JS/TS Developer",
       subtitle: "Agentic development · Generative AI · React · Next.js · Supabase",
       summary: "Full-stack JS/TS developer with an IT career starting in 2016 and 7 years of IT systems ownership. Since 2024, I have built automotive products with AI from the outset. Extensive hands-on use of coding agents: scoping, project instructions, development, testing, review and delivery.",
     },
