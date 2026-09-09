@@ -19,17 +19,17 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
         module: "Module ciblé",
         question: "Question utilisateur",
         retrieval: "RAG · récupération",
-        memory: "CAG · contexte réutilisé",
+        memory: "CAG · contexte stable, en option",
         answer: "Réponse contextualisée",
-        example: "Quel SUV hybride correspond à mon usage ?",
+        example: "Comment publier une annonce ?",
       }
     : {
         module: "Focused module",
         question: "User question",
         retrieval: "RAG · retrieval",
-        memory: "CAG · reused context",
+        memory: "CAG · optional stable context",
         answer: "Contextual answer",
-        example: "Which hybrid SUV fits my needs?",
+        example: "How do I publish a listing?",
       };
 
   return (
@@ -105,13 +105,33 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
             </div>
           </div>
 
+          <p className="context-engine__scope">{projectsSection.aiScope}</p>
+
           <div className="context-cache">
-            <span>CACHE</span>
+            <span>CAG</span>
             <strong>{labels.memory}</strong>
-            <div aria-hidden="true"><i /><i /><i /><i /></div>
           </div>
+          <details className="context-details">
+            <summary>{projectsSection.technicalDetails}</summary>
+            <p>{projectsSection.corpus}</p>
+            <p>{projectsSection.safeguards}</p>
+            <p>{projectsSection.evaluation}</p>
+          </details>
         </div>
       </article>
+
+      <div className="project-evidence">
+        <h3>{projectsSection.examplesTitle}</h3>
+        <div className="project-evidence__rows">
+          {projectsSection.examples.map((example) => (
+            <article key={example.title}>
+              <h4>{example.title}</h4>
+              <p>{example.body}</p>
+            </article>
+          ))}
+        </div>
+      </div>
+      <p className="confidential-note">{projectsSection.confidential}</p>
     </AnimatedSection>
   );
 }

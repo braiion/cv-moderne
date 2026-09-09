@@ -16,7 +16,7 @@ export default function Footer({ locale }: { locale: Locale }) {
           <a className="button-dark" href={personal.github} target="_blank" rel="noreferrer"><Code2 size={17} />{footer.github}<ArrowUpRight size={15} /></a>
         </div>
         <div className="contact-panel__foot">
-          <span>© 2026 {personal.firstName} {personal.lastName}</span>
+          <span>© {new Date().getFullYear()} {personal.firstName} {personal.lastName}</span>
           <span><MapPin size={13} />{personal.address}</span>
         </div>
       </div>

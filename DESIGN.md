@@ -2,38 +2,38 @@
 name: "Bryan Dupressoir Product Builder CV"
 description: "A product field notebook that leads with shipped proof and the build loop."
 colors:
-  mineral-canvas: "#edf0eb"
-  graphite-ink: "#141816"
-  graphite-muted: "#59635d"
-  graphite-quiet: "#636d67"
-  chalk-panel: "#f8faf6"
-  mineral-panel-muted: "#e3e8e1"
-  mineral-line: "#ccd3cc"
-  mineral-line-strong: "#aeb8b0"
-  signal-green: "#28684f"
-  signal-green-hover: "#1f5942"
-  signal-lime-soft: "#d8f0a5"
-  signal-ink: "#153122"
-  ink-board: "#151b18"
-  ink-board-raised: "#1b231f"
-  board-paper: "#f3f6f1"
-  board-muted: "#aab5ae"
-  live-lime: "#c9f68c"
-  build-lime: "#c5f681"
-  build-ink: "#14200f"
+  mineral-canvas: "#f5f4f0"
+  graphite-ink: "#222725"
+  graphite-muted: "#555e5a"
+  graphite-quiet: "#616964"
+  chalk-panel: "#fdfdfb"
+  mineral-panel-muted: "#eceee9"
+  mineral-line: "#dcded7"
+  mineral-line-strong: "#bdc4bb"
+  signal-green: "#24634e"
+  signal-green-hover: "#194d3b"
+  signal-lime-soft: "#e1ece3"
+  signal-ink: "#244d3b"
+  ink-board: "#202925"
+  ink-board-raised: "#28322d"
+  board-paper: "#f5f6f2"
+  board-muted: "#bdc9c0"
+  live-lime: "#bcd9c2"
+  build-lime: "#bcd9c2"
+  build-ink: "#203c2a"
   white: "white"
 typography:
   display:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', sans-serif"
-    fontSize: "clamp(3.15rem, 7.3vw, 5.8rem)"
+    fontSize: "clamp(2.65rem, 5.1vw, 4.25rem)"
     fontWeight: 720
-    lineHeight: 0.96
+    lineHeight: 1.06
     letterSpacing: "-0.04em"
   headline:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', sans-serif"
-    fontSize: "clamp(2.45rem, 5.5vw, 4.65rem)"
+    fontSize: "clamp(2.15rem, 4.4vw, 3.6rem)"
     fontWeight: 720
-    lineHeight: 0.98
+    lineHeight: 1.08
     letterSpacing: "-0.04em"
   title:
     fontFamily: "-apple-system, BlinkMacSystemFont, 'Segoe UI Variable', 'Segoe UI', sans-serif"
@@ -160,22 +160,22 @@ The palette combines cool mineral neutrals with near-black green ink; signal gre
 
 ### Primary
 
-- **Signal Green** (`#28684f`): primary actions, role emphasis, links, active timeline markers, and keyboard focus in the light theme.
-- **Signal Green Hover** (`#1f5942`): the darker handled state of primary actions.
-- **Soft Signal Lime** (`#d8f0a5`): low-emphasis status fields and icon grounds where a solid action would be too loud.
-- **Signal Ink** (`#153122`): readable dark text on soft signal surfaces.
-- **Live Lime** (`#c9f68c`) and **Build Lime** (`#c5f681`): operational live/current indicators confined to ink boards.
+- **Signal Green** (`#24634e`): primary actions, role emphasis, links, active timeline markers, and keyboard focus in the light theme.
+- **Signal Green Hover** (`#194d3b`): the darker handled state of primary actions.
+- **Soft Signal Sage** (`#e1ece3`): low-emphasis status fields and icon grounds where a solid action would be too loud.
+- **Signal Ink** (`#244d3b`): readable dark text on soft signal surfaces.
+- **Live Sage** (`#bcd9c2`) and **Build Sage** (`#bcd9c2`): operational live/current indicators confined to ink boards.
 
 ### Neutral
 
-- **Mineral Canvas** (`#edf0eb`): the light-theme page field.
-- **Graphite Ink** (`#141816`): primary light-theme text and the compact brand tile.
-- **Graphite Muted** (`#59635d`) and **Graphite Quiet** (`#636d67`): explanatory text and lower-priority metadata.
-- **Chalk Panel** (`#f8faf6`) and **Mineral Panel Muted** (`#e3e8e1`): reading panels, section bands, tags, and quiet interactive states.
-- **Mineral Line** (`#ccd3cc`) and **Mineral Line Strong** (`#aeb8b0`): structural rules, card borders, and stronger section starts.
-- **Ink Board** (`#151b18`) and **Ink Board Raised** (`#1b231f`): product-loop, architecture, and contact surfaces.
-- **Board Paper** (`#f3f6f1`) and **Board Muted** (`#aab5ae`): primary and secondary content on ink boards.
-- **Night Theme:** the same semantic roles switch to canvas (`#0d1110`), ink (`#f0f4ef`), muted (`#a8b2ac`), quiet (`#98a49d`), panel (`#151a18`), panel-muted (`#1c231f`), line (`#2b342f`), line-strong (`#465249`), signal (`#b7ec70`), signal-hover (`#c8f58e`), signal-soft (`#27371e`), signal-ink (`#12200f`), board (`#171d1a`), board-raised (`#1d2521`), and board-muted (`#abb6af`).
+- **Mineral Canvas** (`#f5f4f0`): the light-theme page field.
+- **Graphite Ink** (`#222725`): primary light-theme text and the compact brand tile.
+- **Graphite Muted** (`#555e5a`) and **Graphite Quiet** (`#616964`): explanatory text and lower-priority metadata.
+- **Chalk Panel** (`#fdfdfb`) and **Mineral Panel Muted** (`#eceee9`): reading panels, section bands, tags, and quiet interactive states.
+- **Mineral Line** (`#dcded7`) and **Mineral Line Strong** (`#bdc4bb`): structural rules, card borders, and stronger section starts.
+- **Ink Board** (`#202925`) and **Ink Board Raised** (`#28322d`): product-loop, architecture, and contact surfaces.
+- **Board Paper** (`#f5f6f2`) and **Board Muted** (`#bdc9c0`): primary and secondary content on ink boards.
+- **Night Theme:** the same semantic roles switch to canvas (`#161a18`), ink (`#f2f3ef`), muted (`#b8c2ba`), quiet (`#a9b4ac`), panel (`#1d2320`), panel-muted (`#272e29`), line (`#353f37`), line-strong (`#556259`), signal (`#bcd9c2`), signal-hover (`#cee8d2`), signal-soft (`#2d4235`), signal-ink (`#d6e9da`), board (`#212a25`), board-raised (`#29342d`), and board-muted (`#bdc9c0`).
 
 ### Named Rules
 
@@ -194,8 +194,8 @@ The palette combines cool mineral neutrals with near-black green ink; signal gre
 
 ### Hierarchy
 
-- **Display** (720, `0.96`, `-0.04em`): the opening product promise uses `clamp(3.15rem, 7.3vw, 5.8rem)` and is limited to roughly 12 characters per line.
-- **Headline** (720, `0.98`, `-0.04em`): major section statements use `clamp(2.45rem, 5.5vw, 4.65rem)` and are limited to roughly 16 characters per line.
+- **Display** (720, `1.06`, `-0.04em`): the opening product promise uses `clamp(2.65rem, 5.1vw, 4.25rem)` and is limited to roughly 20 characters per line.
+- **Headline** (720, `1.08`, `-0.04em`): major section statements use `clamp(2.15rem, 4.4vw, 3.6rem)` and are limited to roughly 20 characters per line.
 - **Title** (720, `1.05`, `-0.03em`): experience identities and other secondary anchors use `clamp(1.5rem, 3vw, 2.15rem)`.
 - **Body** (400, `1.72`, normal tracking): hero explanation and long-form summaries use `clamp(1rem, 1.4vw, 1.1rem)`; explanatory measures stay near 65–70 characters.
 - **Label** (750, `0.8rem`): primary controls and compact action copy.
@@ -211,7 +211,7 @@ The palette combines cool mineral neutrals with near-black green ink; signal gre
 
 The core container is capped at `72rem`. The hero uses a large promise beside the live build board from `960px`; the case study splits story and RAG/CAG architecture at the same threshold. Section introductions and résumé rows become asymmetric two-column grids from `720px`, while navigation exposes its full link set from `840px`. Primary action groups and the proof line expand from `520px`; below that, the design becomes a direct single-column reading sequence and the context flow stacks vertically.
 
-Section rhythm is intentionally generous: shells use `6rem` vertical padding on small screens and `8rem` from `720px`, with `4rem` between a section heading and its main evidence. The page grid wash is spaced at `6rem`; it fades before it can compete with the work. Horizontal gutters grow from `1.25rem` to `2rem`, and reading copy remains bounded while boards and proof structures take the available width.
+Section rhythm is intentionally generous: shells use `6rem` vertical padding on small screens and `6rem` from `720px`, with `2.75rem` between a section heading and its main evidence. The page grid wash is spaced at `6rem`; it fades before it can compete with the work. Horizontal gutters grow from `1.25rem` to `2rem`, and reading copy remains bounded while boards and proof structures take the available width.
 
 **The Proof-Before-Chronology Rule.** The build loop and BonneOccaz evidence precede the conventional résumé timeline; new compositions preserve that narrative order.
 
@@ -233,7 +233,7 @@ The system is flat at the reading layer and lifted at the product layer. Rules a
 
 **The Flat-Until-Handled Rule.** Ordinary reading surfaces rely on tone and rules; pronounced elevation belongs to workbenches, primary actions, and handled states.
 
-**The Tactile Restraint Rule.** Hover lifts stop at `2px` for controls and `4px` for the build board; press states use a small `0.94–0.97` scale and yield entirely to reduced-motion preferences.
+**The Tactile Restraint Rule.** Hover lifts stop at `2px` for controls and no movement for the non-interactive build board; press states use a small `0.94–0.97` scale and yield entirely to reduced-motion preferences.
 
 ## Shapes
 
@@ -260,8 +260,8 @@ Corners form a deliberate hierarchy rather than one universal radius: compact ta
 ### Cards / Containers
 
 - **Product Case:** chalk panel, mineral border, `1.75rem` corners, responsive story padding from `2rem 1.4rem` to `3.2rem`, and a single reading-panel shadow.
-- **Build Board:** ink surface, `1.7rem` corners, `1rem` padding, translucent white internal rules, and a deeper workbench shadow; it lifts only as a whole.
-- **Context Engine:** an ink grid surface embedded in the case study; its nodes use translucent borders and the current cache/result uses build lime.
+- **Build Board:** ink surface, `1.7rem` corners, `1rem` padding, translucent white internal rules, and a deeper workbench shadow; it remains stationary while reading.
+- **Context Engine:** an ink grid surface embedded in the case study; its nodes use translucent borders and the current cache/result uses build sage.
 
 ### Navigation
 
@@ -272,7 +272,7 @@ Corners form a deliberate hierarchy rather than one universal radius: compact ta
 
 ### Build Loop
 
-The signature component is a numbered five-step workbench. Each row is an ink-raised container with a monospace index, grounded icon tile, concise label, and optional state. The shipped/current row reverses into build lime with build ink and a compact dark state pill, making delivery visible before chronology.
+The signature component is a numbered five-step workbench. Each row is an ink-raised container with a monospace index, grounded icon tile, concise label, and optional state. The shipped/current row reverses into build sage with build ink and a compact dark state pill, making delivery visible before chronology.
 
 ### Motion and Preferences
 
@@ -295,3 +295,51 @@ Control transitions use `120–160ms ease-out`; theme color transitions use `280
 - **Don't** put technology lists before product proof or inflate the focused RAG/CAG module into an unverified large-scale AI claim.
 - **Don't** introduce display fonts, ornamental serif pairings, or icon-font dependencies; the system is native, direct, and self-contained.
 - **Don't** add parallax, bounce, or long entrance choreography; motion communicates handling and state only.
+
+
+## Refinement — September 2026
+
+The product notebook identity is preserved. Warm off-white reading surfaces and
+graphite text reduce the former all-green cast; sage replaces fluorescent lime
+on dark boards. Accent color remains semantic. The system font stack is retained
+for continuity and platform legibility. Existing factual content and section order
+remain the source of truth.
+
+- Hero: 7rem top inset; 20ch heading at 2.65–4.25rem and 1.06 leading; role at
+  1–1.12rem with a 48ch maximum. Remove the former fixed 980px minimum height.
+- Section headings: 2.15–3.6rem at 1.08 leading. Evidence follows after 2.75rem.
+- Supporting web text: generally at least 0.75rem; experience and project bullets
+  are 0.95rem with 1.6–1.65 leading. The compact shipped-state label is 0.625rem.
+- Portrait: 76 × 84px, with a responsive image source sized to its actual width.
+- Shadows: restrained directional shadows on boards (20px / 48px, 14% opacity),
+  project panel (12px / 36px, 6%), and contact panel (16px / 40px, 12%).
+- Non-interactive product board has no hover animation or permanent compositor
+  hint. Primary hero controls disable spring press motion under reduced motion.
+- Solid actions use a dedicated on-signal token (white in light mode, #203c2a in
+  dark mode). Soft dark badges use #d6e9da on #2d4235, independently of buttons.
+- Mobile: the shipped-state label moves below its description; status text can
+  wrap without shrinking its dot. Maintain 44px utility controls.
+- PDF: one-page A4 layout and selectable text remain; header subtitle uses sage
+  instead of unrelated blue. Ink, muted text, green and rules match the web.
+
+The mechanical detector reports advisory differences against the former type
+ramp and existing radius scale. The sizes above document the intentional reading
+improvements; the persisted generated sidecar has not been regenerated.
+
+
+## Recruitment flow and content refinement — September 2026
+
+- Primary hero action downloads the CV; the secondary action opens BonneOccaz.
+- Navigation uses real language links: `/` and `/en`. Mobile navigation includes
+  contact and PDF access, closes with Escape or an outside press, and returns
+  focus to its trigger on Escape. A visible-on-focus skip link reaches the main.
+- Separate the automotive advisor from the platform help assistant. The diagram
+  is explicitly illustrative. Native disclosure exposes corpus, implementation,
+  safeguards and the limited scope of evaluation without dominating the scan.
+- Evidence uses two simple editorial rows, followed by an explicit confidentiality
+  note. No information about the second product beyond the agreed public wording.
+- Detail text is 0.875rem / 1.65; evidence body is 0.95rem / 1.65. Mobile evidence
+  becomes one column under 720px. Existing semantic colors remain authoritative.
+- The generated 1200×630 share card follows the warm paper/graphite/green palette.
+- PDF content includes the chronology note and confidentiality, sets its document
+  language, uses the generation month, and rejects printable-area overflow.

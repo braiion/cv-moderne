@@ -39,3 +39,7 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Local PDF compiler cache and validation artifacts
+/.cache/
+/tmp/

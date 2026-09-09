@@ -11,6 +11,7 @@ export async function GET(request: Request) {
       "Content-Type": "application/pdf",
       "Content-Disposition": `attachment; filename="CV_Bryan_DUPRESSOIR_${locale.toUpperCase()}.pdf"`,
       "Cache-Control": "public, max-age=3600",
+      "X-Content-Type-Options": "nosniff",
     },
   });
 }

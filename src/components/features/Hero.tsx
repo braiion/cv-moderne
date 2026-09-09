@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { motion } from "framer-motion";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   ArrowUpRight,
   Braces,
@@ -25,6 +25,7 @@ const loopIcons = [Search, PanelsTopLeft, Braces, Rocket, RefreshCw];
 const spring = { type: "spring" as const, bounce: 0, duration: 0.4 };
 
 export default function Hero({ locale, downloadHref }: HeroProps) {
+  const reduceMotion = useReducedMotion();
   const { personal, hero } = cvContent[locale];
 
   return (
@@ -44,25 +45,25 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
 
           <div className="product-hero__actions">
             <motion.a
-              href={personal.bonneOccaz}
-              target="_blank"
-              rel="noreferrer"
-              className="button-primary"
-              whileTap={{ scale: 0.97 }}
-              transition={spring}
-            >
-              {hero.primaryCta}
-              <ArrowUpRight size={17} />
-            </motion.a>
-            <motion.a
               href={downloadHref}
               download
-              className="button-secondary"
-              whileTap={{ scale: 0.97 }}
+              className="button-primary"
+              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
               transition={spring}
             >
               <Download size={17} />
               {hero.secondaryCta}
+            </motion.a>
+            <motion.a
+              href={personal.bonneOccaz}
+              target="_blank"
+              rel="noreferrer"
+              className="button-secondary"
+              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
+              transition={spring}
+            >
+              {hero.primaryCta}
+              <ArrowUpRight size={17} />
             </motion.a>
           </div>
 
@@ -76,12 +77,9 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
           </div>
         </div>
 
-        <motion.aside
+        <aside
           className="build-board"
           aria-label={locale === "fr" ? "Boucle de construction produit" : "Product build loop"}
-          initial={false}
-          whileHover={{ y: -4 }}
-          transition={spring}
         >
           <div className="build-board__topline">
             <span>{locale === "fr" ? "Boucle produit" : "Product loop"}</span>
@@ -95,7 +93,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                 alt={`${personal.firstName} ${personal.lastName}`}
                 fill
                 priority
-                sizes="72px"
+                sizes="76px"
                 className="object-cover object-[center_15%]"
               />
             </div>
@@ -128,7 +126,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
             <Sparkles size={16} />
             <span>{hero.release}</span>
           </div>
-        </motion.aside>
+        </aside>
       </div>
     </section>
   );

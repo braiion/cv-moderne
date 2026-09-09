@@ -18,7 +18,11 @@ export default function ThemeToggle({ locale }: { locale: Locale }) {
   const toggleTheme = () => {
     const nextIsDark = !document.documentElement.classList.contains("dark");
     document.documentElement.classList.toggle("dark", nextIsDark);
-    localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+    try {
+      localStorage.setItem("theme", nextIsDark ? "dark" : "light");
+    } catch {
+      // The current-page preference still works when storage is unavailable.
+    }
     window.dispatchEvent(new Event("cv-theme-change"));
   };
 

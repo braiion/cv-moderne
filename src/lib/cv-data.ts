@@ -9,6 +9,7 @@ export interface Experience {
   description: string;
   missions: string[];
   tags?: string[];
+  note?: string;
 }
 
 export interface Education {
@@ -35,7 +36,7 @@ export interface PersonalInfo {
   summary: string;
 }
 
-const shared = {
+export const shared = {
   firstName: "Bryan",
   lastName: "DUPRESSOIR",
   address: "Vandrimare, Normandie",
@@ -54,7 +55,7 @@ export const cvContent = {
       ...shared,
       title: "Product Builder & Développeur Full-Stack JS/TS",
       subtitle: "MVP & produit 0→1 · React · Next.js · TypeScript · Supabase · IA appliquée",
-      summary: "Product Builder et développeur full-stack JavaScript/TypeScript avec plus de 10 ans de parcours IT, dont 7 ans de pilotage SI. Depuis 2024, je transforme des besoins métier en MVP démontrables puis en produits web automobiles livrés de bout en bout : discovery, UX, architecture, développement, déploiement et exploitation. Sur BonneOccaz, j’ai récemment ajouté un module RAG/CAG pour mieux contextualiser les réponses du conseiller automobile.",
+      summary: "Développeur full-stack JavaScript/TypeScript et Product Builder, avec un parcours informatique commencé en 2016 et 7 ans de pilotage SI. Depuis 2024, je conçois et développe des applications web automobiles : cadrage, parcours utilisateurs, architecture, développement et exploitation. Mon expérience relie besoins métier, réalisation technique et accompagnement des utilisateurs.",
     },
     hero: {
       availability: "Ouvert aux opportunités — remote ou Normandie",
@@ -74,7 +75,7 @@ export const cvContent = {
         { label: "Livrer", note: "démo client & production" },
         { label: "Apprendre", note: "itérations produit" },
       ],
-      release: "Dernier build · module RAG/CAG sur BonneOccaz",
+      release: "Produit présenté · BonneOccaz, en bêta",
     },
     projectsSection: {
       eyebrow: "Produit phare",
@@ -82,16 +83,27 @@ export const cvContent = {
       description: "Une preuve concrète de ma manière de travailler : comprendre le problème, cadrer un MVP, construire, le présenter puis améliorer le produit.",
       visit: "Voir le produit en ligne",
       role: "Conçu et développé en autonomie",
-      architecture: "Couche IA contextuelle",
+      architecture: "Assistant d’aide · RAG/CAG",
+      confidential: "Deux applications automobiles développées. BonneOccaz est présentée ici ; le second projet reste confidentiel à ce stade.",
+      technicalDetails: "Sources, fonctionnement et évaluation",
+      corpus: "97 entrées de FAQ publique et 11 sections du guide professionnel pour l’assistant Pro authentifié. Recherche plein texte et similarité textuelle dans PostgreSQL/Supabase, avec un secours local. Jusqu’à quatre sources sont transmises à DeepSeek.",
+      safeguards: "Seuil minimal de pertinence, validation des identifiants cités et réponses de repli ou orientation vers le support. Les tests couvrent les citations inventées, les tentatives d’injection et la séparation public/Pro. Le mode CAG est configurable et conserve les restrictions de citation du RAG.",
+      evaluation: "Pilote de 32 questions pour la recherche locale : contrôle de la présence du document attendu parmi les trois premiers résultats, avec un seuil de 90 %. Cette évaluation ne mesure pas encore systématiquement l’exactitude et la fidélité des réponses générées.",
+      examplesTitle: "Deux exemples de réalisation",
+      examples: [
+        { title: "Comparer avant de choisir", body: "Un conseiller IA aide à préciser le besoin et à trouver un véhicule sur la plateforme. Recherche et comparaison d’annonces, indicateur de prix et estimations des coûts complètent ce parcours." },
+        { title: "Répondre avec des sources contrôlées", body: "Pour l’aide sur la plateforme, recherche documentaire dans Supabase/PostgreSQL, validation des citations et séparation des contenus publics et Pro. Des réponses de repli prennent le relais lorsque les sources sont insuffisantes." },
+      ],
+      aiScope: "Aide à l’utilisation de BonneOccaz, à partir d’un corpus interne versionné dans Git. Aucun accès au Web ni aux données personnelles des comptes. Le schéma ci-dessus est illustratif.",
     },
     project: {
       name: "BonneOccaz.fr",
       status: "Produit en bêta",
       tagline: "Achetez mieux, sans mauvaise surprise.",
-      description: "Plateforme automobile de recherche, publication et comparaison d’annonces, enrichie par des outils d’aide à la décision, des parcours professionnels et un conseiller automobile contextuel.",
+      description: "Plateforme automobile de recherche, publication et comparaison d’annonces, enrichie par des outils d’aide à la décision, des parcours professionnels, un conseiller automobile IA et un assistant d’aide à l’utilisation.",
       features: [
-        "Recherche et conseiller automobile assistés par IA",
-        "Module RAG/CAG pour contextualiser les réponses avec un corpus métier",
+        "Conseiller IA : définir le besoin et trouver un véhicule sur la plateforme",
+        "Assistance RAG/CAG : FAQ interne et guide Pro, sans accès aux données personnelles",
         "Annonces, favoris, messagerie et modération",
         "Indicateur de prix, estimation des coûts et malus",
         "Espaces particuliers et professionnels",
@@ -109,13 +121,14 @@ export const cvContent = {
         title: "Product Builder / Développeur full-stack",
         company: "Produits automobiles indépendants",
         period: "2024 — Aujourd’hui",
-        description: "Conception rapide de MVP démontrables puis mise en production en autonomie de deux applications web automobiles, dont une marketplace SaaS.",
+        note: "Projets commencés en parallèle de mon poste chez Normandie Structures en 2024–2025.",
+        description: "Deux applications web automobiles développées en autonomie, dont BonneOccaz. Le second projet reste confidentiel à ce stade.",
         missions: [
           "Cadrage et conception rapide de MVP démontrables : besoins, product discovery, parcours utilisateurs, backlog et priorisation",
           "Développement full-stack responsive avec React, Next.js, TypeScript, Node.js et Tailwind CSS",
           "Architecture Supabase/PostgreSQL : modélisation des données, Auth, Storage, RLS, Realtime et API REST",
           "Intégrations et emails transactionnels avec Resend, Git/GitHub, CI/CD et déploiement Vercel",
-          "Maintenance en production, usage quotidien d’outils d’IA et ajout d’un module RAG/CAG sur BonneOccaz",
+          "Maintenance et évolution des applications en production, avec des outils d’IA en appui au développement",
         ],
         tags: ["Product Builder", "MVP", "Full-Stack", "React", "Next.js", "TypeScript", "RAG/CAG"],
       },
@@ -182,7 +195,7 @@ export const cvContent = {
       ...shared,
       title: "Product Builder & Full-Stack JavaScript/TypeScript Developer",
       subtitle: "MVP & 0→1 product · React · Next.js · TypeScript · Supabase · Applied AI",
-      summary: "Product Builder and full-stack JavaScript/TypeScript developer with 10+ years in IT, including 7 years of IT systems ownership. Since 2024, I have turned business needs into demonstrable MVPs and then into automotive web products shipped end to end: discovery, UX, architecture, development, deployment and operations. I recently added a focused RAG/CAG module to BonneOccaz to improve the automotive advisor’s contextual answers.",
+      summary: "Full-stack JavaScript/TypeScript developer and Product Builder with an IT career starting in 2016, including 7 years of IT systems ownership. Since 2024, I have designed and built automotive web applications: scoping, user journeys, architecture, development and operations. My experience connects business requirements, technical delivery and user support.",
     },
     hero: {
       availability: "Open to opportunities — remote or Normandy, France",
@@ -202,7 +215,7 @@ export const cvContent = {
         { label: "Ship", note: "client demo & production" },
         { label: "Learn", note: "product iterations" },
       ],
-      release: "Latest build · RAG/CAG module for BonneOccaz",
+      release: "Featured product · BonneOccaz, in beta",
     },
     projectsSection: {
       eyebrow: "Featured product",
@@ -210,16 +223,27 @@ export const cvContent = {
       description: "Concrete proof of how I work: understand the problem, scope an MVP, build, present it and improve the product.",
       visit: "View live product",
       role: "Designed and built independently",
-      architecture: "Contextual AI layer",
+      architecture: "Help assistant · RAG/CAG",
+      confidential: "Two automotive applications developed. BonneOccaz is presented here; the second project remains confidential at this stage.",
+      technicalDetails: "Sources, implementation and evaluation",
+      corpus: "97 public FAQ entries and 11 professional guide sections for the authenticated Pro assistant. PostgreSQL/Supabase full-text search and text similarity, with a local fallback. Up to four sources are passed to DeepSeek.",
+      safeguards: "A minimum relevance threshold, validation of cited source IDs, and fallback answers or support referrals. Tests cover fabricated citations, injection attempts and public/Pro separation. Configurable CAG mode retains the RAG citation restrictions.",
+      evaluation: "A 32-question pilot for local retrieval checks whether the expected document appears in the top three results, with a 90% threshold. This evaluation does not yet systematically measure the accuracy and faithfulness of generated answers.",
+      examplesTitle: "Two implementation examples",
+      examples: [
+        { title: "Compare before choosing", body: "An AI advisor helps clarify the need and find a vehicle on the platform. Listing search and comparison, a price indicator and cost estimates complete the journey." },
+        { title: "Answer from controlled sources", body: "For platform help, document retrieval in Supabase/PostgreSQL, citation validation and separation of public and Pro content. Fallback answers take over when sources are insufficient." },
+      ],
+      aiScope: "Help with using BonneOccaz, based on an internal corpus versioned in Git. No access to the Web or personal account data. The diagram above is illustrative.",
     },
     project: {
       name: "BonneOccaz.fr",
       status: "Beta product",
       tagline: "Buy smarter, without nasty surprises.",
-      description: "An automotive marketplace for searching, publishing and comparing listings, enhanced with decision tools, professional workflows and a contextual automotive advisor.",
+      description: "An automotive marketplace for searching, publishing and comparing listings, enhanced with decision tools, professional workflows, an AI automotive advisor and a platform help assistant.",
       features: [
-        "AI-assisted search and automotive advisor",
-        "RAG/CAG module to ground answers in a focused automotive knowledge corpus",
+        "AI advisor: identify needs and find a vehicle on the platform",
+        "RAG/CAG assistance: internal FAQ and Pro guide, without access to personal data",
         "Listings, favourites, messaging and moderation",
         "Price indicator, ownership cost and tax estimation",
         "Consumer and professional account experiences",
@@ -237,13 +261,14 @@ export const cvContent = {
         title: "Product Builder / Full-stack developer",
         company: "Independent automotive products",
         period: "2024 — Present",
-        description: "Rapidly designing demonstrable MVPs and independently taking two automotive web applications to production, including a SaaS marketplace.",
+        note: "Projects started alongside my role at Normandie Structures in 2024–2025.",
+        description: "Two automotive web applications developed independently, including BonneOccaz. The second project remains confidential at this stage.",
         missions: [
           "Scoping and rapidly building demonstrable MVPs: requirements, product discovery, user journeys, backlog management and prioritisation",
           "Responsive full-stack development with React, Next.js, TypeScript, Node.js and Tailwind CSS",
           "Supabase/PostgreSQL architecture: data modelling, Auth, Storage, RLS, Realtime and REST APIs",
           "Third-party integrations and transactional email with Resend, Git/GitHub, CI/CD and Vercel deployment",
-          "Production maintenance, daily AI-assisted development and a focused RAG/CAG module for BonneOccaz",
+          "Maintaining and evolving production applications, with AI tools supporting development",
         ],
         tags: ["Product Builder", "MVP", "Full-Stack", "React", "Next.js", "TypeScript", "RAG/CAG"],
       },

@@ -29,7 +29,7 @@ Bryan se positionne comme Product Builder et développeur full-stack : il combin
 
 - Application Next.js 16, React 19, TypeScript et Tailwind CSS 4.
 - Contenu bilingue français/anglais partagé entre le site et le générateur PDF.
-- BonneOccaz intègre désormais un module RAG/CAG automobile de portée limitée ; le portfolio doit le présenter précisément sans le transformer en système d’IA à grande échelle.
+- BonneOccaz possède deux usages IA distincts : un conseiller automobile pour préciser le besoin et trouver un véhicule, et un assistant d’aide sur la plateforme, fondé sur un module RAG/CAG. Ce dernier ne consulte ni le Web ni les données personnelles des comptes.
 - Les thèmes clair et sombre doivent conserver des fonds, contrastes et limites de sections cohérents.
 - Ne jamais inventer de métriques, d’utilisateurs, de trafic, de performances ou de résultats non vérifiés.
 
@@ -44,11 +44,15 @@ Bryan se positionne comme Product Builder et développeur full-stack : il combin
 ## Evidence on Hand
 
 - Plus de 10 ans de parcours informatique depuis 2016, dont 7 ans de responsabilité du SI chez Normandie Structures.
-- Deux applications automobiles conçues depuis 2024, dont BonneOccaz.
+- Deux applications automobiles conçues depuis 2024, dont BonneOccaz. Le second produit reste confidentiel, sans nom, lien ni détail public.
+- Les projets ont commencé en parallèle du poste chez Normandie Structures en 2024–2025 (confirmation de Bryan).
 - Capacité à transformer rapidement un besoin en MVP présentable, à recueillir les retours puis à faire évoluer la solution vers la production.
 - Expériences documentées chez Normandie Structures et Renault Cléon.
 - Formation CESI de niveau RNCP 6 et BTS SIO option SLAM.
-- Aucune métrique produit vérifiée n’est disponible dans le dépôt ; les travaux futurs ne doivent pas en fabriquer.
+- Aucun chiffre de trafic ou résultat commercial vérifié ne doit être inventé.
+- Données RAG/CAG fournies par Bryan : 97 FAQ publiques, 11 sections Pro, jusqu’à quatre sources vers DeepSeek, recherche plein texte/similarité PostgreSQL avec secours local.
+- Un pilote de 32 questions contrôle le classement du document attendu parmi les trois premiers résultats, avec un seuil de 90 % pour la recherche locale. Ce seuil ne mesure pas l’exactitude des réponses générées.
+- Les tests décrits par Bryan couvrent citations inventées, injections et séparation public/Pro ; leur exécution n’est pas attestée par les tests de ce dépôt.
 
 ## Product Principles
 

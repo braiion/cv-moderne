@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Hero from "@/components/features/Hero";
@@ -11,15 +11,35 @@ import TechStack from "@/components/features/TechStack";
 import Footer from "@/components/features/Footer";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
-export default function Home() {
-  const [locale, setLocale] = useState<Locale>("fr");
+export default function Portfolio({ locale }: { locale: Locale }) {
+  const headerRef = useRef<HTMLElement>(null);
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
   const [activeSection, setActiveSection] = useState("hero");
   const [menuOpen, setMenuOpen] = useState(false);
   const content = cvContent[locale];
 
   useEffect(() => {
-    document.documentElement.lang = locale;
-  }, [locale]);
+    if (!menuOpen) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+        menuButtonRef.current?.focus();
+      }
+    };
+    const closeOutside = (event: PointerEvent) => {
+      if (event.target instanceof Node && !headerRef.current?.contains(event.target)) setMenuOpen(false);
+    };
+    const desktop = window.matchMedia("(min-width: 840px)");
+    const closeOnDesktop = () => { if (desktop.matches) setMenuOpen(false); };
+    document.addEventListener("keydown", closeOnEscape);
+    document.addEventListener("pointerdown", closeOutside);
+    desktop.addEventListener("change", closeOnDesktop);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      document.removeEventListener("pointerdown", closeOutside);
+      desktop.removeEventListener("change", closeOnDesktop);
+    };
+  }, [menuOpen]);
 
   useEffect(() => {
     const updateSection = () => {
@@ -57,7 +77,8 @@ export default function Home() {
 
   return (
     <div className="min-h-screen overflow-x-hidden">
-      <header className="site-header">
+      <a href="#main-content" className="skip-link">{locale === "fr" ? "Aller au contenu" : "Skip to content"}</a>
+      <header ref={headerRef} className="site-header">
         <nav className="nav-shell" aria-label={labels.navigation}>
           <a href="#hero" className="brand-mark" aria-label={labels.home}>
             <span>BD</span>
@@ -78,20 +99,22 @@ export default function Home() {
           </div>
 
           <div className="nav-actions">
-            <button
-              type="button"
-              onClick={() => setLocale(locale === "fr" ? "en" : "fr")}
+            <a
+              href={locale === "fr" ? "/en" : "/"}
+              hrefLang={locale === "fr" ? "en" : "fr"}
+              lang={locale === "fr" ? "en" : "fr"}
               className="utility-button language-button"
               aria-label={locale === "fr" ? "Switch to English" : "Passer en français"}
             >
               {content.localeLabel}
-            </button>
+            </a>
             <ThemeToggle locale={locale} />
             <a href="#contact" className="nav-contact">
               {content.nav.contact}
             </a>
             <button
               type="button"
+              ref={menuButtonRef}
               className="utility-button mobile-menu-button"
               onClick={() => setMenuOpen(!menuOpen)}
               aria-expanded={menuOpen}
@@ -104,17 +127,19 @@ export default function Home() {
         </nav>
 
         {menuOpen && (
-          <div id="mobile-navigation" className="nav-shell mobile-nav" aria-label={labels.navigation}>
+          <nav id="mobile-navigation" className="nav-shell mobile-nav" aria-label={locale === "fr" ? "Navigation mobile" : "Mobile navigation"}>
             {navLinks.map((link) => (
               <a key={link.id} href={`#${link.id}`} onClick={() => setMenuOpen(false)}>
                 {link.label}
               </a>
             ))}
-          </div>
+            <a href="#contact" onClick={() => setMenuOpen(false)}>{content.nav.contact}</a>
+            <a href={`/api/cv?lang=${locale}`} download>{content.hero.secondaryCta}</a>
+          </nav>
         )}
       </header>
 
-      <main className="product-page">
+      <main id="main-content" tabIndex={-1} className="product-page">
         <Hero locale={locale} downloadHref={`/api/cv?lang=${locale}`} />
         <ProjectShowcase locale={locale} />
         <Experience locale={locale} />

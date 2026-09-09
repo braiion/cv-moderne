@@ -29,6 +29,7 @@ export default function Experience({ locale }: { locale: Locale }) {
 
             <div className="experience-row__details">
               <p>{experience.description}</p>
+              {"note" in experience && <p className="experience-note">{experience.note}</p>}
               <ul>
                 {experience.missions.map((mission) => (
                   <li key={mission}><Check size={15} />{mission}</li>
