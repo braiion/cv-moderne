@@ -3,11 +3,11 @@ import { shared, type Locale } from "./cv-data";
 
 export function portfolioMetadata(locale: Locale): Metadata {
   const title = locale === "fr"
-    ? "Bryan Dupressoir — Développeur Full-Stack & Product Builder"
-    : "Bryan Dupressoir — Full-Stack Developer & Product Builder";
+    ? "Bryan Dupressoir — Full Stack Builder · Développement agentique"
+    : "Bryan Dupressoir — Full Stack Builder · Agentic Development";
   const description = locale === "fr"
-    ? "Parcours informatique depuis 2016. Développement React, Next.js, TypeScript et Supabase. Découvrez BonneOccaz, mes expériences et mon CV."
-    : "An IT career since 2016. React, Next.js, TypeScript and Supabase development. Explore BonneOccaz, my experience and my résumé.";
+    ? "Full Stack Builder JS/TS. Pratique intensive des agents de code, du cadrage à la livraison. Découvrez BonneOccaz, mes expériences et mon CV."
+    : "Full Stack Builder using JS/TS. Extensive coding agent experience, from scoping to delivery. Explore BonneOccaz, my experience and my résumé.";
   const path = locale === "fr" ? "/" : "/en";
   return {
     metadataBase: new URL(shared.portfolio),

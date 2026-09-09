@@ -15,7 +15,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     title: `CV - ${personal.firstName} ${personal.lastName}`,
     subject: personal.title,
     author: `${personal.firstName} ${personal.lastName}`,
-    keywords: "Product Builder, Product Engineer, MVP, Minimum Viable Product, Prototypage rapide, Rapid prototyping, Developpeur Full-Stack, Full-Stack Developer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, RAG, CAG, IA generative, SQL, API REST, CI/CD",
+    keywords: "Full Stack Builder, Product Builder, Product Engineer, Agents de code, Coding agents, Developpement agentique, Agentic development, AI-native, MVP, Developpeur Full-Stack, Full-Stack Developer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, RAG, CAG, IA generative, SQL, API REST, CI/CD",
   });
 
   doc.setCreationDate(generatedAt);
@@ -111,8 +111,8 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   rightY += 1;
   rightY = sectionTitle(doc, locale === "fr" ? "POSITIONNEMENT" : "TARGET ROLES", 143, rightY, 54);
   const targets = locale === "fr"
-    ? ["Product Builder", "Développeur Full-Stack JS/TS", "Product Engineer", "Développeur React / Next.js"]
-    : ["Product Builder", "Full-Stack JS/TS Developer", "Product Engineer", "React / Next.js Developer"];
+    ? ["Full Stack Builder", "Développeur Full-Stack JS/TS", "Product Engineer", "Développeur React / Next.js"]
+    : ["Full Stack Builder", "Full-Stack JS/TS Developer", "Product Engineer", "React / Next.js Developer"];
   for (const target of targets) {
     rightY = bullet(doc, target, 143, rightY, 54);
   }
@@ -151,7 +151,7 @@ function header(doc: JsPdf, locale: Locale) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7);
   doc.setTextColor(188, 217, 194);
-  checkedText(doc, "PRODUCT BUILDER / MVP / 0->1", 197, 13, { align: "right" });
+  checkedText(doc, "FULL STACK BUILDER / AI-NATIVE", 197, 13, { align: "right" });
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(11);
   checkedText(doc, pdfText(personal.title), 13, 25);
