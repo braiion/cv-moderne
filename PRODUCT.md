@@ -50,7 +50,7 @@ Bryan se positionne comme Product Builder et développeur full-stack : il combin
 - Expériences documentées chez Normandie Structures et Renault Cléon.
 - Formation CESI de niveau RNCP 6 et BTS SIO option SLAM.
 - Aucun chiffre de trafic ou résultat commercial vérifié ne doit être inventé.
-- Données RAG/CAG fournies par Bryan : 97 FAQ publiques, 11 sections Pro, jusqu’à quatre sources vers DeepSeek, recherche plein texte/similarité PostgreSQL avec secours local.
+- Données RAG/CAG fournies par Bryan : 97 FAQ publiques, 11 sections Pro, jusqu’à quatre sources vers un LLM (fournisseur volontairement non nommé en public), recherche plein texte/similarité PostgreSQL avec secours local.
 - Un pilote de 32 questions contrôle le classement du document attendu parmi les trois premiers résultats, avec un seuil de 90 % pour la recherche locale. Ce seuil ne mesure pas l’exactitude des réponses générées.
 - Les tests décrits par Bryan couvrent citations inventées, injections et séparation public/Pro ; leur exécution n’est pas attestée par les tests de ce dépôt.
 

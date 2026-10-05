@@ -1,10 +1,10 @@
 import { jsPDF, type jsPDF as JsPdf } from "jspdf";
 import { cvContent, type Locale } from "./cv-data";
 
-const GREEN = [36, 99, 78] as const;
-const INK = [34, 39, 37] as const;
-const MUTED = [85, 94, 90] as const;
-const LINE = [220, 222, 215] as const;
+const COBALT = [35, 64, 255] as const;
+const INK = [12, 13, 16] as const;
+const MUTED = [74, 79, 90] as const;
+const LINE = [214, 217, 224] as const;
 
 export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4", compress: true });
@@ -15,7 +15,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     title: `CV - ${personal.firstName} ${personal.lastName}`,
     subject: personal.title,
     author: `${personal.firstName} ${personal.lastName}`,
-    keywords: "Full Stack Builder, Product Builder, Product Engineer, Agents de code, Coding agents, Developpement agentique, Agentic development, AI-native, MVP, Developpeur Full-Stack, Full-Stack Developer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, RAG, CAG, IA generative, SQL, API REST, CI/CD",
+    keywords: "Full Stack Builder, Product Builder, Product Engineer, Agents de code IA, AI coding agents, LLM, Developpement agentique, Agentic development, AI-native, MVP, Developpeur Full-Stack, Full-Stack Developer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, RAG, CAG, IA generative, SQL, API REST, CI/CD",
   });
 
   doc.setCreationDate(generatedAt);
@@ -33,7 +33,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   checkedText(doc, pdfText(content.project.name), 13, leftY);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.1);
-  doc.setTextColor(...GREEN);
+  doc.setTextColor(...COBALT);
   checkedText(doc, pdfText(content.project.status), 134, leftY, { align: "right" });
   leftY += 4.5;
   leftY = paragraph(doc, content.project.description, 13, leftY, 121, 8.1, 4);
@@ -51,7 +51,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     checkedText(doc, titleLines, 13, leftY);
 
     doc.setFontSize(7.9);
-    doc.setTextColor(...GREEN);
+    doc.setTextColor(...COBALT);
     checkedText(doc, pdfText(experience.period), 134, leftY, { align: "right" });
     leftY += titleLines.length * 4;
 
@@ -88,7 +88,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   rightY = paragraph(doc, loop, 143, rightY, 54, 7.7, 3.8) + 1.5;
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7.4);
-  doc.setTextColor(...GREEN);
+  doc.setTextColor(...COBALT);
   const release = doc.splitTextToSize(pdfText(content.hero.release), 54);
   checkedText(doc, release, 143, rightY);
   rightY += release.length * 3.4 + 4;
@@ -139,10 +139,8 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
 
 function header(doc: JsPdf, locale: Locale) {
   const { personal } = cvContent[locale];
-  doc.setFillColor(...INK);
+  doc.setFillColor(...COBALT);
   doc.rect(0, 0, 210, 50, "F");
-  doc.setFillColor(...GREEN);
-  doc.rect(0, 0, 5, 50, "F");
 
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
@@ -150,18 +148,18 @@ function header(doc: JsPdf, locale: Locale) {
   checkedText(doc, pdfText(`${personal.firstName} ${personal.lastName}`), 13, 17);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7);
-  doc.setTextColor(188, 217, 194);
+  doc.setTextColor(214, 221, 255);
   checkedText(doc, "FULL STACK BUILDER / AI-NATIVE", 197, 13, { align: "right" });
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(11);
   checkedText(doc, pdfText(personal.title), 13, 25);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.2);
-  doc.setTextColor(207, 224, 211);
+  doc.setTextColor(222, 228, 255);
   checkedText(doc, pdfText(personal.subtitle), 13, 31.5);
 
   doc.setFontSize(7.6);
-  doc.setTextColor(226, 232, 240);
+  doc.setTextColor(236, 240, 255);
   checkedText(doc, pdfText(personal.email), 13, 41);
   checkedText(doc, pdfText(personal.phone), 78, 41);
   checkedText(doc, pdfText(personal.address), 126, 41);
@@ -170,7 +168,7 @@ function header(doc: JsPdf, locale: Locale) {
 function sectionTitle(doc: JsPdf, title: string, x: number, y: number, width: number) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7.5);
-  doc.setTextColor(...GREEN);
+  doc.setTextColor(...COBALT);
   checkedText(doc, pdfText(title), x, y);
   doc.setDrawColor(...LINE);
   doc.line(x, y + 2.3, x + width, y + 2.3);
@@ -187,7 +185,7 @@ function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number
 }
 
 function bullet(doc: JsPdf, text: string, x: number, y: number, width: number) {
-  doc.setFillColor(...GREEN);
+  doc.setFillColor(...COBALT);
   doc.circle(x + 1, y - 1, 0.55, "F");
   return paragraph(doc, text, x + 4, y, width - 4, 7.8, 3.75) + 0.35;
 }
@@ -195,7 +193,7 @@ function bullet(doc: JsPdf, text: string, x: number, y: number, width: number) {
 function link(doc: JsPdf, label: string, url: string, x: number, y: number) {
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8);
-  doc.setTextColor(...GREEN);
+  doc.setTextColor(...COBALT);
   checkedText(doc, label, x, y);
   const height = doc.getFontSize() / doc.internal.scaleFactor;
   doc.link(x, y - height, doc.getTextWidth(label), height * 1.25, { url });

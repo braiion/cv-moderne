@@ -1,19 +1,13 @@
-"use client";
-
-import { GraduationCap } from "lucide-react";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function Formation({ locale }: { locale: Locale }) {
   const { education, skillsSection } = cvContent[locale];
 
   return (
-    <section className="education-section" aria-labelledby="education-title">
-      <div className="education-panel">
-        <div className="education-panel__title">
-          <span><GraduationCap size={20} /></span>
-          <h2 id="education-title">{skillsSection.education}</h2>
-        </div>
-        <div className="education-list">
+    <section className="section section--tight" aria-labelledby="education-title">
+      <div className="education">
+        <h2 id="education-title">{skillsSection.education}</h2>
+        <div className="education__list">
           {education.map((item) => (
             <article key={item.id}>
               <time>{item.year}</time>

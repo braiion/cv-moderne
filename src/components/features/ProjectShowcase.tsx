@@ -1,15 +1,8 @@
 "use client";
 
-import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Database,
-  MessageSquareText,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function ProjectShowcase({ locale }: { locale: Locale }) {
@@ -19,119 +12,104 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
         module: "Module ciblé",
         question: "Question utilisateur",
         retrieval: "RAG · récupération",
+        retrievalNote: "Supabase/PostgreSQL · sources citées",
         memory: "CAG · contexte stable, en option",
         answer: "Réponse contextualisée",
-        example: "Comment publier une annonce ?",
+        answerNote: "citations validées ou repli",
+        example: "« Comment publier une annonce ? »",
+        features: "Fonctionnalités",
+        stack: "Stack",
       }
     : {
         module: "Focused module",
         question: "User question",
         retrieval: "RAG · retrieval",
+        retrievalNote: "Supabase/PostgreSQL · cited sources",
         memory: "CAG · optional stable context",
         answer: "Contextual answer",
-        example: "How do I publish a listing?",
+        answerNote: "validated citations or fallback",
+        example: "“How do I publish a listing?”",
+        features: "Features",
+        stack: "Stack",
       };
 
   return (
-    <AnimatedSection id="projects" className="section-shell project-section">
-      <div className="section-heading section-heading--project">
-        <div>
-          <h2>{projectsSection.title}</h2>
-        </div>
+    <AnimatedSection id="projects" className="section project">
+      <header className="section__head">
+        <h2>{projectsSection.title}</h2>
         <p>{projectsSection.description}</p>
-      </div>
+      </header>
 
-      <article className="product-case">
-        <div className="product-case__story">
-          <div className="product-case__meta">
-            <span>{project.status}</span>
+      <article className="case">
+        <div className="case__story">
+          <p className="case__meta">
+            <FlapText className="case__status" text={project.status.toUpperCase()} delay={200} />
             <span>{projectsSection.role}</span>
-          </div>
-
+          </p>
           <h3>{project.name}</h3>
-          <p className="product-case__tagline">{project.tagline}</p>
-          <p className="product-case__description">{project.description}</p>
+          <p className="case__tagline">{project.tagline}</p>
+          <p className="case__description">{project.description}</p>
 
-          <ul className="product-case__features">
-            {project.features.map((feature) => (
-              <li key={feature}>
-                <span><Check size={13} /></span>
-                {feature}
-              </li>
-            ))}
+          <h4 className="case__label">{labels.features}</h4>
+          <ul className="case__features">
+            {project.features.map((feature) => <li key={feature}>{feature}</li>)}
           </ul>
 
-          <div className="product-case__tags">
+          <h4 className="case__label">{labels.stack}</h4>
+          <p className="slash-list">
             {project.tags.map((tag) => <span key={tag}>{tag}</span>)}
-          </div>
+          </p>
 
-          <a href={personal.bonneOccaz} target="_blank" rel="noreferrer" className="product-link">
-            {projectsSection.visit} <ArrowUpRight size={16} />
+          <a href={personal.bonneOccaz} target="_blank" rel="noreferrer" className="text-link">
+            {projectsSection.visit} <ArrowUpRight size={18} aria-hidden="true" />
           </a>
         </div>
 
-        <div className="context-engine" aria-label={projectsSection.architecture}>
-          <div className="context-engine__header">
-            <div>
-              <span>{projectsSection.architecture}</span>
-              <strong>BonneOccaz · RAG/CAG</strong>
-            </div>
-            <span className="context-engine__status"><i />{labels.module}</span>
-          </div>
+        <figure className="engine" aria-label={projectsSection.architecture}>
+          <figcaption className="engine__head">
+            <span>{projectsSection.architecture}</span>
+            <span className="engine__badge"><i aria-hidden="true" />{labels.module}</span>
+          </figcaption>
 
-          <div className="advisor-question">
-            <Search size={17} />
-            <span>{labels.example}</span>
-            <ArrowRight size={16} />
-          </div>
+          <ol className="engine__flow">
+            <li>
+              <small>{labels.question}</small>
+              <strong>{labels.example}</strong>
+            </li>
+            <li className="engine__arrow" aria-hidden="true"><ArrowDown size={18} /></li>
+            <li className="is-accent">
+              <small>{labels.retrieval}</small>
+              <strong>{labels.retrievalNote}</strong>
+            </li>
+            <li className="engine__arrow" aria-hidden="true"><ArrowDown size={18} /></li>
+            <li>
+              <small>{labels.answer}</small>
+              <strong>{labels.answerNote}</strong>
+            </li>
+          </ol>
 
-          <div className="context-flow">
-            <div className="context-node">
-              <span><MessageSquareText size={17} /></span>
-              <small>01</small>
-              <strong>{labels.question}</strong>
-            </div>
-            <div className="context-flow__line" aria-hidden="true"><ArrowRight size={15} /></div>
-            <div className="context-node context-node--accent">
-              <span><Database size={17} /></span>
-              <small>02</small>
-              <strong>{labels.retrieval}</strong>
-            </div>
-            <div className="context-flow__line" aria-hidden="true"><ArrowRight size={15} /></div>
-            <div className="context-node">
-              <span><Sparkles size={17} /></span>
-              <small>03</small>
-              <strong>{labels.answer}</strong>
-            </div>
-          </div>
+          <p className="engine__cache"><span>CAG</span>{labels.memory}</p>
+          <p className="engine__scope">{projectsSection.aiScope}</p>
 
-          <p className="context-engine__scope">{projectsSection.aiScope}</p>
-
-          <div className="context-cache">
-            <span>CAG</span>
-            <strong>{labels.memory}</strong>
-          </div>
-          <details className="context-details">
-            <summary>{projectsSection.technicalDetails}</summary>
+          <details className="engine__details">
+            <summary>{projectsSection.technicalDetails}<Plus size={18} aria-hidden="true" /></summary>
             <p>{projectsSection.corpus}</p>
             <p>{projectsSection.safeguards}</p>
             <p>{projectsSection.evaluation}</p>
           </details>
-        </div>
+        </figure>
       </article>
 
-      <div className="project-evidence">
+      <div className="evidence">
         <h3>{projectsSection.examplesTitle}</h3>
-        <div className="project-evidence__rows">
-          {projectsSection.examples.map((example) => (
-            <article key={example.title}>
-              <h4>{example.title}</h4>
-              <p>{example.body}</p>
-            </article>
-          ))}
-        </div>
+        {projectsSection.examples.map((example) => (
+          <article key={example.title}>
+            <h4>{example.title}</h4>
+            <p>{example.body}</p>
+          </article>
+        ))}
       </div>
-      <p className="confidential-note">{projectsSection.confidential}</p>
+      <p className="confidential">{projectsSection.confidential}</p>
     </AnimatedSection>
   );
 }

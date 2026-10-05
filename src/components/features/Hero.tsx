@@ -1,18 +1,8 @@
 "use client";
 
 import Image from "next/image";
-import { motion, useReducedMotion } from "framer-motion";
-import {
-  ArrowUpRight,
-  Braces,
-  Download,
-  MapPin,
-  PanelsTopLeft,
-  RefreshCw,
-  Rocket,
-  Search,
-  Sparkles,
-} from "lucide-react";
+import { ArrowUpRight, Download, MapPin } from "lucide-react";
+import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 import profilePhoto from "../../../public/Profil.png";
 
@@ -21,113 +11,82 @@ interface HeroProps {
   downloadHref: string;
 }
 
-const loopIcons = [Search, PanelsTopLeft, Braces, Rocket, RefreshCw];
-const spring = { type: "spring" as const, bounce: 0, duration: 0.4 };
-
 export default function Hero({ locale, downloadHref }: HeroProps) {
-  const reduceMotion = useReducedMotion();
-  const { personal, hero } = cvContent[locale];
+  const { personal, hero, project } = cvContent[locale];
 
   return (
-    <section id="hero" className="product-hero">
-      <div className="product-hero__wash" aria-hidden="true" />
-
-      <div className="product-hero__layout">
-        <div className="product-hero__copy">
-          <div className="availability-badge">
+    <section id="hero" className="hero">
+      <div className="hero__grid">
+        <div className="hero__copy">
+          <p className="hero__availability">
             <span aria-hidden="true" />
             {hero.availability}
-          </div>
+          </p>
 
           <h1>{hero.kicker}</h1>
-          <p className="product-hero__role">{personal.title}</p>
-          <p className="product-hero__intro">{hero.intro}</p>
 
-          <div className="product-hero__actions">
-            <motion.a
-              href={downloadHref}
-              download
-              className="button-primary"
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-              transition={spring}
-            >
-              <Download size={17} />
+          <p className="hero__role">
+            <FlapText text={personal.title} delay={500} />
+          </p>
+          <p className="hero__intro">{hero.intro}</p>
+
+          <div className="hero__actions">
+            <a href={downloadHref} download className="button button--primary">
+              <Download size={18} aria-hidden="true" />
               {hero.secondaryCta}
-            </motion.a>
-            <motion.a
-              href={personal.bonneOccaz}
-              target="_blank"
-              rel="noreferrer"
-              className="button-secondary"
-              whileTap={reduceMotion ? undefined : { scale: 0.97 }}
-              transition={spring}
-            >
+            </a>
+            <a href={personal.bonneOccaz} target="_blank" rel="noreferrer" className="button button--ghost">
               {hero.primaryCta}
-              <ArrowUpRight size={17} />
-            </motion.a>
-          </div>
-
-          <div className="product-proofline" aria-label={locale === "fr" ? "Repères du parcours" : "Career highlights"}>
-            {hero.stats.map((stat) => (
-              <p key={stat.label}>
-                <strong>{stat.value}</strong>
-                <span>{stat.label}</span>
-              </p>
-            ))}
+              <ArrowUpRight size={18} aria-hidden="true" />
+            </a>
           </div>
         </div>
 
-        <aside
-          className="build-board"
-          aria-label={locale === "fr" ? "Boucle de construction produit" : "Product build loop"}
-        >
-          <div className="build-board__topline">
-            <span>{locale === "fr" ? "Boucle produit" : "Product loop"}</span>
-            <span className="live-state"><i /> LIVE</span>
-          </div>
-
-          <div className="builder-id">
-            <div className="builder-id__photo">
+        <aside className="hero__field" aria-label={locale === "fr" ? "Profil et boucle produit" : "Profile and product loop"}>
+          <div className="hero__identity">
+            <div className="hero__portrait">
               <Image
                 src={profilePhoto}
                 alt={`${personal.firstName} ${personal.lastName}`}
                 fill
                 priority
-                sizes="76px"
-                className="object-cover object-[center_15%]"
+                sizes="(min-width: 960px) 30vw, 40vw"
+                className="object-cover object-[center_22%]"
               />
             </div>
-            <div>
-              <p>{personal.firstName} {personal.lastName}</p>
-              <span>{personal.title}</span>
-              <small><MapPin size={12} />{personal.address}</small>
+            <div className="hero__name">
+              <p>{personal.firstName}<br />{personal.lastName}</p>
+              <small><MapPin size={13} aria-hidden="true" />{personal.address}</small>
             </div>
           </div>
 
-          <ol className="build-loop">
-            {hero.loop.map((step, index) => {
-              const Icon = loopIcons[index];
-              const isCurrent = index === 3;
-              return (
-                <li key={step.label} className={isCurrent ? "is-current" : undefined}>
-                  <span className="build-loop__index">{String(index + 1).padStart(2, "0")}</span>
-                  <span className="build-loop__icon"><Icon size={16} /></span>
-                  <span className="build-loop__label">
-                    <strong>{step.label}</strong>
-                    <small>{step.note}</small>
-                  </span>
-                  {isCurrent && <span className="build-loop__state">{locale === "fr" ? "en prod" : "shipped"}</span>}
+          <div className="hero__loop">
+            <p className="hero__loop-title">{locale === "fr" ? "Boucle produit" : "Product loop"}</p>
+            <ol>
+              {hero.loop.map((step, index) => (
+                <li key={step.label} className={index === 3 ? "is-current" : undefined}>
+                  <strong>{step.label}</strong>
+                  <span>{step.note}</span>
+                  {index === 3 && <FlapText className="hero__state" text={locale === "fr" ? "EN PROD" : "SHIPPED"} delay={1100} />}
                 </li>
-              );
-            })}
-          </ol>
-
-          <div className="release-note">
-            <Sparkles size={16} />
-            <span>{hero.release}</span>
+              ))}
+            </ol>
           </div>
         </aside>
       </div>
+
+      <dl className="hero__facts" aria-label={locale === "fr" ? "Repères du parcours" : "Career highlights"}>
+        {hero.stats.map((stat) => (
+          <div key={stat.label}>
+            <dt>{stat.value}</dt>
+            <dd>{stat.label}</dd>
+          </div>
+        ))}
+        <div>
+          <dt>BonneOccaz</dt>
+          <dd>{project.status}</dd>
+        </div>
+      </dl>
     </section>
   );
 }

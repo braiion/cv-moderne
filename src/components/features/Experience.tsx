@@ -1,6 +1,5 @@
 "use client";
 
-import { Check, MapPin } from "lucide-react";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
@@ -8,36 +7,32 @@ export default function Experience({ locale }: { locale: Locale }) {
   const { experienceSection, experiences } = cvContent[locale];
 
   return (
-    <AnimatedSection id="experience" className="section-shell experience-section">
-      <div className="section-heading">
+    <AnimatedSection id="experience" className="section">
+      <header className="section__head">
         <h2>{experienceSection.title}</h2>
         <p>{experienceSection.description}</p>
-      </div>
+      </header>
 
-      <div className="experience-list">
+      <div className="timeline">
         {experiences.map((experience, index) => (
-          <article key={experience.id} className="experience-row">
-            <div className="experience-row__identity">
-              <div className="experience-row__period">
-                <span>{experience.period}</span>
-                {index === 0 && <i aria-label={locale === "fr" ? "Poste actuel" : "Current role"} />}
-              </div>
+          <article key={experience.id} className="timeline__row">
+            <p className="timeline__period">
+              {experience.period}
+              {index === 0 && <span className="timeline__now">{locale === "fr" ? "Poste actuel" : "Current role"}</span>}
+            </p>
+            <div className="timeline__identity">
               <h3>{experience.title}</h3>
-              <p>{experience.company}</p>
-              {experience.location && <small><MapPin size={13} />{experience.location}</small>}
+              <p>{experience.company}{experience.location ? ` · ${experience.location}` : ""}</p>
             </div>
-
-            <div className="experience-row__details">
-              <p>{experience.description}</p>
-              {"note" in experience && <p className="experience-note">{experience.note}</p>}
+            <div className="timeline__details">
+              <p className="timeline__lead">{experience.description}</p>
+              {"note" in experience && <p className="timeline__note">{experience.note}</p>}
               <ul>
-                {experience.missions.map((mission) => (
-                  <li key={mission}><Check size={15} />{mission}</li>
-                ))}
+                {experience.missions.map((mission) => <li key={mission}>{mission}</li>)}
               </ul>
-              <div className="experience-row__tags">
+              <p className="slash-list slash-list--small">
                 {experience.tags?.map((tag) => <span key={tag}>{tag}</span>)}
-              </div>
+              </p>
             </div>
           </article>
         ))}
