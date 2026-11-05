@@ -1,10 +1,12 @@
 import { jsPDF, type jsPDF as JsPdf } from "jspdf";
 import { cvContent, type Locale } from "./cv-data";
 
-const COBALT = [35, 64, 255] as const;
-const INK = [12, 13, 16] as const;
-const MUTED = [74, 79, 90] as const;
-const LINE = [214, 217, 224] as const;
+const COBALT = [0, 66, 172] as const;
+const INK = [6, 32, 79] as const;
+const MUTED = [61, 85, 120] as const;
+const LINE = [207, 221, 238] as const;
+const BODY_SIZE = 7.4;
+const BODY_LEADING = 3.4;
 
 export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4", compress: true });
@@ -22,106 +24,95 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   doc.setLanguage(locale === "fr" ? "fr-FR" : "en-GB");
   header(doc, locale);
 
-  let leftY = 61;
-  leftY = sectionTitle(doc, locale === "fr" ? "PROFIL" : "PROFILE", 13, leftY, 121);
-  leftY = paragraph(doc, personal.summary, 13, leftY, 121, 8.4, 4.2) + 5;
+  // Single reading column: ATS and copy/paste extract each job title with its company, dates and bullets.
+  const X = 13;
+  const W = 184;
+  const RIGHT = X + W;
+  let y = 57;
+  y = sectionTitle(doc, locale === "fr" ? "PROFIL" : "PROFILE", X, y, W);
+  y = paragraph(doc, personal.summary, X, y, W, 8, 3.7) + 2.8;
 
-  leftY = sectionTitle(doc, locale === "fr" ? "PRODUIT PHARE" : "FEATURED PRODUCT", 13, leftY, 121);
+  y = sectionTitle(doc, locale === "fr" ? "PRODUIT PHARE" : "FEATURED PRODUCT", X, y, W);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10.5);
   doc.setTextColor(...INK);
-  checkedText(doc, pdfText(content.project.name), 13, leftY);
+  checkedText(doc, pdfText(content.project.name), X, y);
   doc.setFont("helvetica", "normal");
   doc.setFontSize(8.1);
   doc.setTextColor(...COBALT);
-  checkedText(doc, pdfText(content.project.status), 134, leftY, { align: "right" });
-  leftY += 4.5;
-  leftY = paragraph(doc, content.project.description, 13, leftY, 121, 8.1, 4);
+  checkedText(doc, pdfText(content.project.status), RIGHT, y, { align: "right" });
+  y += 4.3;
+  y = paragraph(doc, content.project.description, X, y, W, BODY_SIZE, BODY_LEADING) + 0.4;
   for (const feature of content.project.features) {
-    leftY = bullet(doc, feature, 13, leftY + 0.5, 121);
+    y = bullet(doc, feature, X, y, W);
   }
-  leftY += 4;
+  y += 2.4;
 
-  leftY = sectionTitle(doc, locale === "fr" ? "EXPÉRIENCE" : "EXPERIENCE", 13, leftY, 121);
+  y = sectionTitle(doc, locale === "fr" ? "EXPÉRIENCE" : "EXPERIENCE", X, y, W);
   for (const experience of content.experiences) {
     doc.setFont("helvetica", "bold");
     doc.setFontSize(9.2);
     doc.setTextColor(...INK);
-    const titleLines = doc.splitTextToSize(pdfText(experience.title), 88);
-    checkedText(doc, titleLines, 13, leftY);
+    checkedText(doc, pdfText(experience.title), X, y);
+    y += 3.8;
 
-    doc.setFontSize(7.9);
+    // Dates lead the company line so text extraction keeps title -> company/dates -> bullets.
+    doc.setFontSize(8);
     doc.setTextColor(...COBALT);
-    checkedText(doc, pdfText(experience.period), 134, leftY, { align: "right" });
-    leftY += titleLines.length * 4;
-
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(8.1);
+    const period = pdfText(`${experience.period} · `);
+    checkedText(doc, period, X, y);
+    const periodWidth = doc.getTextWidth(period);
     doc.setTextColor(...MUTED);
-    checkedText(doc, pdfText(`${experience.company}${experience.location ? ` · ${experience.location}` : ""}`), 13, leftY);
-    leftY += 3.8;
+    checkedText(doc, pdfText(`${experience.company}${experience.location ? ` · ${experience.location}` : ""}`), X + periodWidth, y);
+    y += 3.6;
 
-    leftY = paragraph(doc, experience.description, 13, leftY, 121, 7.8, 3.75) + 1;
+    y = paragraph(doc, experience.description, X, y, W, BODY_SIZE, BODY_LEADING) + 0.3;
     if ("note" in experience && experience.note) {
-      leftY = paragraph(doc, experience.note, 13, leftY, 121, 7.8, 3.75) + 1;
+      y = paragraph(doc, experience.note, X, y, W, BODY_SIZE, BODY_LEADING) + 0.3;
     }
     for (const mission of experience.missions) {
-      leftY = bullet(doc, mission, 13, leftY, 121);
+      y = bullet(doc, mission, X, y, W);
     }
-    leftY += 3.2;
+    y += 2;
   }
 
-  let rightY = 61;
-  rightY = sectionTitle(doc, locale === "fr" ? "COMPÉTENCES" : "SKILLS", 143, rightY, 54);
-  for (const category of content.skills) {
-    doc.setFont("helvetica", "bold");
-    doc.setFontSize(7.8);
-    doc.setTextColor(...INK);
-    checkedText(doc, pdfText(category.name.toUpperCase()), 143, rightY);
-    rightY += 3.8;
-    rightY = paragraph(doc, category.skills.join(" · "), 143, rightY, 54, 7.7, 3.75) + 3.2;
-  }
-
-  rightY += 1;
-  rightY = sectionTitle(doc, locale === "fr" ? "BOUCLE PRODUIT" : "PRODUCT LOOP", 143, rightY, 54);
-  const loop = content.hero.loop.map((step) => step.label).join(" -> ");
-  rightY = paragraph(doc, loop, 143, rightY, 54, 7.7, 3.8) + 1.5;
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(7.4);
-  doc.setTextColor(...COBALT);
-  const release = doc.splitTextToSize(pdfText(content.hero.release), 54);
-  checkedText(doc, release, 143, rightY);
-  rightY += release.length * 3.4 + 4;
-
-  rightY = sectionTitle(doc, content.skillsSection.education.toUpperCase(), 143, rightY, 54);
+  y = sectionTitle(doc, content.skillsSection.education.toUpperCase(), X, y, W);
   for (const item of content.education) {
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(8);
+    doc.setFontSize(8.1);
+    doc.setTextColor(...COBALT);
+    const year = pdfText(`${item.year} · `);
+    checkedText(doc, year, X, y);
+    let lineX = X + doc.getTextWidth(year);
     doc.setTextColor(...INK);
-    const lines = doc.splitTextToSize(pdfText(item.diploma), 54);
-    checkedText(doc, lines, 143, rightY);
-    rightY += lines.length * 3.7;
-    doc.setFont("helvetica", "normal");
-    doc.setFontSize(7.6);
-    doc.setTextColor(...MUTED);
-    checkedText(doc, pdfText(`${item.school} · ${item.year}`), 143, rightY);
-    rightY += 7;
+    const diploma = pdfText(`${item.diploma} · ${item.school}`);
+    checkedText(doc, diploma, lineX, y);
+    lineX += doc.getTextWidth(diploma);
+    if (item.description) {
+      doc.setFont("helvetica", "normal");
+      doc.setFontSize(BODY_SIZE);
+      doc.setTextColor(...MUTED);
+      checkedText(doc, pdfText(` · ${item.description}`), lineX, y);
+    }
+    y += 4.2;
   }
+  y += 1.6;
 
-  rightY += 1;
-  rightY = sectionTitle(doc, locale === "fr" ? "POSITIONNEMENT" : "TARGET ROLES", 143, rightY, 54);
+  y = sectionTitle(doc, locale === "fr" ? "COMPÉTENCES" : "SKILLS", X, y, W);
+  for (const category of content.skills) {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(7.4);
+    doc.setTextColor(...INK);
+    checkedText(doc, pdfText(category.name.toUpperCase()), X, y);
+    y = paragraph(doc, category.skills.join(" · "), X + 42, y, W - 42, BODY_SIZE, BODY_LEADING) + 0.8;
+  }
+  y += 1.6;
+
+  y = sectionTitle(doc, locale === "fr" ? "POSITIONNEMENT" : "TARGET ROLES", X, y, W);
   const targets = locale === "fr"
     ? ["Full Stack Builder", "Développeur Full-Stack JS/TS", "Product Engineer", "Développeur React / Next.js"]
     : ["Full Stack Builder", "Full-Stack JS/TS Developer", "Product Engineer", "React / Next.js Developer"];
-  for (const target of targets) {
-    rightY = bullet(doc, target, 143, rightY, 54);
-  }
-
-  rightY += 3;
-  rightY = sectionTitle(doc, locale === "fr" ? "LIENS" : "LINKS", 143, rightY, 54);
-  link(doc, "bryandupressoir.vercel.app", personal.portfolio, 143, rightY);
-  link(doc, "bonneoccaz.fr", personal.bonneOccaz, 143, rightY + 5);
-  link(doc, "github.com/braiion", personal.github, 143, rightY + 10);
+  paragraph(doc, targets.join(" · "), X, y, W, BODY_SIZE, BODY_LEADING);
 
   doc.setDrawColor(...LINE);
   doc.line(13, 286, 197, 286);
@@ -149,7 +140,7 @@ function header(doc: JsPdf, locale: Locale) {
   doc.setFont("helvetica", "bold");
   doc.setFontSize(7);
   doc.setTextColor(214, 221, 255);
-  checkedText(doc, "FULL STACK BUILDER / AI-NATIVE", 197, 13, { align: "right" });
+  checkedText(doc, pdfText(locale === "fr" ? "DISPONIBLE DÈS À PRÉSENT" : "AVAILABLE NOW"), 197, 13, { align: "right" });
   doc.setTextColor(255, 255, 255);
   doc.setFontSize(11);
   checkedText(doc, pdfText(personal.title), 13, 25);
@@ -160,9 +151,21 @@ function header(doc: JsPdf, locale: Locale) {
 
   doc.setFontSize(7.6);
   doc.setTextColor(236, 240, 255);
-  checkedText(doc, pdfText(personal.email), 13, 41);
-  checkedText(doc, pdfText(personal.phone), 78, 41);
-  checkedText(doc, pdfText(personal.address), 126, 41);
+  checkedText(doc, pdfText(personal.email), 13, 40);
+  checkedText(doc, pdfText(personal.phone), 70, 40);
+  checkedText(doc, pdfText(personal.address), 110, 40);
+  headerLink(doc, "bryandupressoir.vercel.app", personal.portfolio, 13, 45.5);
+  headerLink(doc, "bonneoccaz.fr", personal.bonneOccaz, 70, 45.5);
+  headerLink(doc, "github.com/braiion", personal.github, 110, 45.5);
+}
+
+function headerLink(doc: JsPdf, label: string, url: string, x: number, y: number) {
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(7.6);
+  doc.setTextColor(255, 255, 255);
+  checkedText(doc, label, x, y);
+  const height = doc.getFontSize() / doc.internal.scaleFactor;
+  doc.link(x, y - height, doc.getTextWidth(label), height * 1.25, { url });
 }
 
 function sectionTitle(doc: JsPdf, title: string, x: number, y: number, width: number) {
@@ -172,7 +175,7 @@ function sectionTitle(doc: JsPdf, title: string, x: number, y: number, width: nu
   checkedText(doc, pdfText(title), x, y);
   doc.setDrawColor(...LINE);
   doc.line(x, y + 2.3, x + width, y + 2.3);
-  return y + 7;
+  return y + 6.2;
 }
 
 function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number, size: number, leading: number) {
@@ -187,16 +190,7 @@ function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number
 function bullet(doc: JsPdf, text: string, x: number, y: number, width: number) {
   doc.setFillColor(...COBALT);
   doc.circle(x + 1, y - 1, 0.55, "F");
-  return paragraph(doc, text, x + 4, y, width - 4, 7.8, 3.75) + 0.35;
-}
-
-function link(doc: JsPdf, label: string, url: string, x: number, y: number) {
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(8);
-  doc.setTextColor(...COBALT);
-  checkedText(doc, label, x, y);
-  const height = doc.getFontSize() / doc.internal.scaleFactor;
-  doc.link(x, y - height, doc.getTextWidth(label), height * 1.25, { url });
+  return paragraph(doc, text, x + 4, y, width - 4, BODY_SIZE, BODY_LEADING) + 0.3;
 }
 
 function pdfText(value: string) {
@@ -216,8 +210,8 @@ function checkedText(doc: JsPdf, value: string | string[], x: number, y: number,
   const right = options?.align === "right" ? x : x + width;
   const bottom = y + (lines.length - 1) * fontHeight * doc.getLineHeightFactor() + fontHeight * 0.25;
   const inBody = y > 50 && options?.region !== "footer";
-  const columnLeft = inBody && x >= 143 ? 143 : 13;
-  const columnRight = inBody && x < 143 ? 134 : 197;
+  const columnLeft = 13;
+  const columnRight = 197;
   const pageBottom = inBody ? 281 : 294;
   if (left < columnLeft - 0.2 || right > columnRight + 0.2 || bottom > pageBottom || y - fontHeight < 8) {
     throw new Error(`CV PDF: text exceeds printable area near "${lines[0]?.slice(0, 55)}" (x=${x}, y=${y.toFixed(1)}).`);
