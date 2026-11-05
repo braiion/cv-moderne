@@ -30,18 +30,13 @@ export interface PersonalInfo {
   lastName: string;
   title: string;
   subtitle: string;
-  address: string;
-  phone: string;
-  email: string;
   summary: string;
 }
 
 export const shared = {
   firstName: "Bryan",
   lastName: "DUPRESSOIR",
-  address: "Vandrimare, Normandie",
-  phone: "06 17 81 61 32",
-  email: "bryandupressoir@live.fr",
+  // E-mail, phone and address live encoded in ./contact so bots cannot harvest them.
   portfolio: "https://bryandupressoir.vercel.app",
   github: "https://github.com/braiion",
   bonneOccaz: "https://bonneoccaz.fr",

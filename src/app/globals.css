@@ -1364,6 +1364,21 @@ button {
   text-decoration: underline;
 }
 
+.contact-reveal {
+  padding: 0;
+  border: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.22em;
+  cursor: pointer;
+}
+
+.contact-reveal:hover {
+  color: #ffffff;
+}
+
 .contact :focus-visible {
   outline-color: #ffffff;
 }

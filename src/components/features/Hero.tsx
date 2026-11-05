@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { ArrowUpRight, Download, MapPin } from "lucide-react";
 import FlapText from "@/components/ui/FlapText";
+import { Location } from "@/components/ui/Contact";
 import { cvContent, type Locale } from "@/lib/cv-data";
 import profilePhoto from "../../../public/Profil.png";
 
@@ -62,7 +63,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                   sizes="(min-width: 960px) 26vw, 60vw"
                   className="object-cover object-[center_22%]"
                 />
-                <figcaption><MapPin size={12} aria-hidden="true" />{personal.address}</figcaption>
+                <figcaption><MapPin size={12} aria-hidden="true" /><Location /></figcaption>
               </figure>
 
               <div className="hero__card hero__card--loop hero__loop">

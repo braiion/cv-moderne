@@ -1,5 +1,6 @@
 import { jsPDF, type jsPDF as JsPdf } from "jspdf";
 import { cvContent, type Locale } from "./cv-data";
+import { revealContact } from "./contact";
 
 const COBALT = [0, 66, 172] as const;
 const INK = [6, 32, 79] as const;
@@ -123,7 +124,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     month: "long", year: "numeric", timeZone: "Europe/Paris",
   }).format(generatedAt);
   checkedText(doc, `${locale === "fr" ? "CV généré depuis le portfolio" : "Resume generated from the portfolio"} - ${month}`, 13, 291, { region: "footer" });
-  checkedText(doc, personal.email, 197, 291, { align: "right", region: "footer" });
+  checkedText(doc, revealContact("email"), 197, 291, { align: "right", region: "footer" });
 
   return doc;
 }
@@ -151,9 +152,9 @@ function header(doc: JsPdf, locale: Locale) {
 
   doc.setFontSize(7.6);
   doc.setTextColor(236, 240, 255);
-  checkedText(doc, pdfText(personal.email), 13, 40);
-  checkedText(doc, pdfText(personal.phone), 70, 40);
-  checkedText(doc, pdfText(personal.address), 110, 40);
+  checkedText(doc, pdfText(revealContact("email")), 13, 40);
+  checkedText(doc, pdfText(revealContact("phone")), 70, 40);
+  checkedText(doc, pdfText(revealContact("address")), 110, 40);
   headerLink(doc, "bryandupressoir.vercel.app", personal.portfolio, 13, 45.5);
   headerLink(doc, "bonneoccaz.fr", personal.bonneOccaz, 70, 45.5);
   headerLink(doc, "github.com/braiion", personal.github, 110, 45.5);
