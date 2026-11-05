@@ -6,11 +6,11 @@ const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["500"], variable: "--font-jetbrains", display: "swap" });
 
 const directionContract = `<!--
-THESIS: The CV as an International Typographic Style poster: a strict grid, massive grotesque type and one frank cobalt field; it refuses the floating-card developer portfolio.
-OWN-WORLD: Cool paper white and near-black ink, cobalt #2340ff owning whole fields (hero identity column, contact band), 2px ink rules, slash-separated lists instead of chips, Archivo across widths, mono only for dates and states.
+THESIS: The CV as a confident product page with depth: a full-bleed sapphire field, massive condensed grotesque, ocean display type and jade reserved for signals.
+OWN-WORLD: Sapphire #0042ac fields (hero, contact band), ocean #00d3fb display type and data, jade #83fd80 for the one action and live states, ice reading sections, continuous squircle corners from one radius scale, outlined surname watermark, Archivo across widths, mono only for dates and states.
 STORY: A recruiter sees role and promise, proof (BonneOccaz, RAG/CAG module), then chronology and skills, and downloads the CV or writes.
-FIRST VIEWPORT: Left 8 columns: availability, condensed headline up to 6rem, role, intro, cobalt CV download and BonneOccaz action. Right 4 columns: cobalt field with duotone portrait, identity and the five-step product loop; facts strip below.
-FORM: Swiss poster, grounded list position 5, seed key 9b3533da.
+FIRST VIEWPORT: Left: availability chip, three-line headline (solid, outline, ocean), role, intro, jade CV download and ghost BonneOccaz action. Right: tilted duotone portrait on an ocean sphere, product-loop card and spinning availability sticker; fact cards and stack band below.
+FORM: Sapphire product page, layered hero, seed key 9b3533da.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
 

@@ -1,31 +1,37 @@
 ---
-name: "Bryan Dupressoir — Swiss Poster CV"
-description: "The CV as an International Typographic Style poster: strict grid, massive grotesque, one frank cobalt field."
+name: "Bryan Dupressoir — Sapphire CV"
+description: "The CV as a confident product page: full-bleed sapphire hero, condensed grotesque, ocean display type, jade only for signals, continuous (squircle) corners."
 colors:
-  paper: "#f6f7f9"
+  paper: "#eef6ff"
   paper-raised: "#ffffff"
-  ink: "#0c0d10"
-  muted: "#4a4f5a"
-  line: "#d6d9e0"
-  cobalt: "#2340ff"
-  cobalt-hover: "#1a30d6"
-  engine: "#0c0d10"
-  engine-muted: "#a9aebb"
-  dark-paper: "#0b0c0f"
-  dark-paper-raised: "#121419"
-  dark-ink: "#f2f3f6"
-  dark-muted: "#a5abb8"
-  dark-line: "#262a33"
-  dark-cobalt: "#2a44f5"
-  dark-cobalt-text: "#8c9bff"
-  dark-engine: "#15171d"
+  ink: "#06204f"
+  muted: "#3d5578"
+  line: "#cfddee"
+  saphir: "#0042ac"
+  saphir-2: "#00337f"
+  ocean: "#00d3fb"
+  jade: "#83fd80"
+  jade-hover: "#a6ffa3"
+  on-jade: "#062a1a"
+  deep: "#021a47"
+  ice: "#eaf6ff"
+  engine: "#021a47"
+  engine-muted: "#a9bedc"
+  dark-paper: "#04112b"
+  dark-paper-raised: "#0a1d42"
+  dark-ink: "#eef6ff"
+  dark-muted: "#a9bedc"
+  dark-line: "#1c3463"
+  dark-saphir: "#003a98"
+  dark-cobalt-text: "#00d3fb"
+  dark-engine: "#010b1f"
 typography:
   display:
-    fontFamily: "Archivo (wdth 72), Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(2.75rem, 7.2vw, 6rem)"
-    fontWeight: 800
-    lineHeight: 0.94
-    letterSpacing: "-0.035em"
+    fontFamily: "Archivo (wdth 68), Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(3.4rem, 8.4vw, 8.25rem)"
+    fontWeight: 900
+    lineHeight: 0.86
+    letterSpacing: "-0.015em"
   headline:
     fontFamily: "Archivo (wdth 78), Helvetica Neue, Arial, sans-serif"
     fontSize: "clamp(2.25rem, 5vw, 4.5rem)"
@@ -53,7 +59,15 @@ typography:
     fontSize: "0.875rem"
     fontWeight: 500
 rounded:
-  none: "0"
+  2xs: "0.1875rem"
+  xs: "0.375rem"
+  sm: "0.625rem"
+  md: "0.875rem"
+  lg: "1.25rem"
+  xl: "1.75rem"
+  2xl: "2.5rem"
+  pill: "999px"
+  circle: "50%"
 spacing:
   gutter: "clamp(1rem, 4vw, 3rem)"
   column-gap: "1.5rem"
@@ -61,116 +75,127 @@ spacing:
   head-to-evidence: "clamp(2.5rem, 5vw, 4.5rem)"
 components:
   button-primary:
-    backgroundColor: "{colors.cobalt}"
-    textColor: "#ffffff"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.jade}"
+    textColor: "{colors.on-jade}"
+    rounded: "{rounded.md}"
     padding: "0.85rem 1.4rem"
     height: "3.25rem"
   button-ghost:
     backgroundColor: "transparent"
     textColor: "{colors.ink}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.md}"
     padding: "0.85rem 1.4rem"
   button-paper:
-    backgroundColor: "#ffffff"
-    textColor: "{colors.cobalt-hover}"
-    rounded: "{rounded.none}"
+    backgroundColor: "{colors.jade}"
+    textColor: "{colors.on-jade}"
+    rounded: "{rounded.md}"
   status-flap:
-    backgroundColor: "{colors.cobalt}"
-    textColor: "#ffffff"
+    backgroundColor: "{colors.jade}"
+    textColor: "{colors.on-jade}"
     typography: "{typography.data}"
-    rounded: "{rounded.none}"
+    rounded: "{rounded.xs}"
+  card:
+    backgroundColor: "{colors.ice}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.lg}"
+  panel:
+    rounded: "{rounded.xl}"
+  chip:
+    rounded: "{rounded.pill}"
 ---
 
-# Design System: Bryan Dupressoir — Swiss Poster CV
+# Design System: Bryan Dupressoir — Sapphire CV
 
 ## 1. Overview
 
-**Creative North Star: "The poster that ships."** The portfolio-CV reads like an International Typographic Style poster: a visible 12-column grid, very large condensed grotesque headlines, heavy ink rules, and a single cobalt colour that owns whole fields rather than decorating details. It replaced (October 2026) the earlier green "mineral notebook" look, which the owner found dated.
+**Creative North Star: "A product page with depth."** The portfolio-CV opens on a full-bleed sapphire field with a layered composition (tilted portrait on an ocean sphere, a floating product-loop card, a spinning jade availability sticker, the surname as an outlined watermark), then settles into calm ice-blue reading sections. It replaced (November 2026) the flat "Swiss poster" version with square corners and a single cobalt.
 
-Density alternates: a dense first viewport (promise, actions, identity field, product loop), quiet ruled sections, then a fully drenched cobalt contact band that closes the page. Proof stays before chronology: hero → BonneOccaz case and RAG/CAG module → experience → skills → education → contact.
+Proof stays before chronology: hero → stack band → BonneOccaz case and RAG/CAG module → experience → skills → education → sapphire contact band.
 
 **Key Characteristics:**
-- Square corners everywhere; structure comes from 2px ink rules and 1px hairlines, not shadows or cards.
-- Cobalt is structural: hero identity field, primary action, active RAG step, status flaps, contact band.
-- Lists are typographic (slash-separated stacks, ruled skill lists), never chips.
+- Three colours with fixed jobs: sapphire fills fields, ocean carries display type and data, jade marks the one action or state that matters.
+- Continuous corners everywhere, from one radius scale; circles only for dots, rings and the sphere.
+- Depth comes from layering and offset shadows in the hero, not from blur on every surface.
+- Lists stay typographic (slash-separated stacks, ruled skill lists), never chips.
 - Mono appears only for data: periods, years, states, technical labels.
 
 ## 2. Colors
 
-Committed strategy: neutral paper and ink plus one saturated cobalt carrying full regions.
-
 ### Primary
-- **Cobalt** (#2340ff; dark theme field #2a44f5): identity field beside the hero, primary buttons, status flaps, the accent RAG node, the contact band. White text on cobalt measures about 6.4:1.
-- **Cobalt Text** (#2340ff light / #8c9bff dark): links, role line, list markers, years. Never used as a large text field on dark.
+- **Saphir** (#0042ac; dark #003a98): hero field, contact band, active RAG node, structural accents. White text on saphir ≈ 8.7:1.
+- **Ocean** (#00d3fb): third line of the hero headline, fact numbers, stack band, links on dark. Display and data only, never long reading text on light paper.
+- **Jade** (#83fd80, text #062a1a): primary buttons, availability dot and sticker, "EN PROD" state. Never a background region.
 
 ### Neutral
-- **Paper** (#f6f7f9 / dark #0b0c0f): page ground. Cool, not cream.
-- **Paper Raised** (#ffffff / dark #121419): the education panel only.
-- **Ink** (#0c0d10 / dark #f2f3f6): text, 2px section rules, ghost button outline.
-- **Muted** (#4a4f5a / dark #a5abb8): secondary reading text, ≥7:1 on paper.
-- **Line** (#d6d9e0 / dark #262a33): 1px row dividers.
-- **Engine** (#0c0d10 / dark #15171d): the RAG/CAG diagram panel, with muted #a9aebb.
+- **Paper** (#eef6ff / dark #04112b): page ground for reading sections.
+- **Paper Raised** (#ffffff / dark #0a1d42): the education panel.
+- **Ink** (#06204f / dark #eef6ff): text and 2px section rules.
+- **Muted** (#3d5578 / dark #a9bedc): secondary reading text, ≥7:1 on paper.
+- **Deep** (#021a47): offset shadows, stack band, current-step row.
 
 ### Named Rules
-**The Field Rule.** Cobalt fills regions or marks state; it is never a gradient, glow or tint wash.
-**The On-Cobalt Rule.** Secondary text on cobalt is white at 86% opacity minimum; anything lower fails contrast.
+**The One-Signal Rule.** Jade appears on at most one action per view plus state markers.
+**The On-Saphir Rule.** Secondary text on saphir is white at 84% opacity minimum.
 
 ## 3. Typography
 
-**Display / body:** Archivo variable (self-hosted via `next/font`, `wdth` axis loaded). **Data:** JetBrains Mono 500.
+**Display / body:** Archivo variable (`wdth` axis). **Data:** JetBrains Mono 500.
 
-**Character:** one grotesque family stretched across widths, condensed and heavy for poster headlines, normal width for reading, the way a Swiss poster uses one face at many sizes.
-
-### Hierarchy
-- **Display** (800, wdth 72, clamp(2.75rem, 7.2vw, 6rem), lh 0.94, -0.035em, word-spacing 0.06em): hero promise, product name, contact headline.
-- **Headline** (760, wdth 78, clamp(2.25rem, 5vw, 4.5rem), lh 0.98): section titles, max 16ch.
-- **Title** (760, wdth 80, 1.5–2.125rem): experience titles, evidence title.
+- **Display** (900, wdth 68, clamp(3.4rem, 8.4vw, 8.25rem), lh 0.86, uppercase): hero headline in three lines — solid, outline, ocean with deep offset shadow.
+- **Headline** (760, wdth 78): section titles, max 16ch.
+- **Title** (760, wdth 80): experience titles, evidence title.
 - **Body** (400, 1.0625rem, lh 1.6): reading copy, max 54–60ch.
-- **Label** (700, 0.8125rem, uppercase, 0.06em): "Fonctionnalités", "Stack", "Boucle produit".
-- **Data** (JetBrains Mono 500, 0.6875–0.875rem): periods, years, states.
+- **Label** (700, 0.8125rem, uppercase, 0.06em).
+- **Data** (JetBrains Mono 500): periods, years, states.
 
-### Named Rules
-**The Width-Not-Font Rule.** Hierarchy changes width, weight and size within Archivo; no second display face.
-**The Data-Only Mono Rule.** Mono marks dates, states and technical labels, never prose.
+## 4. Shape
 
-## 4. Elevation
+One radius scale, exposed as `--radius-*` tokens in `globals.css` and mirrored in `rounded` above. No literal radius values outside circles.
 
-Flat. No shadows. Depth comes from field contrast (cobalt field, ink engine panel) and rules. The engine panel is sticky beside the case story from 960px.
+| Token | Value | Squircle value | Used by |
+|---|---|---|---|
+| 2xs | 0.1875rem | — | list markers |
+| xs | 0.375rem | — | status flaps, case status |
+| sm | 0.625rem | 0.875rem | BD mark, utility buttons, photo caption, current loop row, skip link |
+| md | 0.875rem | 1.25rem | buttons, nav contact, RAG flow nodes, cache box |
+| lg | 1.25rem | 1.75rem | floating cards, fact cards |
+| xl | 1.75rem | 2.5rem | portrait, engine panel, education panel |
+| 2xl | 2.5rem | 3.5rem | contact band top edge |
+| pill | 999px | — | availability chip |
 
-## 5. Components
+**The Continuous-Corner Rule.** Where `corner-shape: squircle` is supported, every tokenised element uses it and the scale steps up (right column) so the softness matches the plain-radius fallback. Nested shapes stay concentric: an inner radius is never larger than its container's.
+
+## 5. Elevation
+
+The hero is the only layered zone: deep offset shadows (portrait, primary button), soft drop shadows on floating cards, a radial ocean glow and fine grain. Reading sections stay flat, structured by rules and the raised education panel.
+
+## 6. Components
 
 ### Buttons
-- **Shape:** square rectangle, 3.25rem min height, 0.85rem 1.4rem padding, 2px border slot.
-- **Primary:** cobalt fill, white text; hover #1a30d6; press scale 0.97.
-- **Ghost:** 2px ink outline; hover inverts to ink fill.
-- **On cobalt:** paper button (white fill, cobalt text, hover ink) and line button (2px white 34% outline, hover white).
-- **Focus:** 2px cobalt-text outline, 3px offset (white on the cobalt band).
+- **Shape:** `md` radius, 3.25rem min height, 0.85rem 1.4rem padding, 2px border slot.
+- **Primary:** jade fill, #062a1a text, deep 0.35rem offset; hover lifts 2px and lightens.
+- **Ghost:** 2px outline in the local text colour; hover inverts.
+- **Focus:** 2px outline, 3px offset, follows the radius.
 
 ### Status flaps
-Mono uppercase text on a cobalt rectangle ("PRODUIT EN BÊTA", "EN PROD"). On load they settle character by character once (split-flap cascade, ~26ms per character); reduced motion shows the final text immediately. Screen readers get the final text only.
+Mono uppercase on jade ("EN PROD") or saphir ("PRODUIT EN BÊTA"), `xs` radius. They settle character by character once; reduced motion shows the final text.
 
-### Hero identity field
-Cobalt column (4 of 12 columns from 960px): grayscale portrait with a 20% cobalt multiply, uppercase condensed name, location, then the five-step product loop as ruled rows; the "ship" row inverts to white with a status flap.
-
-### Lists
-- **Slash list:** inline items separated by cobalt slashes (stack, experience tags).
-- **Feature list:** ruled rows with a small cobalt square marker under a 2px ink rule.
-- **Mission list:** short cobalt dash markers.
+### Hero composition
+Tilted portrait (`xl`, ocean multiply, deep offset), ocean sphere and dashed ring, product-loop card (`lg`), jade availability sticker, outlined surname watermark, then fact cards (`lg`) and the stack band.
 
 ### Navigation
-Solid paper bar, 4rem high, 1px bottom line; cobalt "BD" square; links underline in cobalt (2px, scaleX transition) when active or hovered; ink "contact" button. Under 840px a menu button opens a full-width ruled list including the CV download; Escape and outside press close it.
+Glass paper bar (84% paper, blur), 4rem high; saphir "BD" mark (`sm`); ink contact button (`md`).
 
-## 6. Do's and Don'ts
+## 7. Do's and Don'ts
 
 ### Do:
-- **Do** start every section with a 2px ink rule and an asymmetric 7/4 headline-description split from 720px.
+- **Do** take every radius from the scale; add a token before adding a new shape.
 - **Do** keep proof (BonneOccaz, RAG/CAG module) before chronology.
 - **Do** keep factual copy in `src/lib/cv-data.ts`, shared with the PDF.
-- **Do** honour reduced motion (hero rise and flap cascade collapse) and increased contrast (stronger lines and muted text).
+- **Do** honour reduced motion and increased contrast.
 
 ### Don't:
-- **Don't** round corners, add drop shadows or turn rows into cards.
-- **Don't** add eyebrow/kicker labels above headings.
-- **Don't** use cobalt as a gradient, glow or background wash.
+- **Don't** use sharp corners on boxed elements or mix ad-hoc radii.
+- **Don't** use grids, tech patterns or generic "AI" backgrounds; the watermark is the surname.
+- **Don't** use jade as a region fill or more than once per view for actions.
 - **Don't** name a specific AI vendor or model in public copy; say "IA", "LLM" or "agents de code IA".
