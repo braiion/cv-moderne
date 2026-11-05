@@ -10,7 +10,7 @@ const subscribeToTheme = (callback: () => void) => {
 };
 
 const getThemeSnapshot = () => document.documentElement.classList.contains("dark");
-const getServerThemeSnapshot = () => false;
+const getServerThemeSnapshot = () => true;
 
 export default function ThemeToggle({ locale }: { locale: Locale }) {
   const isDark = useSyncExternalStore(subscribeToTheme, getThemeSnapshot, getServerThemeSnapshot);

@@ -6,11 +6,11 @@ const archivo = Archivo({ subsets: ["latin"], axes: ["wdth"], variable: "--font-
 const mono = JetBrains_Mono({ subsets: ["latin"], weight: ["500"], variable: "--font-jetbrains", display: "swap" });
 
 const directionContract = `<!--
-THESIS: The CV as a confident product page with depth: a full-bleed sapphire field, massive condensed grotesque, ocean display type and jade reserved for signals.
-OWN-WORLD: Sapphire #0042ac fields (hero, contact band), ocean #00d3fb display type and data, jade #83fd80 for the one action and live states, ice reading sections, continuous squircle corners from one radius scale, outlined surname watermark, Archivo across widths, mono only for dates and states.
+THESIS: A professional developer portfolio, dark by default (night sapphire) with a matching light theme; it leads with shipping web applications, AI framed as a method.
+OWN-WORLD: Night sapphire #060c18 with sapphire #0042ac glows, ocean #00d3fb accents on dark, jade #83fd80 for the one action and live states, condensed uppercase headline, dark code and product-loop panels, colour portrait, continuous squircle corners, Archivo across widths, mono for data and code.
 STORY: A recruiter sees role and promise, proof (BonneOccaz, RAG/CAG module), then chronology and skills, and downloads the CV or writes.
-FIRST VIEWPORT: Left: availability chip, three-line headline (solid, outline, ocean), role, intro, jade CV download and ghost BonneOccaz action. Right: tilted duotone portrait on an ocean sphere, product-loop card and spinning availability sticker; fact cards and stack band below.
-FORM: Sapphire product page, layered hero, seed key 9b3533da.
+FIRST VIEWPORT: Left: availability chip, // role eyebrow, two-line condensed headline, intro, jade CV download and ghost BonneOccaz action, profil.ts code card. Right: straight colour portrait with sapphire offset, product-loop card low-right; facts strip and stack band below.
+FORM: Night-sapphire developer portfolio, seed key 9b3533da.
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
 -->`;
 
@@ -19,7 +19,7 @@ export default function PortfolioDocument({ children, locale }: { children: Reac
     <html lang={locale} className={`${archivo.variable} ${mono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full w-full overflow-x-hidden">
         <div hidden dangerouslySetInnerHTML={{ __html: directionContract }} />
-        <script dangerouslySetInnerHTML={{ __html: `try{const t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t?t==='dark':matchMedia('(prefers-color-scheme:dark)').matches)}catch{}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try{const t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t?t==='dark':true)}catch{}` }} />
         {children}
       </body>
     </html>

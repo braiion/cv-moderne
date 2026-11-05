@@ -6,7 +6,7 @@ import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function ProjectShowcase({ locale }: { locale: Locale }) {
-  const { personal, project, projectsSection } = cvContent[locale];
+  const { personal, project, projectsSection, costCard } = cvContent[locale];
   const labels = locale === "fr"
     ? {
         module: "Module ciblé",
@@ -49,6 +49,16 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
           <h3>{project.name}</h3>
           <p className="case__tagline">{project.tagline}</p>
           <p className="case__description">{project.description}</p>
+
+          <figure className="cost-card" aria-label={costCard.title}>
+            <p className="cost-card__head"><strong>Bonne Occaz.</strong><span>{costCard.vehicle}</span></p>
+            <dl>
+              <div><dt>{costCard.price}</dt><dd>{costCard.priceValue}</dd></div>
+              <div><dt>{costCard.fees}</dt><dd>{costCard.feesValue}</dd></div>
+            </dl>
+            <p className="cost-card__total"><span>{costCard.total}</span><strong>{costCard.totalValue}</strong></p>
+            <figcaption className="cost-card__note">{costCard.note}</figcaption>
+          </figure>
 
           <h4 className="case__label">{labels.features}</h4>
           <ul className="case__features">

@@ -13,7 +13,7 @@ export function loadPdfSources() {
   mkdirSync(cache, { recursive: true });
   const output = mkdtempSync(join(cache, "cv-"));
   try {
-    for (const name of ["contact", "cv-data", "generate-cv-pdf"]) {
+    for (const name of ["contact", "cv-photo", "cv-data", "generate-cv-pdf"]) {
       const source = readFileSync(join(root, "src/lib", `${name}.ts`), "utf8");
       const compiled = ts.transpileModule(source, {
         compilerOptions: { module: ts.ModuleKind.CommonJS, target: ts.ScriptTarget.ES2022, esModuleInterop: true },

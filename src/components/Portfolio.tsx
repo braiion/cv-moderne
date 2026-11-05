@@ -5,6 +5,7 @@ import { Menu, X } from "lucide-react";
 import ThemeToggle from "@/components/ui/ThemeToggle";
 import Hero from "@/components/features/Hero";
 import ProjectShowcase from "@/components/features/ProjectShowcase";
+import Method from "@/components/features/Method";
 import Experience from "@/components/features/Experience";
 import Formation from "@/components/features/Formation";
 import TechStack from "@/components/features/TechStack";
@@ -142,6 +143,7 @@ export default function Portfolio({ locale }: { locale: Locale }) {
       <main id="main-content" tabIndex={-1} className="product-page">
         <Hero locale={locale} downloadHref={`/api/cv?lang=${locale}`} />
         <ProjectShowcase locale={locale} />
+        <Method locale={locale} />
         <Experience locale={locale} />
         <TechStack locale={locale} />
         <Formation locale={locale} />

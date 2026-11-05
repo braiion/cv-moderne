@@ -1,13 +1,19 @@
 import { jsPDF, type jsPDF as JsPdf } from "jspdf";
 import { cvContent, type Locale } from "./cv-data";
 import { revealContact } from "./contact";
+import { CV_PHOTO_JPEG } from "./cv-photo";
 
 const COBALT = [0, 66, 172] as const;
-const INK = [6, 32, 79] as const;
-const MUTED = [61, 85, 120] as const;
-const LINE = [207, 221, 238] as const;
-const BODY_SIZE = 7.4;
-const BODY_LEADING = 3.4;
+const INK = [11, 27, 58] as const;
+const MUTED = [55, 68, 96] as const;
+const LINE = [214, 223, 236] as const;
+const BODY_SIZE = 9.2;
+const BODY_LEADING = 4.15;
+
+/** Print-only trims keep one readable page; the website keeps the full lists. */
+const PDF_MISSION_LIMIT: Record<string, number> = { "renault-cleon": 3 };
+const PDF_MISSION_SKIP: Record<string, number[]> = { "product-builder": [4] };
+const PDF_SKILLS_PER_CATEGORY = 5;
 
 export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   const doc = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4", compress: true });
@@ -18,7 +24,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     title: `CV - ${personal.firstName} ${personal.lastName}`,
     subject: personal.title,
     author: `${personal.firstName} ${personal.lastName}`,
-    keywords: "Full Stack Builder, Product Builder, Product Engineer, Agents de code IA, AI coding agents, LLM, Developpement agentique, Agentic development, AI-native, MVP, Developpeur Full-Stack, Full-Stack Developer, React, Next.js, JavaScript, TypeScript, Node.js, Supabase, PostgreSQL, RAG, CAG, IA generative, SQL, API REST, CI/CD",
+    keywords: "Developpeur Full-Stack, Full-Stack Developer, JavaScript, TypeScript, React, Next.js, Node.js, Supabase, PostgreSQL, SQL, API REST, CI/CD, IA generative, Generative AI, LLM, RAG, MVP, Gestion de projet, Systemes d'information",
   });
 
   doc.setCreationDate(generatedAt);
@@ -29,96 +35,82 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   const X = 13;
   const W = 184;
   const RIGHT = X + W;
-  let y = 57;
+  let y = 56;
   y = sectionTitle(doc, locale === "fr" ? "PROFIL" : "PROFILE", X, y, W);
-  y = paragraph(doc, personal.summary, X, y, W, 8, 3.7) + 2.8;
+  y = paragraph(doc, personal.summary, X, y, W, BODY_SIZE, BODY_LEADING) + 2.6;
 
-  y = sectionTitle(doc, locale === "fr" ? "PRODUIT PHARE" : "FEATURED PRODUCT", X, y, W);
+  y = sectionTitle(doc, locale === "fr" ? "PROJET PHARE" : "FEATURED PROJECT", X, y, W);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(10.5);
   doc.setTextColor(...INK);
   checkedText(doc, pdfText(content.project.name), X, y);
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.1);
+  doc.setFontSize(9);
   doc.setTextColor(...COBALT);
   checkedText(doc, pdfText(content.project.status), RIGHT, y, { align: "right" });
-  y += 4.3;
-  y = paragraph(doc, content.project.description, X, y, W, BODY_SIZE, BODY_LEADING) + 0.4;
-  for (const feature of content.project.features) {
-    y = bullet(doc, feature, X, y, W);
-  }
-  y += 2.4;
+  y += 4.6;
+  y = paragraph(doc, content.project.description, X, y, W, BODY_SIZE, BODY_LEADING) + 2.6;
 
   y = sectionTitle(doc, locale === "fr" ? "EXPÉRIENCE" : "EXPERIENCE", X, y, W);
   for (const experience of content.experiences) {
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(9.2);
+    doc.setFontSize(10.5);
     doc.setTextColor(...INK);
     checkedText(doc, pdfText(experience.title), X, y);
-    y += 3.8;
+    y += 4.6;
 
     // Dates lead the company line so text extraction keeps title -> company/dates -> bullets.
-    doc.setFontSize(8);
+    doc.setFontSize(9);
     doc.setTextColor(...COBALT);
     const period = pdfText(`${experience.period} · `);
     checkedText(doc, period, X, y);
     const periodWidth = doc.getTextWidth(period);
     doc.setTextColor(...MUTED);
     checkedText(doc, pdfText(`${experience.company}${experience.location ? ` · ${experience.location}` : ""}`), X + periodWidth, y);
-    y += 3.6;
+    y += 4.4;
 
-    y = paragraph(doc, experience.description, X, y, W, BODY_SIZE, BODY_LEADING) + 0.3;
+    y = paragraph(doc, experience.description, X, y, W, BODY_SIZE, BODY_LEADING) + 0.4;
     if ("note" in experience && experience.note) {
-      y = paragraph(doc, experience.note, X, y, W, BODY_SIZE, BODY_LEADING) + 0.3;
+      y = paragraph(doc, experience.note, X, y, W, 8.4, 3.8, "italic") + 0.4;
     }
-    for (const mission of experience.missions) {
+    const skip = PDF_MISSION_SKIP[experience.id] ?? [];
+    const missions = experience.missions.filter((_, index) => !skip.includes(index));
+    for (const mission of missions.slice(0, PDF_MISSION_LIMIT[experience.id] ?? missions.length)) {
       y = bullet(doc, mission, X, y, W);
     }
-    y += 2;
+    y += 2.4;
   }
 
   y = sectionTitle(doc, content.skillsSection.education.toUpperCase(), X, y, W);
   for (const item of content.education) {
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(8.1);
+    doc.setFontSize(9.4);
     doc.setTextColor(...COBALT);
     const year = pdfText(`${item.year} · `);
     checkedText(doc, year, X, y);
-    let lineX = X + doc.getTextWidth(year);
     doc.setTextColor(...INK);
-    const diploma = pdfText(`${item.diploma} · ${item.school}`);
-    checkedText(doc, diploma, lineX, y);
-    lineX += doc.getTextWidth(diploma);
-    if (item.description) {
-      doc.setFont("helvetica", "normal");
-      doc.setFontSize(BODY_SIZE);
-      doc.setTextColor(...MUTED);
-      checkedText(doc, pdfText(` · ${item.description}`), lineX, y);
-    }
-    y += 4.2;
+    checkedText(doc, pdfText(`${item.diploma} · ${item.school}`), X + doc.getTextWidth(year), y);
+    y += 4.3;
+    if (item.description) y = paragraph(doc, item.description, X, y, W, 8.6, 3.9) + 0.9;
   }
   y += 1.6;
 
   y = sectionTitle(doc, locale === "fr" ? "COMPÉTENCES" : "SKILLS", X, y, W);
   for (const category of content.skills) {
+    // Label and values share one text run so extraction keeps them together.
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(7.4);
+    doc.setFontSize(BODY_SIZE);
     doc.setTextColor(...INK);
-    checkedText(doc, pdfText(category.name.toUpperCase()), X, y);
-    y = paragraph(doc, category.skills.join(" · "), X + 42, y, W - 42, BODY_SIZE, BODY_LEADING) + 0.8;
+    const label = pdfText(`${category.name} : `);
+    checkedText(doc, label, X, y);
+    const labelWidth = doc.getTextWidth(label);
+    y = paragraph(doc, category.skills.slice(0, PDF_SKILLS_PER_CATEGORY).join(" · "), X + labelWidth, y, W - labelWidth, BODY_SIZE, BODY_LEADING) + 0.6;
   }
-  y += 1.6;
-
-  y = sectionTitle(doc, locale === "fr" ? "POSITIONNEMENT" : "TARGET ROLES", X, y, W);
-  const targets = locale === "fr"
-    ? ["Full Stack Builder", "Développeur Full-Stack JS/TS", "Product Engineer", "Développeur React / Next.js"]
-    : ["Full Stack Builder", "Full-Stack JS/TS Developer", "Product Engineer", "React / Next.js Developer"];
-  paragraph(doc, targets.join(" · "), X, y, W, BODY_SIZE, BODY_LEADING);
 
   doc.setDrawColor(...LINE);
   doc.line(13, 286, 197, 286);
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(7.2);
+  doc.setFontSize(7.4);
   doc.setTextColor(...MUTED);
   const month = new Intl.DateTimeFormat(locale === "fr" ? "fr-FR" : "en-GB", {
     month: "long", year: "numeric", timeZone: "Europe/Paris",
@@ -132,66 +124,86 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
 function header(doc: JsPdf, locale: Locale) {
   const { personal } = cvContent[locale];
   doc.setFillColor(...COBALT);
-  doc.rect(0, 0, 210, 50, "F");
+  doc.rect(0, 0, 210, 48, "F");
+
+  // Colour portrait, rounded, on the right of the band.
+  const photo = { x: 167, y: 6, w: 30, h: 37.5, r: 3 };
+  doc.saveGraphicsState();
+  doc.roundedRect(photo.x, photo.y, photo.w, photo.h, photo.r, photo.r, null);
+  doc.clip();
+  doc.discardPath();
+  doc.addImage(CV_PHOTO_JPEG, "JPEG", photo.x, photo.y, photo.w, photo.h, "portrait", "FAST");
+  doc.restoreGraphicsState();
 
   doc.setTextColor(255, 255, 255);
   doc.setFont("helvetica", "bold");
   doc.setFontSize(22);
-  checkedText(doc, pdfText(`${personal.firstName} ${personal.lastName}`), 13, 17);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(7);
-  doc.setTextColor(214, 221, 255);
-  checkedText(doc, pdfText(locale === "fr" ? "DISPONIBLE DÈS À PRÉSENT" : "AVAILABLE NOW"), 197, 13, { align: "right" });
-  doc.setTextColor(255, 255, 255);
-  doc.setFontSize(11);
-  checkedText(doc, pdfText(personal.title), 13, 25);
+  checkedText(doc, pdfText(`${personal.firstName} ${personal.lastName}`), 13, 16);
+  doc.setFontSize(11.5);
+  checkedText(doc, pdfText(personal.title), 13, 23.5);
   doc.setFont("helvetica", "normal");
-  doc.setFontSize(8.2);
-  doc.setTextColor(222, 228, 255);
-  checkedText(doc, pdfText(personal.subtitle), 13, 31.5);
+  doc.setFontSize(8.8);
+  doc.setTextColor(222, 230, 255);
+  checkedText(doc, pdfText(personal.subtitle), 13, 29.5);
 
-  doc.setFontSize(7.6);
+  // One text run per line keeps a clean reading order for ATS parsers.
+  doc.setFont("helvetica", "bold");
+  doc.setFontSize(8.6);
+  doc.setTextColor(131, 253, 128);
+  checkedText(doc, pdfText(locale === "fr" ? "Disponible dès à présent · remote ou Normandie" : "Available now · remote or Normandy"), 13, 35.5);
+
+  doc.setFont("helvetica", "normal");
+  doc.setFontSize(8.6);
   doc.setTextColor(236, 240, 255);
-  checkedText(doc, pdfText(revealContact("email")), 13, 40);
-  checkedText(doc, pdfText(revealContact("phone")), 70, 40);
-  checkedText(doc, pdfText(revealContact("address")), 110, 40);
-  headerLink(doc, "bryandupressoir.vercel.app", personal.portfolio, 13, 45.5);
-  headerLink(doc, "bonneoccaz.fr", personal.bonneOccaz, 70, 45.5);
-  headerLink(doc, "github.com/braiion", personal.github, 110, 45.5);
+  checkedText(doc, pdfText([revealContact("email"), revealContact("phone"), revealContact("address")].join("  ·  ")), 13, 40.5);
+  linkLine(doc, [
+    ["bryandupressoir.vercel.app", personal.portfolio],
+    ["bonneoccaz.fr", personal.bonneOccaz],
+    ["github.com/braiion", personal.github],
+  ], 13, 45);
 }
 
-function headerLink(doc: JsPdf, label: string, url: string, x: number, y: number) {
+/** Draws "a  ·  b  ·  c" as one text run, with a clickable area over each label. */
+function linkLine(doc: JsPdf, links: [string, string][], x: number, y: number) {
+  const separator = "  ·  ";
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(7.6);
+  doc.setFontSize(8.6);
   doc.setTextColor(255, 255, 255);
-  checkedText(doc, label, x, y);
+  checkedText(doc, links.map(([label]) => label).join(separator), x, y);
   const height = doc.getFontSize() / doc.internal.scaleFactor;
-  doc.link(x, y - height, doc.getTextWidth(label), height * 1.25, { url });
+  let cursor = x;
+  for (const [label, url] of links) {
+    const width = doc.getTextWidth(label);
+    doc.link(cursor, y - height, width, height * 1.25, { url });
+    cursor += width + doc.getTextWidth(separator);
+  }
 }
 
 function sectionTitle(doc: JsPdf, title: string, x: number, y: number, width: number) {
   doc.setFont("helvetica", "bold");
-  doc.setFontSize(7.5);
+  doc.setFontSize(9);
   doc.setTextColor(...COBALT);
   checkedText(doc, pdfText(title), x, y);
   doc.setDrawColor(...LINE);
-  doc.line(x, y + 2.3, x + width, y + 2.3);
-  return y + 6.2;
+  doc.line(x, y + 2.2, x + width, y + 2.2);
+  return y + 7;
 }
 
-function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number, size: number, leading: number) {
-  doc.setFont("helvetica", "normal");
+function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number, size: number, leading: number, style: "normal" | "italic" = "normal") {
+  doc.setFont("helvetica", style);
   doc.setFontSize(size);
   doc.setTextColor(...MUTED);
   const lines = doc.splitTextToSize(pdfText(text), width);
+  doc.setLineHeightFactor(leading / (size / doc.internal.scaleFactor));
   checkedText(doc, lines, x, y);
+  doc.setLineHeightFactor(1.15);
   return y + lines.length * leading;
 }
 
 function bullet(doc: JsPdf, text: string, x: number, y: number, width: number) {
   doc.setFillColor(...COBALT);
-  doc.circle(x + 1, y - 1, 0.55, "F");
-  return paragraph(doc, text, x + 4, y, width - 4, BODY_SIZE, BODY_LEADING) + 0.3;
+  doc.circle(x + 1, y - 1.2, 0.6, "F");
+  return paragraph(doc, text, x + 4, y, width - 4, BODY_SIZE, BODY_LEADING) + 0.6;
 }
 
 function pdfText(value: string) {

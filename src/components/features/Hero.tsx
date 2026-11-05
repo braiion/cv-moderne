@@ -12,15 +12,19 @@ interface HeroProps {
   downloadHref: string;
 }
 
+const CODE_STACK = ["React", "Next.js", "TypeScript", "Supabase"];
+
 export default function Hero({ locale, downloadHref }: HeroProps) {
   const { personal, hero, project } = cvContent[locale];
   const fr = locale === "fr";
-  const availability = hero.availability.split(" — ")[0];
+  const method = fr ? ["specs", "incréments", "revue", "tests"] : ["specs", "increments", "review", "tests"];
+  const quote = (items: readonly string[]) => items.map((item, index) => (
+    <span key={item}><span className="s">&quot;{item}&quot;</span>{index < items.length - 1 ? ", " : ""}</span>
+  ));
 
   return (
     <>
       <section id="hero" className="hero">
-        <p className="hero__watermark" aria-hidden="true">{personal.lastName}</p>
         <div className="hero__inner">
           <div className="hero__grid">
             <div className="hero__copy">
@@ -28,14 +32,12 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                 <span aria-hidden="true" />
                 {hero.availability}
               </p>
+              <p className="hero__eyebrow">{hero.eyebrow}</p>
 
               <h1 aria-label={hero.kicker}>
                 {hero.headline.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
               </h1>
 
-              <p className="hero__role">
-                <FlapText text={personal.title} delay={500} />
-              </p>
               <p className="hero__intro">{hero.intro}</p>
 
               <div className="hero__actions">
@@ -48,25 +50,34 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                   <ArrowUpRight size={18} aria-hidden="true" />
                 </a>
               </div>
+
+              <figure className="hero__code" aria-label={fr ? "Résumé du profil sous forme de code" : "Profile summary as code"}>
+                <header aria-hidden="true"><i /><i /><i /><span>{hero.codeFile}</span></header>
+                <pre>
+                  <span className="k">const</span> {fr ? "profil" : "profile"} = {"{"}{"\n"}
+                  {"  "}role: <span className="s">&quot;{hero.eyebrow}&quot;</span>,{"\n"}
+                  {"  "}stack: [{quote(CODE_STACK)}],{"\n"}
+                  {"  "}{fr ? "methode" : "method"}: [{quote(method)}],{"\n"}
+                  {"  "}{fr ? "disponible" : "available"}: <span className="k">true</span>, <span className="c">{fr ? "// remote ou Normandie" : "// remote or Normandy"}</span>{"\n"}
+                  {"};"}
+                </pre>
+              </figure>
             </div>
 
-            <div className="hero__stage" role="group" aria-label={fr ? "Profil et boucle produit" : "Profile and product loop"}>
-              <div className="hero__ring" aria-hidden="true" />
-              <div className="hero__orb" aria-hidden="true" />
-
+            <div className="hero__stage">
               <figure className="hero__photo">
                 <Image
                   src={profilePhoto}
                   alt={`${personal.firstName} ${personal.lastName}`}
                   fill
                   priority
-                  sizes="(min-width: 960px) 26vw, 60vw"
+                  sizes="(min-width: 960px) 25rem, 90vw"
                   className="object-cover object-[center_22%]"
                 />
                 <figcaption><MapPin size={12} aria-hidden="true" /><Location /></figcaption>
               </figure>
 
-              <div className="hero__card hero__card--loop hero__loop">
+              <div className="hero__card hero__loop">
                 <p className="hero__card-head">{fr ? "Boucle produit" : "Product loop"}</p>
                 <ol>
                   {hero.loop.map((step, index) => (
@@ -76,19 +87,6 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                     </li>
                   ))}
                 </ol>
-              </div>
-
-              <div className="hero__sticker" aria-hidden="true">
-                <svg viewBox="0 0 120 120">
-                  <circle cx="60" cy="60" r="58" fill="var(--jade)" />
-                  <defs>
-                    <path id="hero-sticker-path" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0" />
-                  </defs>
-                  <text fontFamily="var(--font-jetbrains), monospace" fontSize="9.6" letterSpacing="1.6" fill="var(--on-jade)">
-                    <textPath href="#hero-sticker-path" textLength="270" lengthAdjust="spacing">{`${availability.toUpperCase()} · `}</textPath>
-                  </text>
-                </svg>
-                <span><ArrowUpRight size={28} /></span>
               </div>
             </div>
           </div>

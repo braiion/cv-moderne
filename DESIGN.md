@@ -1,12 +1,12 @@
 ---
-name: "Bryan Dupressoir — Sapphire CV"
-description: "The CV as a confident product page: full-bleed sapphire hero, condensed grotesque, ocean display type, jade only for signals, continuous (squircle) corners."
+name: "Bryan Dupressoir — Night Sapphire CV"
+description: "A professional developer portfolio: night-sapphire dark theme by default with a matching light theme, condensed headline, code card, colour portrait, jade only for signals, continuous (squircle) corners."
 colors:
-  paper: "#eef6ff"
+  paper: "#f4f7fc"
   paper-raised: "#ffffff"
-  ink: "#06204f"
-  muted: "#3d5578"
-  line: "#cfddee"
+  ink: "#0b1b3a"
+  muted: "#47567a"
+  line: "#dde5f0"
   saphir: "#0042ac"
   saphir-2: "#00337f"
   ocean: "#00d3fb"
@@ -17,11 +17,11 @@ colors:
   ice: "#eaf6ff"
   engine: "#021a47"
   engine-muted: "#a9bedc"
-  dark-paper: "#04112b"
-  dark-paper-raised: "#0a1d42"
-  dark-ink: "#eef6ff"
-  dark-muted: "#a9bedc"
-  dark-line: "#1c3463"
+  dark-paper: "#060c18"
+  dark-paper-raised: "#0d1729"
+  dark-ink: "#e6edf3"
+  dark-muted: "#a9b8cc"
+  dark-line: "#1c2a40"
   dark-saphir: "#003a98"
   dark-cobalt-text: "#00d3fb"
   dark-engine: "#010b1f"
@@ -108,16 +108,16 @@ components:
 
 ## 1. Overview
 
-**Creative North Star: "A product page with depth."** The portfolio-CV opens on a full-bleed sapphire field with a layered composition (tilted portrait on an ocean sphere, a floating product-loop card, a spinning jade availability sticker, the surname as an outlined watermark), then settles into calm ice-blue reading sections. It replaced (November 2026) the flat "Swiss poster" version with square corners and a single cobalt.
+**Creative North Star: "A senior developer's workspace at night."** Dark by default (night sapphire), with a matching light theme from the toggle. The hero leads with what the owner does — designing and shipping web applications — then the cross-functional background; AI appears as a framed delivery method, never as the opening claim. It replaced (November 2026) the louder full-sapphire poster hero, judged not professional enough.
 
-Proof stays before chronology: hero → stack band → BonneOccaz case and RAG/CAG module → experience → skills → education → sapphire contact band.
+Order: hero (availability, `// role` eyebrow, condensed headline, intro, actions, `profil.ts` code card, straight colour portrait with a sapphire offset and the product-loop card low-right) → facts strip → stack band → BonneOccaz case with the live site's cost card and the RAG/CAG module → method (4 steps) → experience → skills → education → sapphire contact band.
 
 **Key Characteristics:**
-- Three colours with fixed jobs: sapphire fills fields, ocean carries display type and data, jade marks the one action or state that matters.
-- Continuous corners everywhere, from one radius scale; circles only for dots, rings and the sphere.
-- Depth comes from layering and offset shadows in the hero, not from blur on every surface.
-- Lists stay typographic (slash-separated stacks, ruled skill lists), never chips.
-- Mono appears only for data: periods, years, states, technical labels.
+- Sapphire glows and fields, ocean accents on dark (sapphire on light), jade only for the primary action and live states.
+- Continuous corners from one radius scale; circles only for dots.
+- The portrait is in colour, straight, never covered at face height.
+- The code card and product-loop card stay dark editor panels in both themes.
+- Mono appears only for data: periods, years, states, the eyebrow and code.
 
 ## 2. Colors
 
@@ -181,7 +181,10 @@ The hero is the only layered zone: deep offset shadows (portrait, primary button
 Mono uppercase on jade ("EN PROD") or saphir ("PRODUIT EN BÊTA"), `xs` radius. They settle character by character once; reduced motion shows the final text.
 
 ### Hero composition
-Tilted portrait (`xl`, ocean multiply, deep offset), ocean sphere and dashed ring, product-loop card (`lg`), jade availability sticker, outlined surname watermark, then fact cards (`lg`) and the stack band.
+Copy column: availability chip, `// role` eyebrow, condensed uppercase headline in two lines (second line accent), intro, jade CV download and ghost BonneOccaz action, then the `profil.ts` code card. Portrait column: straight colour portrait (`xl`, sapphire offset), product-loop card placed low and right of the photo (below it on mobile).
+
+### BonneOccaz cost card
+Mirrors the live site's card: listing price, estimated registration fees, estimated total, with the site's own demonstration example (Porsche 911). No invented gauges.
 
 ### Navigation
 Glass paper bar (84% paper, blur), 4rem high; saphir "BD" mark (`sm`); ink contact button (`md`).
