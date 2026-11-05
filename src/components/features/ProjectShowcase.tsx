@@ -1,12 +1,22 @@
 "use client";
 
+import { useRef } from "react";
+import Image from "next/image";
+import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
 import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
+import desktopShot from "../../../public/work/bonneoccaz-desktop.webp";
+import mobileShot from "../../../public/work/bonneoccaz-mobile.webp";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function ProjectShowcase({ locale }: { locale: Locale }) {
   const { personal, project, projectsSection, costCard } = cvContent[locale];
+  const showcaseRef = useRef<HTMLElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: showcaseRef, offset: ["start end", "end start"] });
+  const browserY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [24, -24]);
+  const phoneY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [90, -70]);
   const labels = locale === "fr"
     ? {
         module: "Module ciblé",
@@ -39,6 +49,17 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
         <h2>{projectsSection.title}</h2>
         <p>{projectsSection.description}</p>
       </header>
+
+      <figure className="showcase" ref={showcaseRef}>
+        <motion.div className="showcase__browser" style={{ y: browserY }}>
+          <div className="showcase__bar" aria-hidden="true"><i /><i /><i /><span>bonneoccaz.fr</span></div>
+          <Image src={desktopShot} alt={locale === "fr" ? "Page d’accueil de BonneOccaz sur ordinateur" : "BonneOccaz home page on desktop"} sizes="(min-width: 960px) 70vw, 92vw" placeholder="blur" />
+        </motion.div>
+        <motion.div className="showcase__phone" style={{ y: phoneY }}>
+          <Image src={mobileShot} alt={locale === "fr" ? "Page d’accueil de BonneOccaz sur mobile" : "BonneOccaz home page on mobile"} sizes="(min-width: 960px) 16rem, 40vw" placeholder="blur" />
+        </motion.div>
+        <figcaption>{projectsSection.showcase}</figcaption>
+      </figure>
 
       <article className="case">
         <div className="case__story">
@@ -75,7 +96,7 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
           </a>
         </div>
 
-        <figure className="engine" aria-label={projectsSection.architecture}>
+        <figure className="engine spot" aria-label={projectsSection.architecture}>
           <figcaption className="engine__head">
             <span>{projectsSection.architecture}</span>
             <span className="engine__badge"><i aria-hidden="true" />{labels.module}</span>
@@ -113,7 +134,7 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
       <div className="evidence">
         <h3>{projectsSection.examplesTitle}</h3>
         {projectsSection.examples.map((example) => (
-          <article key={example.title}>
+          <article key={example.title} className="spot">
             <h4>{example.title}</h4>
             <p>{example.body}</p>
           </article>

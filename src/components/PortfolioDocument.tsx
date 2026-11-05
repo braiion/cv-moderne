@@ -19,7 +19,7 @@ export default function PortfolioDocument({ children, locale }: { children: Reac
     <html lang={locale} className={`${archivo.variable} ${mono.variable} h-full antialiased`} suppressHydrationWarning>
       <body className="min-h-full w-full overflow-x-hidden">
         <div hidden dangerouslySetInnerHTML={{ __html: directionContract }} />
-        <script dangerouslySetInnerHTML={{ __html: `try{const t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t?t==='dark':true)}catch{}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `document.documentElement.classList.add('js');try{const t=localStorage.getItem('theme');document.documentElement.classList.toggle('dark',t?t==='dark':true)}catch{}` }} />
         {children}
       </body>
     </html>

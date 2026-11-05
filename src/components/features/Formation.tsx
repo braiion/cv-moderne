@@ -5,7 +5,7 @@ export default function Formation({ locale }: { locale: Locale }) {
 
   return (
     <section className="section section--tight" aria-labelledby="education-title">
-      <div className="education">
+      <div className="education spot">
         <h2 id="education-title">{skillsSection.education}</h2>
         <div className="education__list">
           {education.map((item) => (

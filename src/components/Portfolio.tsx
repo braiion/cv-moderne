@@ -10,6 +10,7 @@ import Experience from "@/components/features/Experience";
 import Formation from "@/components/features/Formation";
 import TechStack from "@/components/features/TechStack";
 import Footer from "@/components/features/Footer";
+import Interactions from "@/components/ui/Interactions";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function Portfolio({ locale }: { locale: Locale }) {
@@ -149,6 +150,7 @@ export default function Portfolio({ locale }: { locale: Locale }) {
         <Formation locale={locale} />
       </main>
       <Footer locale={locale} />
+      <Interactions />
     </div>
   );
 }

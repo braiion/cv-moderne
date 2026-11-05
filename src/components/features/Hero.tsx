@@ -1,5 +1,6 @@
 "use client";
 
+import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowUpRight, Download, MapPin } from "lucide-react";
 import FlapText from "@/components/ui/FlapText";
@@ -18,13 +19,48 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
   const { personal, hero, project } = cvContent[locale];
   const fr = locale === "fr";
   const method = fr ? ["specs", "incréments", "revue", "tests"] : ["specs", "increments", "review", "tests"];
+  const heroRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const hero = heroRef.current;
+    const photo = hero?.querySelector<HTMLElement>(".hero__photo");
+    if (!hero || !photo) return;
+    const canAnimate = window.matchMedia("(hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference)");
+    if (!canAnimate.matches) return;
+    let frame = 0;
+    const onMove = (event: PointerEvent) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const box = hero.getBoundingClientRect();
+        hero.style.setProperty("--mx", `${((event.clientX - box.left) / box.width) * 100}%`);
+        hero.style.setProperty("--my", `${((event.clientY - box.top) / box.height) * 100}%`);
+        const p = photo.getBoundingClientRect();
+        const dx = (event.clientX - (p.left + p.width / 2)) / box.width;
+        const dy = (event.clientY - (p.top + p.height / 2)) / box.height;
+        photo.style.setProperty("--ry", `${Math.max(-1, Math.min(1, dx)) * 7}deg`);
+        photo.style.setProperty("--rx", `${Math.max(-1, Math.min(1, -dy)) * 6}deg`);
+      });
+    };
+    const onLeave = () => {
+      photo.style.setProperty("--rx", "0deg");
+      photo.style.setProperty("--ry", "0deg");
+    };
+    hero.addEventListener("pointermove", onMove);
+    hero.addEventListener("pointerleave", onLeave);
+    return () => {
+      cancelAnimationFrame(frame);
+      hero.removeEventListener("pointermove", onMove);
+      hero.removeEventListener("pointerleave", onLeave);
+    };
+  }, []);
+
   const quote = (items: readonly string[]) => items.map((item, index) => (
     <span key={item}><span className="s">&quot;{item}&quot;</span>{index < items.length - 1 ? ", " : ""}</span>
   ));
 
   return (
     <>
-      <section id="hero" className="hero">
+      <section id="hero" className="hero" ref={heroRef}>
         <div className="hero__inner">
           <div className="hero__grid">
             <div className="hero__copy">
@@ -41,7 +77,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
               <p className="hero__intro">{hero.intro}</p>
 
               <div className="hero__actions">
-                <a href={downloadHref} download className="button button--primary">
+                <a href={downloadHref} download className="button button--primary magnetic">
                   <Download size={18} aria-hidden="true" />
                   {hero.secondaryCta}
                 </a>

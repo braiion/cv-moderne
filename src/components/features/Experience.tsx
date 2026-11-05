@@ -1,10 +1,16 @@
 "use client";
 
+import { useRef } from "react";
+import { motion, useReducedMotion, useScroll, useSpring } from "framer-motion";
 import AnimatedSection from "@/components/ui/AnimatedSection";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function Experience({ locale }: { locale: Locale }) {
   const { experienceSection, experiences } = cvContent[locale];
+  const timelineRef = useRef<HTMLDivElement>(null);
+  const reduceMotion = useReducedMotion();
+  const { scrollYProgress } = useScroll({ target: timelineRef, offset: ["start 75%", "end 60%"] });
+  const progress = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.4 });
 
   return (
     <AnimatedSection id="experience" className="section">
@@ -13,7 +19,8 @@ export default function Experience({ locale }: { locale: Locale }) {
         <p>{experienceSection.description}</p>
       </header>
 
-      <div className="timeline">
+      <div className="timeline" ref={timelineRef}>
+        <motion.div className="timeline__progress" aria-hidden="true" style={{ scaleY: reduceMotion ? 1 : progress }} />
         {experiences.map((experience, index) => (
           <article key={experience.id} className="timeline__row">
             <p className="timeline__period">

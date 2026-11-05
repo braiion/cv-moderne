@@ -15,7 +15,7 @@ export default function Method({ locale }: { locale: Locale }) {
 
       <ol className="method">
         {methodSection.steps.map((step, index) => (
-          <li key={step.title} className="method__step">
+          <li key={step.title} className="method__step spot">
             <b>{String(index + 1).padStart(2, "0")}</b>
             <h3>{step.title}</h3>
             <p>{step.body}</p>

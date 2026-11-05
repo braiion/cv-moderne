@@ -15,8 +15,8 @@ export default function TechStack({ locale }: { locale: Locale }) {
 
       <div className="skills">
         {skills.map((category) => (
-          <article key={category.name}>
-            <h3>{category.name}</h3>
+          <article key={category.name} className="spot">
+            <h3>{category.name}<span>{String(category.skills.length).padStart(2, "0")}</span></h3>
             <ul>
               {category.skills.map((skill) => <li key={skill}>{skill}</li>)}
             </ul>
