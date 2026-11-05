@@ -56,7 +56,7 @@ export const cvContent = {
       availability: "Disponible dès à présent — remote ou Normandie",
       eyebrow: "Développeur full-stack JS/TS",
       kicker: "Je conçois et livre des applications web, du besoin à la production.",
-      headline: ["Je conçois et livre des applications web,", "du besoin à la production."],
+      headline: ["Je conçois et livre des applications web,", "du besoin à la production"],
       intro: "Un parcours transversal en systèmes d’information, gestion de projet et développement. Je cadre le besoin, je construis avec React, Next.js et Supabase, et je m’appuie sur l’IA générative avec une méthode exigeante : spécifications, petits incréments, revue de code et tests.",
       codeFile: "profil.ts",
       primaryCta: "Découvrir BonneOccaz",
@@ -77,7 +77,7 @@ export const cvContent = {
     },
     projectsSection: {
       eyebrow: "Produit phare",
-      title: "BonneOccaz, du besoin à la production.",
+      title: "BonneOccaz, du besoin à la production",
       description: "Un produit construit avec l’IA dès son démarrage : spécifier le besoin, guider les agents, vérifier les fonctionnalités et faire évoluer l’application.",
       visit: "Voir le produit en ligne",
       showcase: "Captures réelles de bonneoccaz.fr, en version ordinateur et mobile.",
@@ -98,7 +98,7 @@ export const cvContent = {
     project: {
       name: "BonneOccaz.fr",
       status: "Produit en bêta",
-      tagline: "Achetez mieux, sans mauvaise surprise.",
+      tagline: "Achetez mieux, sans mauvaise surprise",
       description: "Plateforme automobile de recherche, publication et comparaison d’annonces, enrichie par des outils d’aide à la décision, des parcours professionnels, un conseiller automobile IA et un assistant d’aide à l’utilisation.",
       features: [
         "Conseiller IA : définir le besoin et trouver un véhicule sur la plateforme",
@@ -111,7 +111,7 @@ export const cvContent = {
     },
     methodSection: {
       eyebrow: "Méthode",
-      title: "Une méthode de livraison rigoureuse, assistée par l’IA.",
+      title: "Une méthode de livraison rigoureuse, assistée par l’IA",
       description: "L’IA générative accélère la production ; la qualité vient du cadre posé autour.",
       steps: [
         { title: "Cadrer", body: "Besoin métier, parcours et backlog." },
@@ -133,7 +133,7 @@ export const cvContent = {
     },
     experienceSection: {
       eyebrow: "Expérience",
-      title: "Un parcours entre produit, métier et technique.",
+      title: "Un parcours entre produit, métier et technique",
       description: "Trois environnements, une constante : comprendre le besoin, décider et livrer une solution durable.",
     },
     experiences: [
@@ -191,7 +191,7 @@ export const cvContent = {
     ] satisfies Education[],
     skillsSection: {
       eyebrow: "Boîte à outils",
-      title: "Des compétences pour livrer, pas pour cocher des cases.",
+      title: "Des compétences pour livrer, pas pour cocher des cases",
       description: "Une stack récente complétée par une solide compréhension du produit, du MVP à l’exploitation.",
       education: "Formation",
     },
@@ -203,7 +203,7 @@ export const cvContent = {
     ] satisfies SkillCategory[],
     footer: {
       eyebrow: "Disponible pour échanger",
-      title: "Construisons un produit utile.",
+      title: "Construisons un produit utile",
       text: "Je recherche un poste de Full Stack Builder, développeur JS/TS ou Product Engineer, avec une place centrale pour le développement avec l’IA, en télétravail ou en Normandie.",
       email: "M’écrire",
       github: "Voir GitHub",
@@ -222,7 +222,7 @@ export const cvContent = {
       availability: "Available now — remote or Normandy, France",
       eyebrow: "Full-stack JS/TS developer",
       kicker: "I design and ship web applications, from the first need to production.",
-      headline: ["I design and ship web applications,", "from the first need to production."],
+      headline: ["I design and ship web applications,", "from the first need to production"],
       intro: "A cross-functional background in IT systems, project management and development. I scope the need, build with React, Next.js and Supabase, and rely on generative AI with a demanding method: specifications, small increments, code review and testing.",
       codeFile: "profile.ts",
       primaryCta: "Explore BonneOccaz",
@@ -243,7 +243,7 @@ export const cvContent = {
     },
     projectsSection: {
       eyebrow: "Featured product",
-      title: "BonneOccaz, from need to production.",
+      title: "BonneOccaz, from need to production",
       description: "A product built with AI from the outset: specify the need, guide agents, verify features and keep improving the application.",
       visit: "View live product",
       showcase: "Real screenshots of bonneoccaz.fr, on desktop and mobile.",
@@ -264,7 +264,7 @@ export const cvContent = {
     project: {
       name: "BonneOccaz.fr",
       status: "Beta product",
-      tagline: "Buy smarter, without nasty surprises.",
+      tagline: "Buy smarter, without nasty surprises",
       description: "An automotive marketplace for searching, publishing and comparing listings, enhanced with decision tools, professional workflows, an AI automotive advisor and a platform help assistant.",
       features: [
         "AI advisor: identify needs and find a vehicle on the platform",
@@ -277,7 +277,7 @@ export const cvContent = {
     },
     methodSection: {
       eyebrow: "Method",
-      title: "A rigorous delivery method, assisted by AI.",
+      title: "A rigorous delivery method, assisted by AI",
       description: "Generative AI speeds up production; quality comes from the framework around it.",
       steps: [
         { title: "Scope", body: "Business need, user journeys and backlog." },
@@ -299,7 +299,7 @@ export const cvContent = {
     },
     experienceSection: {
       eyebrow: "Experience",
-      title: "Product, business and technology.",
+      title: "Product, business and technology",
       description: "Three environments, one constant: understand the need, make decisions and deliver a durable solution.",
     },
     experiences: [
@@ -357,7 +357,7 @@ export const cvContent = {
     ] satisfies Education[],
     skillsSection: {
       eyebrow: "Toolkit",
-      title: "Skills for shipping, not checkbox filling.",
+      title: "Skills for shipping, not checkbox filling",
       description: "A modern stack backed by a strong understanding of product, from MVP to operations.",
       education: "Education",
     },
@@ -369,7 +369,7 @@ export const cvContent = {
     ] satisfies SkillCategory[],
     footer: {
       eyebrow: "Available to talk",
-      title: "Let’s build something useful.",
+      title: "Let’s build something useful",
       text: "I am looking for a Full Stack Builder, JS/TS developer or Product Engineer role with AI development at its core, remote or in Normandy, France.",
       email: "Email me",
       github: "View GitHub",

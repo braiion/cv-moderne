@@ -119,7 +119,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
                   {hero.loop.map((step, index) => (
                     <li key={step.label} className={index === 3 ? "is-current" : undefined}>
                       {step.label}
-                      {index === 3 && <FlapText className="hero__state" text={fr ? "EN PROD" : "SHIPPED"} delay={1100} />}
+                      {index === 3 && <FlapText className="hero__state" text={fr ? "En prod" : "Shipped"} delay={1100} />}
                     </li>
                   ))}
                 </ol>

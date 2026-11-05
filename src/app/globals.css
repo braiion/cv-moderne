@@ -207,7 +207,6 @@ button {
   gap: 0.7rem;
   font-weight: 700;
   font-size: 1rem;
-  letter-spacing: -0.01em;
   text-decoration: none;
   white-space: nowrap;
 }
@@ -693,8 +692,7 @@ button {
   color: #8b9bb4;
   font-size: 0.6875rem;
   font-weight: 650;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
 }
 
 .hero__loop ol {
@@ -815,7 +813,6 @@ button {
   margin-top: 0.5rem;
   font-size: 1.15rem;
   font-weight: 760;
-  letter-spacing: -0.01em;
 }
 
 .method__step p {
@@ -853,7 +850,6 @@ button {
 .cost-card__head strong {
   color: #17181c;
   font-size: 1rem;
-  letter-spacing: -0.01em;
   text-transform: none;
 }
 
@@ -955,8 +951,7 @@ button {
   margin-bottom: 0.75rem;
   font-size: 0.8125rem;
   font-weight: 700;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  letter-spacing: 0.01em;
 }
 
 .case__features {
@@ -1010,7 +1005,6 @@ button {
   font-family: var(--font-jetbrains), ui-monospace, monospace;
   font-size: 0.75rem;
   font-weight: 500;
-  text-transform: uppercase;
 }
 
 .engine__badge i {
@@ -1037,7 +1031,6 @@ button {
   color: var(--engine-muted);
   font-family: var(--font-jetbrains), ui-monospace, monospace;
   font-size: 0.75rem;
-  text-transform: uppercase;
 }
 
 .engine__flow strong {
@@ -1202,7 +1195,6 @@ button {
   gap: 0.4rem;
   color: var(--cobalt-text);
   font-size: 0.75rem;
-  text-transform: uppercase;
 }
 
 .timeline__now::before {

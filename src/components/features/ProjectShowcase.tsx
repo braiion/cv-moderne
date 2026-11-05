@@ -64,7 +64,7 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
       <article className="case">
         <div className="case__story">
           <p className="case__meta">
-            <FlapText className="case__status" text={project.status.toUpperCase()} delay={200} />
+            <FlapText className="case__status" text={project.status} delay={200} />
             <span>{projectsSection.role}</span>
           </p>
           <h3>{project.name}</h3>
