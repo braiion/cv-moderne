@@ -1352,6 +1352,32 @@ button {
   font-size: 0.875rem;
 }
 
+.languages {
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.languages h3 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.languages ul {
+  display: grid;
+  gap: 0.5rem;
+  margin-top: 0.75rem;
+}
+
+.languages li {
+  color: var(--muted);
+  font-size: 0.9375rem;
+}
+
+.languages strong {
+  color: var(--ink);
+  font-weight: 600;
+}
+
 /* ---------- Contact ---------- */
 .contact {
   background: var(--cobalt);
@@ -1799,6 +1825,10 @@ button {
     grid-column: 5 / span 8;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     column-gap: 1.5rem;
+  }
+
+  .languages {
+    grid-column: 5 / span 8;
   }
 
   .contact__body {

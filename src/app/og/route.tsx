@@ -10,7 +10,7 @@ export function GET(request: Request) {
         </div>
         <div style={{ display: "flex", flexDirection: "column", gap: 20 }}>
           <div style={{ fontSize: 92, fontWeight: 800, letterSpacing: "-4px", lineHeight: 0.95 }}>Bryan Dupressoir</div>
-          <div style={{ fontSize: 34, color: "#0042ac", fontWeight: 600 }}>{english ? "Full Stack Builder AI-native · JS/TS Developer" : "Full Stack Builder AI-native · Développeur JS/TS"}</div>
+          <div style={{ fontSize: 34, color: "#0042ac", fontWeight: 600 }}>{english ? "Full-Stack JS/TS Developer · Product Engineer" : "Développeur Full-Stack JS/TS · Product Engineer"}</div>
         </div>
         <div style={{ display: "flex", fontSize: 25, color: "#3d5578" }}>React / Next.js / TypeScript / Supabase</div>
       </div>

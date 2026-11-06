@@ -48,13 +48,13 @@ export const cvContent = {
     nav: { home: "Profil", projects: "Projets", experience: "Parcours", skills: "Compétences", contact: "Me contacter" },
     personal: {
       ...shared,
-      title: "Full Stack Builder AI-native · Développeur JS/TS",
+      title: "Développeur Full-Stack JS/TS · Product Engineer",
       subtitle: "Développement agentique · IA générative · React · Next.js · Supabase",
       summary: "Profil transversal SI, projets, produit et développement, dans l’IT depuis 2016 dont 7 ans de pilotage SI. Je construis des produits web avec des agents IA : je cadre, je spécifie, je découpe en petits incréments, puis je relis, teste et livre le code généré. J’utilise intensivement l’IA générative depuis environ deux ans et demi ; depuis 2024, j’ai conçu ainsi 2 applications automobiles, dont BonneOccaz, jusqu’à la production.",
     },
     hero: {
       availability: "Disponible dès à présent — remote ou Normandie",
-      eyebrow: "Développeur full-stack JS/TS",
+      eyebrow: "Développeur Full-Stack JS/TS · Product Engineer",
       kicker: "Je conçois et livre des applications web, du besoin à la production.",
       headline: ["Je conçois et livre des applications web,", "du besoin à la production"],
       intro: "Un parcours transversal en systèmes d’information, gestion de projet et développement. Je cadre le besoin, je construis avec React, Next.js et Supabase, et je m’appuie sur l’IA générative avec une méthode exigeante : spécifications, petits incréments, revue de code et tests.",
@@ -143,11 +143,11 @@ export const cvContent = {
         company: "Indépendant · BonneOccaz.fr et un projet confidentiel",
         period: "2024 — Aujourd’hui",
         note: "Projets commencés en parallèle de mon poste chez Normandie Structures en 2024–2025.",
-        description: "Deux applications web automobiles, dont BonneOccaz, dont tout le code est produit par des agents IA. Le second projet reste confidentiel à ce stade.",
+        description: "Deux applications web automobiles, dont BonneOccaz, conçues et développées avec l’assistance d’agents IA. Le second projet reste confidentiel à ce stade.",
         missions: [
           "Conçu 2 applications automobiles, de l’idée au MVP puis à la bêta en production, en cadrant besoins, parcours et backlog",
-          "Produit tout le code avec des agents IA, sans écriture manuelle : React, Next.js, TypeScript et Supabase/PostgreSQL (Auth, RLS, Realtime)",
-          "Méthode : cadrage et spécifications, petits incréments, relecture du code généré, tests et vérification de chaque livraison",
+          "Développement assisté par agents IA : spécification, relecture, refactoring et tests de chaque livraison (React, Next.js, TypeScript, Supabase/PostgreSQL : Auth, RLS, Realtime)",
+          "Découpé chaque évolution en petits incréments, de la spécification à la mise en production",
           "Livré un assistant RAG/CAG sur 97 FAQ et 11 sections Pro, évalué sur 32 questions (top 3, seuil de 90 %)",
           "Fiabilisé la production par des audits menés avec l’IA : régressions, droits d’accès et performance",
           "Automatisé la livraison (Git/GitHub, CI/CD, Vercel, Resend) et maintenu les applications en production",
@@ -189,11 +189,16 @@ export const cvContent = {
       { id: "cesi", diploma: "Bac+4 – Responsable en ingénierie des logiciels", school: "CESI Rouen", year: "2016 — 2018", description: "Titre RNCP niveau 6, 2 ans après BTS, en alternance." },
       { id: "bts-sio", diploma: "BTS SIO — option SLAM", school: "La Châtaigneraie, Mesnil-Esnard", year: "2016", description: "Solutions logicielles et applications métiers." },
     ] satisfies Education[],
+    languages: [
+      { name: "Français", level: "langue maternelle" },
+      { name: "Anglais", level: "B2, lecture et rédaction techniques courantes" },
+    ],
     skillsSection: {
       eyebrow: "Boîte à outils",
       title: "Des compétences pour livrer, pas pour cocher des cases",
       description: "Une stack récente complétée par une solide compréhension du produit, du MVP à l’exploitation.",
       education: "Formation",
+      languages: "Langues",
     },
     skills: [
       { name: "Frontend & produit", skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5 / CSS3", "Tailwind CSS", "Responsive Design", "UX", "Product discovery", "Cadrage MVP", "Prototypage rapide"] },
@@ -204,7 +209,7 @@ export const cvContent = {
     footer: {
       eyebrow: "Disponible pour échanger",
       title: "Construisons un produit utile",
-      text: "Je recherche un poste de Full Stack Builder, développeur JS/TS ou Product Engineer, avec une place centrale pour le développement avec l’IA, en télétravail ou en Normandie.",
+      text: "Je recherche un poste de développeur Full-Stack JS/TS ou de Product Engineer, avec une place centrale pour le développement assisté par l’IA. Je suis aussi ouvert aux postes de chef de projet IT et de responsable applicatif, en télétravail ou en Normandie.",
       email: "M’écrire",
       github: "Voir GitHub",
     },
@@ -214,13 +219,13 @@ export const cvContent = {
     nav: { home: "Profile", projects: "Work", experience: "Experience", skills: "Skills", contact: "Contact me" },
     personal: {
       ...shared,
-      title: "Full Stack Builder AI-native · JS/TS Developer",
+      title: "Full-Stack JS/TS Developer · Product Engineer",
       subtitle: "Agentic development · Generative AI · React · Next.js · Supabase",
       summary: "Cross-functional profile spanning IT systems, projects, product and development, in IT since 2016 including 7 years owning IT systems. I build web products with AI agents: I scope, write specifications, split the work into small increments, then review, test and ship the generated code. I have used generative AI intensively for about two and a half years; since 2024, I have designed 2 automotive applications this way, including BonneOccaz, through to production.",
     },
     hero: {
       availability: "Available now — remote or Normandy, France",
-      eyebrow: "Full-stack JS/TS developer",
+      eyebrow: "Full-Stack JS/TS Developer · Product Engineer",
       kicker: "I design and ship web applications, from the first need to production.",
       headline: ["I design and ship web applications,", "from the first need to production"],
       intro: "A cross-functional background in IT systems, project management and development. I scope the need, build with React, Next.js and Supabase, and rely on generative AI with a demanding method: specifications, small increments, code review and testing.",
@@ -309,11 +314,11 @@ export const cvContent = {
         company: "Independent · BonneOccaz.fr and a confidential project",
         period: "2024 — Present",
         note: "Projects started alongside my role at Normandie Structures in 2024–2025.",
-        description: "Two automotive web applications, including BonneOccaz, with all code produced by AI agents. The second project remains confidential at this stage.",
+        description: "Two automotive web applications, including BonneOccaz, designed and built with the assistance of AI agents. The second project remains confidential at this stage.",
         missions: [
           "Designed 2 automotive applications, from idea to MVP and a beta in production, by scoping needs, journeys and backlog",
-          "Produced all code with AI agents, with no hand-written code: React, Next.js, TypeScript and Supabase/PostgreSQL (Auth, RLS, Realtime)",
-          "Method: scoping and specifications, small increments, review of generated code, testing and verification of every release",
+          "AI-assisted development: specification, review, refactoring and testing of every release (React, Next.js, TypeScript, Supabase/PostgreSQL: Auth, RLS, Realtime)",
+          "Split every change into small increments, from specification to production release",
           "Shipped a RAG/CAG assistant over 97 FAQ entries and 11 Pro sections, evaluated on 32 questions (top 3, 90% threshold)",
           "Hardened production through AI-assisted audits: regressions, access control and performance",
           "Automated delivery (Git/GitHub, CI/CD, Vercel, Resend) and maintained the applications in production",
@@ -355,11 +360,16 @@ export const cvContent = {
       { id: "cesi", diploma: "Bac+4 – Software Engineering Manager", school: "CESI Rouen", year: "2016 — 2018", description: "French RNCP level 6 title, 2 years after the BTS, work-study programme." },
       { id: "bts-sio", diploma: "BTS SIO — SLAM software track", school: "La Châtaigneraie, Mesnil-Esnard", year: "2016", description: "Software solutions and business applications." },
     ] satisfies Education[],
+    languages: [
+      { name: "French", level: "native" },
+      { name: "English", level: "B2, reads and writes technical material regularly" },
+    ],
     skillsSection: {
       eyebrow: "Toolkit",
       title: "Skills for shipping, not checkbox filling",
       description: "A modern stack backed by a strong understanding of product, from MVP to operations.",
       education: "Education",
+      languages: "Languages",
     },
     skills: [
       { name: "Frontend & product", skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5 / CSS3", "Tailwind CSS", "Responsive Design", "UX", "Product discovery", "MVP scoping", "Rapid prototyping"] },
@@ -370,7 +380,7 @@ export const cvContent = {
     footer: {
       eyebrow: "Available to talk",
       title: "Let’s build something useful",
-      text: "I am looking for a Full Stack Builder, JS/TS developer or Product Engineer role with AI development at its core, remote or in Normandy, France.",
+      text: "I am looking for a Full-Stack JS/TS Developer or Product Engineer role with AI-assisted development at its core. I am also open to IT project manager and application manager roles, remote or in Normandy, France.",
       email: "Email me",
       github: "View GitHub",
     },

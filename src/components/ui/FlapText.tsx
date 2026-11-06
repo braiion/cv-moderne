@@ -34,9 +34,7 @@ export default function FlapText({ text, className, delay = 0 }: { text: string;
   }, [text, delay, reduceMotion]);
 
   return (
-    <span className={className}>
-      <span className="sr-only">{text}</span>
-      <span aria-hidden="true">{display}</span>
-    </span>
+    // A single text node: server HTML and text extraction read the final text once.
+    <span className={className}>{display}</span>
   );
 }

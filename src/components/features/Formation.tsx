@@ -1,7 +1,7 @@
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function Formation({ locale }: { locale: Locale }) {
-  const { education, skillsSection } = cvContent[locale];
+  const { education, languages, skillsSection } = cvContent[locale];
 
   return (
     <section className="section section--tight" aria-labelledby="education-title">
@@ -18,6 +18,14 @@ export default function Formation({ locale }: { locale: Locale }) {
               </div>
             </article>
           ))}
+        </div>
+        <div className="languages">
+          <h3>{skillsSection.languages}</h3>
+          <ul>
+            {languages.map((language) => (
+              <li key={language.name}><strong>{language.name}</strong>{locale === "fr" ? " : " : ": "}{language.level}</li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

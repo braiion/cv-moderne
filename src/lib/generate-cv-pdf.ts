@@ -12,7 +12,8 @@ const BODY_LEADING = 4.15;
 
 /** Print-only trims keep one readable page; the website keeps the full lists. */
 const PDF_MISSION_LIMIT: Record<string, number> = { "renault-cleon": 3 };
-const PDF_MISSION_SKIP: Record<string, number[]> = { "product-builder": [4] };
+const PDF_MISSION_SKIP: Record<string, number[]> = { "product-builder": [2, 4] };
+const PDF_EDUCATION_WITHOUT_DESCRIPTION = ["bts-sio"];
 const PDF_SKILLS_PER_CATEGORY = 5;
 
 export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
@@ -24,7 +25,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     title: `CV - ${personal.firstName} ${personal.lastName}`,
     subject: personal.title,
     author: `${personal.firstName} ${personal.lastName}`,
-    keywords: "Developpeur Full-Stack, Full-Stack Developer, JavaScript, TypeScript, React, Next.js, Node.js, Supabase, PostgreSQL, SQL, API REST, CI/CD, IA generative, Generative AI, LLM, RAG, MVP, Gestion de projet, Systemes d'information",
+    keywords: "Developpeur Full-Stack, Full-Stack Developer, Product Engineer, Chef de projet IT, IT Project Manager, Responsable applicatif, Application Manager, JavaScript, TypeScript, React, Next.js, Node.js, Supabase, PostgreSQL, SQL, API REST, CI/CD, IA generative, Generative AI, LLM, RAG, MVP, Gestion de projet, Systemes d'information",
   });
 
   doc.setCreationDate(generatedAt);
@@ -91,9 +92,13 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     doc.setTextColor(...INK);
     checkedText(doc, pdfText(`${item.diploma} · ${item.school}`), X + doc.getTextWidth(year), y);
     y += 4.3;
-    if (item.description) y = paragraph(doc, item.description, X, y, W, 8.6, 3.9) + 0.9;
+    if (item.description && !PDF_EDUCATION_WITHOUT_DESCRIPTION.includes(item.id)) y = paragraph(doc, item.description, X, y, W, 8.6, 3.9) + 0.9;
   }
   y += 1.6;
+
+  y = sectionTitle(doc, content.skillsSection.languages.toUpperCase(), X, y, W);
+  const separator = locale === "fr" ? " : " : ": ";
+  y = paragraph(doc, content.languages.map((language) => `${language.name}${separator}${language.level}`).join("  ·  "), X, y, W, BODY_SIZE, BODY_LEADING) + 2.6;
 
   y = sectionTitle(doc, locale === "fr" ? "COMPÉTENCES" : "SKILLS", X, y, W);
   for (const category of content.skills) {
@@ -186,7 +191,7 @@ function sectionTitle(doc: JsPdf, title: string, x: number, y: number, width: nu
   checkedText(doc, pdfText(title), x, y);
   doc.setDrawColor(...LINE);
   doc.line(x, y + 2.2, x + width, y + 2.2);
-  return y + 7;
+  return y + 6.4;
 }
 
 function paragraph(doc: JsPdf, text: string, x: number, y: number, width: number, size: number, leading: number, style: "normal" | "italic" = "normal") {

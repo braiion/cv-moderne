@@ -71,7 +71,7 @@ export default function Hero({ locale, downloadHref }: HeroProps) {
               <p className="hero__eyebrow">{hero.eyebrow}</p>
 
               <h1 aria-label={hero.kicker}>
-                {hero.headline.map((line) => <span key={line} aria-hidden="true">{line}</span>)}
+                {hero.headline.map((line, index) => <span key={line} aria-hidden="true">{index > 0 ? " " : ""}{line}</span>)}
               </h1>
 
               <p className="hero__intro">{hero.intro}</p>

@@ -3,11 +3,11 @@ import { shared, type Locale } from "./cv-data";
 
 export function portfolioMetadata(locale: Locale): Metadata {
   const title = locale === "fr"
-    ? "Bryan Dupressoir — Full Stack Builder AI-native · Développeur JS/TS"
-    : "Bryan Dupressoir — Full Stack Builder AI-native · JS/TS Developer";
+    ? "Bryan Dupressoir — Développeur Full-Stack JS/TS · Product Engineer"
+    : "Bryan Dupressoir — Full-Stack JS/TS Developer · Product Engineer";
   const description = locale === "fr"
-    ? "Full Stack Builder JS/TS. Pratique intensive des agents de code, du cadrage à la livraison. Découvrez BonneOccaz, mes expériences et mon CV."
-    : "Full Stack Builder using JS/TS. Extensive coding agent experience, from scoping to delivery. Explore BonneOccaz, my experience and my résumé.";
+    ? "Développeur Full-Stack JS/TS et Product Engineer, 7 ans de pilotage SI. Je conçois et livre des applications web avec un développement assisté par l’IA. Découvrez BonneOccaz, mon parcours et mon CV."
+    : "Full-Stack JS/TS Developer and Product Engineer with 7 years running IT systems. I design and ship web applications with AI-assisted development. Explore BonneOccaz, my experience and my résumé.";
   const path = locale === "fr" ? "/" : "/en";
   return {
     metadataBase: new URL(shared.portfolio),
