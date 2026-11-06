@@ -43,3 +43,6 @@ next-env.d.ts
 # Local PDF compiler cache and validation artifacts
 /.cache/
 /tmp/
+
+# Cover letters stay private
+output/pdf/Lettre_motivation_*
