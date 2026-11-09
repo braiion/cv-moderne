@@ -90,9 +90,12 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     const year = pdfText(`${item.year} · `);
     checkedText(doc, year, X, y);
     doc.setTextColor(...INK);
-    checkedText(doc, pdfText(`${item.diploma} · ${item.school}`), X + doc.getTextWidth(year), y);
-    y += 4.3;
-    if (item.description && !PDF_EDUCATION_WITHOUT_DESCRIPTION.includes(item.id)) y = paragraph(doc, item.description, X, y, W, 8.6, 3.9) + 0.9;
+    const yearWidth = doc.getTextWidth(year);
+    // Diploma, school and the short description share one wrapped block to keep the page count at one.
+    const details = item.description && !PDF_EDUCATION_WITHOUT_DESCRIPTION.includes(item.id) ? ` · ${item.description}` : "";
+    const diplomaLines = doc.splitTextToSize(pdfText(`${item.diploma} · ${item.school}${details}`), W - yearWidth);
+    checkedText(doc, diplomaLines, X + yearWidth, y);
+    y += 4.3 + (diplomaLines.length - 1) * (doc.getFontSize() / doc.internal.scaleFactor) * doc.getLineHeightFactor() + 0.6;
   }
   y += 1.6;
 

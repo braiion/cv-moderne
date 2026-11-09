@@ -186,7 +186,7 @@ export const cvContent = {
       },
     ] satisfies Experience[],
     education: [
-      { id: "cesi", diploma: "Bac+4 – Responsable en ingénierie des logiciels", school: "CESI Rouen", year: "2016 — 2018", description: "Titre RNCP niveau 6, 2 ans après BTS, en alternance." },
+      { id: "cesi", diploma: "Responsable en ingénierie des logiciels — titre RNCP niveau 6 (Bac+4)", school: "CESI Rouen", year: "2016 — 2018", description: "2 ans après BTS, en alternance." },
       { id: "bts-sio", diploma: "BTS SIO — option SLAM", school: "La Châtaigneraie, Mesnil-Esnard", year: "2016", description: "Solutions logicielles et applications métiers." },
     ] satisfies Education[],
     languages: [
@@ -357,7 +357,7 @@ export const cvContent = {
       },
     ] satisfies Experience[],
     education: [
-      { id: "cesi", diploma: "Bac+4 – Software Engineering Manager", school: "CESI Rouen", year: "2016 — 2018", description: "French RNCP level 6 title, 2 years after the BTS, work-study programme." },
+      { id: "cesi", diploma: "Software Engineering Manager — French national qualification, RNCP / EQF level 6 (4 years of higher education)", school: "CESI Rouen", year: "2016 — 2018", description: "2 years after the BTS, work-study programme." },
       { id: "bts-sio", diploma: "BTS SIO — SLAM software track", school: "La Châtaigneraie, Mesnil-Esnard", year: "2016", description: "Software solutions and business applications." },
     ] satisfies Education[],
     languages: [

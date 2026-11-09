@@ -48,7 +48,7 @@ Bryan se positionne comme Product Builder et développeur full-stack : il combin
 - Les projets ont commencé en parallèle du poste chez Normandie Structures en 2024–2025 (confirmation de Bryan).
 - Capacité à transformer rapidement un besoin en MVP présentable, à recueillir les retours puis à faire évoluer la solution vers la production.
 - Expériences documentées chez Normandie Structures et Renault Cléon.
-- Formation CESI de niveau RNCP 6 et BTS SIO option SLAM.
+- Formation CESI : Responsable en ingénierie des logiciels, titre RNCP niveau 6 (Bac+4), et BTS SIO option SLAM.
 - Aucun chiffre de trafic ou résultat commercial vérifié ne doit être inventé.
 - Données RAG/CAG fournies par Bryan : 97 FAQ publiques, 11 sections Pro, jusqu’à quatre sources vers un LLM (fournisseur volontairement non nommé en public), recherche plein texte/similarité PostgreSQL avec secours local.
 - Un pilote de 32 questions contrôle le classement du document attendu parmi les trois premiers résultats, avec un seuil de 90 % pour la recherche locale. Ce seuil ne mesure pas l’exactitude des réponses générées.
