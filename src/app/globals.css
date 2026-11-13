@@ -1176,50 +1176,48 @@ button {
 
 .side-projects__grid {
   display: grid;
-  gap: 1.5rem;
-  margin-top: 1.75rem;
+  gap: clamp(4rem, 9vw, 7rem);
+  margin-top: 2rem;
 }
 
-.side-project {
-  display: flex;
-  flex-direction: column;
-  padding: clamp(1.25rem, 3vw, 2rem);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-xl);
-  background: var(--paper-raised);
+.showcase--compact {
+  margin-bottom: clamp(2.5rem, 5vw, 4rem);
 }
 
 .side-project h4 {
   margin-top: 1rem;
-  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-size: clamp(2.25rem, 5vw, 3.75rem);
   font-weight: 800;
   font-variation-settings: "wdth" 75;
-  line-height: 1;
-  letter-spacing: -0.03em;
+  line-height: 0.95;
+  letter-spacing: -0.035em;
+}
+
+.side-project__body {
+  display: grid;
+  gap: 2rem;
 }
 
 .side-project__description {
-  margin-top: 0.75rem;
+  max-width: 60ch;
+  margin: 1rem 0 1.5rem;
   color: var(--muted);
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.6;
 }
 
-.side-project__features {
-  margin: 1.25rem 0;
-}
-
 .side-project .slash-list {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
 }
 
-.side-project .text-link {
-  margin-top: auto;
+.side-project .case__label {
+  margin-top: 0;
 }
 
 @media (min-width: 840px) {
-  .side-projects__grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+  .side-project__body {
+    grid-template-columns: minmax(0, 5fr) minmax(0, 7fr);
+    column-gap: clamp(2rem, 5vw, 4.5rem);
   }
 }
 
@@ -1737,7 +1735,6 @@ button {
 
   .method__step.spot:hover,
   .evidence article.spot:hover,
-  .side-project.spot:hover,
   .skills article.spot:hover {
     border-color: color-mix(in srgb, var(--cobalt-text) 45%, var(--line));
     transform: translateY(-3px);

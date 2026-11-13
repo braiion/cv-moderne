@@ -34,6 +34,7 @@ export interface SideProject {
   description: string;
   features: string[];
   tags: string[];
+  showcase: { bar: string; caption: string; desktopAlt: string; mobileAlt: string };
 }
 
 export interface PersonalInfo {
@@ -139,8 +140,14 @@ export const cvContent = {
           "Dépôt de sons par les joueurs, modération et espace d’administration",
           "Premium par abonnement avec Stripe, parrainage, guides d’écoute et pages marques",
           "Interface en français, anglais et espagnol, pensée pour le mobile",
-          "Qualité : 471 tests Jest et contrats de base de données exécutés sur PGlite",
+          "Qualité : tests automatisés et contrats de base de données avant chaque livraison",
         ],
+        showcase: {
+          bar: "revguessr.com",
+          caption: "Captures réelles de revguessr.com, en version ordinateur et mobile.",
+          desktopAlt: "Page d’accueil de RevGuessr sur ordinateur, avec le défi express",
+          mobileAlt: "Page d’accueil de RevGuessr sur mobile",
+        },
         tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "NextAuth", "Stripe", "Zustand", "TanStack Query", "Jest", "Vercel"],
       },
       {
@@ -155,6 +162,12 @@ export const cvContent = {
           "Mesure des performances image par image pour éviter les à-coups",
           "Interface et guides en français, anglais et espagnol, paquet de distribution automatisé",
         ],
+        showcase: {
+          bar: "Assetto Corsa · Paddock Studio",
+          caption: "Captures réelles en jeu : réglages de l’application, puis notification de l’ingénieur de piste sous la pluie.",
+          desktopAlt: "Panneau Paddock Studio ouvert en jeu à côté d’une voiture sous la pluie",
+          mobileAlt: "Notification Paddock Studio annonçant une forte pluie et le passage en pneus pluie",
+        },
         tags: ["Lua", "Custom Shaders Patch", "Python", "Assetto Corsa", "Agents IA"],
       },
     ] satisfies SideProject[],
@@ -196,8 +209,8 @@ export const cvContent = {
         missions: [
           "Mené BonneOccaz et RevGuessr de l’idée au MVP puis en production, en cadrant besoins, parcours et backlog",
           "Conçu la recherche documentaire RAG/CAG de l’assistant BonneOccaz : 97 FAQ et 11 sections Pro, seuil de pertinence, citations validées et tests d’injection, évaluée sur 32 questions (top 3, seuil de 90 %)",
-          "Encadré les agents de code : instructions de projet, spécifications écrites et contrôles automatisés avant livraison",
-          "Sécurisé RevGuessr par 471 tests Jest et des contrats SQL ; multijoueur Supabase Realtime jusqu’à 12 joueurs",
+          "Mis en place des workflows agentiques : instructions, spécifications, implémentation, revue et tests à chaque livraison",
+          "Développé le multijoueur temps réel de RevGuessr, jusqu’à 12 joueurs par partie (Supabase Realtime, RLS)",
           "Fiabilisé la production par des audits menés avec l’IA : régressions, droits d’accès et performance",
           "Automatisé la livraison (Git/GitHub, CI/CD, Vercel, Resend) et maintenu les applications en production",
         ],
@@ -345,8 +358,14 @@ export const cvContent = {
           "Player-submitted sounds, moderation and an admin area",
           "Premium subscription with Stripe, referrals, listening guides and brand pages",
           "Interface in French, English and Spanish, designed for mobile",
-          "Quality: 471 Jest tests and database contract tests running on PGlite",
+          "Quality: automated tests and database contract tests before every release",
         ],
+        showcase: {
+          bar: "revguessr.com",
+          caption: "Real screenshots of revguessr.com, on desktop and mobile.",
+          desktopAlt: "RevGuessr home page on desktop, with the express challenge",
+          mobileAlt: "RevGuessr home page on mobile",
+        },
         tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "NextAuth", "Stripe", "Zustand", "TanStack Query", "Jest", "Vercel"],
       },
       {
@@ -361,6 +380,12 @@ export const cvContent = {
           "Frame-by-frame performance measurement to avoid stutter",
           "Interface and guides in French, English and Spanish, automated release packaging",
         ],
+        showcase: {
+          bar: "Assetto Corsa · Paddock Studio",
+          caption: "Real in-game screenshots: the app settings, then a race engineer alert in the rain.",
+          desktopAlt: "Paddock Studio panel open in game next to a car in the rain",
+          mobileAlt: "Paddock Studio alert announcing heavy rain and a switch to wet tyres",
+        },
         tags: ["Lua", "Custom Shaders Patch", "Python", "Assetto Corsa", "AI agents"],
       },
     ] satisfies SideProject[],
@@ -402,8 +427,8 @@ export const cvContent = {
         missions: [
           "Took BonneOccaz and RevGuessr from idea to MVP and into production, scoping needs, user journeys and backlog",
           "Designed the RAG/CAG retrieval behind the BonneOccaz assistant: 97 FAQ entries and 11 Pro sections, relevance threshold, validated citations and injection tests, evaluated on 32 questions (top 3, 90% threshold)",
-          "Guided AI coding agents with project instructions, written specifications and automated checks before every release",
-          "Secured RevGuessr with 471 Jest tests and SQL contract tests; Supabase Realtime multiplayer for up to 12 players",
+          "Set up agentic workflows: project instructions, specifications, implementation, review and testing for every release",
+          "Built RevGuessr’s real-time multiplayer, up to 12 players per game (Supabase Realtime, RLS)",
           "Hardened production through AI-assisted audits: regressions, access control and performance",
           "Automated delivery (Git/GitHub, CI/CD, Vercel, Resend) and maintained the applications in production",
         ],

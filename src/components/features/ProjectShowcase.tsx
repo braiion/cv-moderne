@@ -1,22 +1,24 @@
 "use client";
 
-import { useRef } from "react";
-import Image from "next/image";
-import { motion, useReducedMotion, useScroll, useTransform } from "framer-motion";
+import type { StaticImageData } from "next/image";
 import { ArrowDown, ArrowUpRight, Plus } from "lucide-react";
 import desktopShot from "../../../public/work/bonneoccaz-desktop.webp";
 import mobileShot from "../../../public/work/bonneoccaz-mobile.webp";
+import revGuessrDesktop from "../../../public/work/revguessr-desktop.webp";
+import revGuessrMobile from "../../../public/work/revguessr-mobile.webp";
+import paddockDesktop from "../../../public/work/paddock-studio-desktop.webp";
+import paddockMobile from "../../../public/work/paddock-studio-mobile.webp";
 import AnimatedSection from "@/components/ui/AnimatedSection";
+import DeviceShowcase from "@/components/ui/DeviceShowcase";
 import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function ProjectShowcase({ locale }: { locale: Locale }) {
   const { personal, project, projectsSection, costCard, otherProjects } = cvContent[locale];
-  const showcaseRef = useRef<HTMLElement>(null);
-  const reduceMotion = useReducedMotion();
-  const { scrollYProgress } = useScroll({ target: showcaseRef, offset: ["start end", "end start"] });
-  const browserY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [24, -24]);
-  const phoneY = useTransform(scrollYProgress, [0, 1], reduceMotion ? [0, 0] : [90, -70]);
+  const shots: Record<string, { desktop: StaticImageData; mobile: StaticImageData }> = {
+    revguessr: { desktop: revGuessrDesktop, mobile: revGuessrMobile },
+    "paddock-studio": { desktop: paddockDesktop, mobile: paddockMobile },
+  };
   const labels = locale === "fr"
     ? {
         module: "Module ciblé",
@@ -50,16 +52,14 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
         <p>{projectsSection.description}</p>
       </header>
 
-      <figure className="showcase" ref={showcaseRef}>
-        <motion.div className="showcase__browser" style={{ y: browserY }}>
-          <div className="showcase__bar" aria-hidden="true"><i /><i /><i /><span>bonneoccaz.fr</span></div>
-          <Image src={desktopShot} alt={locale === "fr" ? "Page d’accueil de BonneOccaz sur ordinateur" : "BonneOccaz home page on desktop"} sizes="(min-width: 960px) 70vw, 92vw" placeholder="blur" />
-        </motion.div>
-        <motion.div className="showcase__phone" style={{ y: phoneY }}>
-          <Image src={mobileShot} alt={locale === "fr" ? "Page d’accueil de BonneOccaz sur mobile" : "BonneOccaz home page on mobile"} sizes="(min-width: 960px) 16rem, 40vw" placeholder="blur" />
-        </motion.div>
-        <figcaption>{projectsSection.showcase}</figcaption>
-      </figure>
+      <DeviceShowcase
+        bar="bonneoccaz.fr"
+        desktop={desktopShot}
+        mobile={mobileShot}
+        desktopAlt={locale === "fr" ? "Page d’accueil de BonneOccaz sur ordinateur" : "BonneOccaz home page on desktop"}
+        mobileAlt={locale === "fr" ? "Page d’accueil de BonneOccaz sur mobile" : "BonneOccaz home page on mobile"}
+        caption={projectsSection.showcase}
+      />
 
       <article className="case">
         <div className="case__story">
@@ -147,24 +147,40 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
         </header>
         <div className="side-projects__grid">
           {otherProjects.map((item) => (
-            <article key={item.id} className="side-project spot">
-              <p className="case__meta">
-                <span className="case__status">{item.status}</span>
-                <span>{item.kind}</span>
-              </p>
-              <h4>{item.name}</h4>
-              <p className="side-project__description">{item.description}</p>
-              <ul className="case__features side-project__features">
-                {item.features.map((feature) => <li key={feature}>{feature}</li>)}
-              </ul>
-              <p className="slash-list slash-list--small">
-                {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
-              </p>
-              {"url" in item && item.url && (
-                <a href={item.url} target="_blank" rel="noreferrer" className="text-link">
-                  {projectsSection.otherVisit} <ArrowUpRight size={18} aria-hidden="true" />
-                </a>
-              )}
+            <article key={item.id} className="side-project">
+              <DeviceShowcase
+                className="showcase--compact"
+                bar={item.showcase.bar}
+                desktop={shots[item.id].desktop}
+                mobile={shots[item.id].mobile}
+                desktopAlt={item.showcase.desktopAlt}
+                mobileAlt={item.showcase.mobileAlt}
+                caption={item.showcase.caption}
+              />
+              <div className="side-project__body">
+                <div>
+                  <p className="case__meta">
+                    <span className="case__status">{item.status}</span>
+                    <span>{item.kind}</span>
+                  </p>
+                  <h4>{item.name}</h4>
+                  <p className="side-project__description">{item.description}</p>
+                  <p className="slash-list slash-list--small">
+                    {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+                  </p>
+                  {"url" in item && item.url && (
+                    <a href={item.url} target="_blank" rel="noreferrer" className="text-link">
+                      {projectsSection.otherVisit} <ArrowUpRight size={18} aria-hidden="true" />
+                    </a>
+                  )}
+                </div>
+                <div>
+                  <h5 className="case__label">{labels.features}</h5>
+                  <ul className="case__features">
+                    {item.features.map((feature) => <li key={feature}>{feature}</li>)}
+                  </ul>
+                </div>
+              </div>
             </article>
           ))}
         </div>
