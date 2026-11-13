@@ -25,6 +25,17 @@ export interface SkillCategory {
   skills: string[];
 }
 
+export interface SideProject {
+  id: string;
+  name: string;
+  url?: string;
+  status: string;
+  kind: string;
+  description: string;
+  features: string[];
+  tags: string[];
+}
+
 export interface PersonalInfo {
   firstName: string;
   lastName: string;
@@ -40,6 +51,7 @@ export const shared = {
   portfolio: "https://bryandupressoir.vercel.app",
   github: "https://github.com/braiion",
   bonneOccaz: "https://bonneoccaz.fr",
+  revGuessr: "https://www.revguessr.com",
 };
 
 export const cvContent = {
@@ -48,13 +60,13 @@ export const cvContent = {
     nav: { home: "Profil", projects: "Projets", experience: "Parcours", skills: "Compétences", contact: "Me contacter" },
     personal: {
       ...shared,
-      title: "Développeur Full-Stack JS/TS · Product Engineer",
-      subtitle: "Développement agentique · IA générative · React · Next.js · Supabase",
-      summary: "Profil transversal SI, projets, produit et développement, dans l’IT depuis 2016 dont 7 ans de pilotage SI. Je construis des produits web avec des agents IA : je cadre, je spécifie, je découpe en petits incréments, puis je relis, teste et livre le code généré. J’utilise intensivement l’IA générative depuis environ deux ans et demi ; depuis 2024, j’ai conçu ainsi 2 applications automobiles, dont BonneOccaz, jusqu’à la production.",
+      title: "Développeur Full-Stack JS/TS · IA générative",
+      subtitle: "Product Engineer · Agents IA · LLM · RAG · React · Next.js · Supabase",
+      summary: "Développeur full-stack JS/TS orienté IA générative, avec une expérience en produit et pilotage SI depuis 2016. Je construis des applications web jusqu’en production avec React, Next.js, TypeScript, Supabase/PostgreSQL et des agents IA : spécification, petits incréments, relecture, tests et livraison. 3 projets automobiles depuis 2024.",
     },
     hero: {
       availability: "Disponible dès à présent — remote ou Normandie",
-      eyebrow: "Développeur Full-Stack JS/TS · Product Engineer",
+      eyebrow: "Développeur Full-Stack JS/TS · IA générative",
       kicker: "Je conçois et livre des applications web, du besoin à la production.",
       headline: ["Je conçois et livre des applications web,", "du besoin à la production"],
       intro: "Un parcours transversal en systèmes d’information, gestion de projet et développement. Je cadre le besoin, je construis avec React, Next.js et Supabase, et je m’appuie sur l’IA générative avec une méthode exigeante : spécifications, petits incréments, revue de code et tests.",
@@ -63,7 +75,7 @@ export const cvContent = {
       secondaryCta: "Télécharger le CV",
       stats: [
         { value: "Depuis 2016", label: "parcours IT" },
-        { value: "2 produits", label: "automobiles conçus" },
+        { value: "3 projets", label: "automobiles conçus" },
         { value: "MVP → prod", label: "cadrage, démonstration et itérations" },
       ],
       loop: [
@@ -83,7 +95,9 @@ export const cvContent = {
       showcase: "Captures réelles de bonneoccaz.fr, en version ordinateur et mobile.",
       role: "Conçu et développé en autonomie avec l’IA",
       architecture: "Assistant d’aide · RAG/CAG",
-      confidential: "Deux applications automobiles développées. BonneOccaz est présentée ici ; le second projet reste confidentiel à ce stade.",
+      otherTitle: "Autres projets",
+      otherDescription: "Deux autres produits automobiles, construits avec la même méthode.",
+      otherVisit: "Voir le site",
       technicalDetails: "Sources, fonctionnement et évaluation",
       corpus: "97 entrées de FAQ publique et 11 sections du guide professionnel pour l’assistant Pro authentifié. Recherche plein texte et similarité textuelle dans PostgreSQL/Supabase, avec un secours local. Jusqu’à quatre sources sont transmises au modèle de langage (LLM).",
       safeguards: "Seuil minimal de pertinence, validation des identifiants cités et réponses de repli ou orientation vers le support. Les tests couvrent les citations inventées, les tentatives d’injection et la séparation public/Pro. Le mode CAG est configurable et conserve les restrictions de citation du RAG.",
@@ -109,6 +123,37 @@ export const cvContent = {
       ],
       tags: ["Next.js", "React", "TypeScript", "Tailwind", "Supabase", "PostgreSQL", "RAG/CAG", "Auth", "RLS", "Realtime", "Resend", "Vercel"],
     },
+    otherProjects: [
+      {
+        id: "revguessr",
+        name: "RevGuessr.com",
+        url: shared.revGuessr,
+        status: "En ligne",
+        kind: "Jeu web",
+        description: "Jeu web où l’on reconnaît une voiture à son bruit moteur, pensé pour le mobile. Modes contre-la-montre et mort subite, multijoueur Élimination de 2 à 12 joueurs, classement hebdomadaire, défi du jour et dépôt de sons par les joueurs.",
+        features: [
+          "Catalogue de 185 sons moteur, modérés depuis un espace d’administration",
+          "Multijoueur en temps réel : même son pour tous, le plus lent est éliminé",
+          "Abonnement Premium avec Stripe (mode test), interface en français, anglais et espagnol",
+          "471 tests Jest et contrats de base de données exécutés sur PGlite",
+        ],
+        tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "NextAuth", "Stripe", "Zustand", "TanStack Query", "Jest", "Vercel"],
+      },
+      {
+        id: "paddock-studio",
+        name: "Paddock Studio",
+        status: "Sortie en préparation",
+        kind: "Application pour simulateur",
+        description: "Application en jeu pour le simulateur Assetto Corsa (Custom Shaders Patch) : ambiances heure, date et météo appliquées en un clic, filtre visuel réaliste, caméras et ingénieur de piste qui adapte pneus, pressions et aides à la météo.",
+        features: [
+          "Bibliothèque d’ambiances avec transitions douces et scènes personnelles",
+          "Ingénieur de piste : gomme, pressions, antipatinage et ABS selon la météo",
+          "Mesure des performances image par image pour éviter les à-coups",
+          "Interface et guides en français, anglais et espagnol, paquet de distribution automatisé",
+        ],
+        tags: ["Lua", "Custom Shaders Patch", "Python", "Assetto Corsa", "Agents IA"],
+      },
+    ] satisfies SideProject[],
     methodSection: {
       eyebrow: "Méthode",
       title: "Une méthode de livraison rigoureuse, assistée par l’IA",
@@ -140,15 +185,15 @@ export const cvContent = {
       {
         id: "product-builder",
         title: "Full Stack Builder / Développeur JS/TS",
-        company: "Indépendant · BonneOccaz.fr et un projet confidentiel",
+        company: "Indépendant · BonneOccaz.fr, RevGuessr.com et Paddock Studio",
         period: "2024 — Aujourd’hui",
         note: "Projets commencés en parallèle de mon poste chez Normandie Structures en 2024–2025.",
-        description: "Deux applications web automobiles, dont BonneOccaz, conçues et développées avec l’assistance d’agents IA. Le second projet reste confidentiel à ce stade.",
+        description: "Conception et mise en production de 2 applications web automobiles, BonneOccaz et RevGuessr, avec React, Next.js, TypeScript et Supabase/PostgreSQL, en utilisant des agents IA pour spécifier, relire, refactorer et tester les livraisons.",
         missions: [
-          "Conçu 2 applications automobiles, de l’idée au MVP puis à la bêta en production, en cadrant besoins, parcours et backlog",
-          "Développement assisté par agents IA : spécification, relecture, refactoring et tests de chaque livraison (React, Next.js, TypeScript, Supabase/PostgreSQL : Auth, RLS, Realtime)",
-          "Découpé chaque évolution en petits incréments, de la spécification à la mise en production",
-          "Livré un assistant RAG/CAG sur 97 FAQ et 11 sections Pro, évalué sur 32 questions (top 3, seuil de 90 %)",
+          "Mené BonneOccaz et RevGuessr de l’idée au MVP puis en production, en cadrant besoins, parcours et backlog",
+          "Conçu la recherche documentaire RAG/CAG de l’assistant BonneOccaz : 97 FAQ et 11 sections Pro, seuil de pertinence, citations validées et tests d’injection, évaluée sur 32 questions (top 3, seuil de 90 %)",
+          "Encadré les agents de code : instructions de projet, spécifications écrites et contrôles automatisés avant livraison",
+          "Sécurisé RevGuessr par 471 tests Jest et des contrats SQL ; multijoueur Supabase Realtime jusqu’à 12 joueurs",
           "Fiabilisé la production par des audits menés avec l’IA : régressions, droits d’accès et performance",
           "Automatisé la livraison (Git/GitHub, CI/CD, Vercel, Resend) et maintenu les applications en production",
         ],
@@ -160,7 +205,7 @@ export const cvContent = {
         company: "Normandie Structures",
         location: "Normandie",
         period: "2018 — 2025",
-        description: "Pilotage autonome du système d’information, des projets techniques et des besoins métier.",
+        description: "Pilotage autonome du SI, gestion des besoins métier et déploiement de solutions techniques, avec support, incidents, formation des utilisateurs et coordination des prestataires.",
         missions: [
           "Piloté seul le SI pendant 7 ans : parc, logiciels, réseau et solutions métier",
           "Recueilli les besoins des équipes, puis sélectionné et déployé les solutions adaptées",
@@ -175,10 +220,8 @@ export const cvContent = {
         company: "Renault Cléon",
         location: "Cléon (76)",
         period: "2016 — 2018",
-        description: "Développement de deux applications métier dans un environnement industriel.",
+        description: "Développement de deux applications métier en environnement industriel : gestion du parking des véhicules neufs en ASP.NET MVC (C#) et gestion des stocks et de l’outillage par QR codes en PHP.",
         missions: [
-          "Développé une application ASP.NET MVC (C#) de gestion du parking des véhicules neufs",
-          "Développé une application PHP de gestion des stocks et de l’outillage par QR codes",
           "Conçu et exploité les bases MySQL et SQL Server associées",
           "Mené le cycle complet en Agile : besoins, spécifications, développement et tests",
         ],
@@ -201,15 +244,15 @@ export const cvContent = {
       languages: "Langues",
     },
     skills: [
-      { name: "Frontend & produit", skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5 / CSS3", "Tailwind CSS", "Responsive Design", "UX", "Product discovery", "Cadrage MVP", "Prototypage rapide"] },
-      { name: "Back-end & data", skills: ["Node.js", "Supabase", "PostgreSQL", "SQL", "API REST", "Auth", "Storage", "RLS", "Realtime", "Modélisation des données"] },
-      { name: "Agents IA & livraison", skills: ["Agents de code IA", "IA générative", "LLM", "Instructions de projet", "Tests & revue de code", "Git / GitHub", "CI/CD", "Vercel", "Resend", "RAG / CAG"] },
+      { name: "Frontend", skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5 / CSS3", "Responsive Design", "UX", "Product discovery", "Cadrage MVP", "Prototypage rapide"] },
+      { name: "Back-end & data", skills: ["Node.js", "Supabase", "PostgreSQL", "API REST", "SQL", "Auth", "Storage", "RLS", "Realtime", "Stripe", "Modélisation des données"] },
+      { name: "IA & qualité", skills: ["IA générative", "LLM", "RAG / CAG", "Agents de code IA", "Tests & revue de code", "Instructions de projet", "Évaluation de la recherche", "Jest", "Git / GitHub", "CI/CD", "Vercel", "Lua"] },
       { name: "Systèmes & collaboration", skills: ["Pilotage SI", "Gestion de projet", "Analyse fonctionnelle", "Recueil des besoins", "Support utilisateurs", "Formation", "Coordination de prestataires", "Agile / Scrum"] },
     ] satisfies SkillCategory[],
     footer: {
       eyebrow: "Disponible pour échanger",
       title: "Construisons un produit utile",
-      text: "Je recherche un poste de développeur Full-Stack JS/TS ou de Product Engineer, avec une place centrale pour le développement assisté par l’IA. Je suis aussi ouvert aux postes de chef de projet IT et de responsable applicatif, en télétravail ou en Normandie.",
+      text: "Je recherche un poste de développeur Full-Stack JS/TS orienté IA générative ou de Product Engineer, avec une place centrale pour le développement assisté par l’IA. Je suis aussi ouvert aux postes de chef de projet IT et de responsable applicatif, en télétravail ou en Normandie.",
       email: "M’écrire",
       github: "Voir GitHub",
     },
@@ -219,13 +262,13 @@ export const cvContent = {
     nav: { home: "Profile", projects: "Work", experience: "Experience", skills: "Skills", contact: "Contact me" },
     personal: {
       ...shared,
-      title: "Full-Stack JS/TS Developer · Product Engineer",
-      subtitle: "Agentic development · Generative AI · React · Next.js · Supabase",
-      summary: "Cross-functional profile spanning IT systems, projects, product and development, in IT since 2016 including 7 years owning IT systems. I build web products with AI agents: I scope, write specifications, split the work into small increments, then review, test and ship the generated code. I have used generative AI intensively for about two and a half years; since 2024, I have designed 2 automotive applications this way, including BonneOccaz, through to production.",
+      title: "Full-Stack JS/TS Developer · Generative AI",
+      subtitle: "AI Developer · Product Engineer · AI agents · LLM · RAG · React · Next.js · Supabase",
+      summary: "Full-stack JS/TS developer focused on generative AI, with a product and IT systems background since 2016. I build web applications through to production with React, Next.js, TypeScript, Supabase/PostgreSQL and AI coding agents: specifications, small increments, code review, testing and delivery. 3 automotive projects since 2024.",
     },
     hero: {
       availability: "Available now — remote or Normandy, France",
-      eyebrow: "Full-Stack JS/TS Developer · Product Engineer",
+      eyebrow: "Full-Stack JS/TS Developer · Generative AI",
       kicker: "I design and ship web applications, from the first need to production.",
       headline: ["I design and ship web applications,", "from the first need to production"],
       intro: "A cross-functional background in IT systems, project management and development. I scope the need, build with React, Next.js and Supabase, and rely on generative AI with a demanding method: specifications, small increments, code review and testing.",
@@ -234,7 +277,7 @@ export const cvContent = {
       secondaryCta: "Download résumé",
       stats: [
         { value: "Since 2016", label: "working across IT" },
-        { value: "2 products", label: "designed for automotive" },
+        { value: "3 projects", label: "designed for automotive" },
         { value: "MVP → prod", label: "scoping, demos and iterations" },
       ],
       loop: [
@@ -254,7 +297,9 @@ export const cvContent = {
       showcase: "Real screenshots of bonneoccaz.fr, on desktop and mobile.",
       role: "Designed and built independently with AI",
       architecture: "Help assistant · RAG/CAG",
-      confidential: "Two automotive applications developed. BonneOccaz is presented here; the second project remains confidential at this stage.",
+      otherTitle: "Other projects",
+      otherDescription: "Two more automotive products, built with the same method.",
+      otherVisit: "Visit the site",
       technicalDetails: "Sources, implementation and evaluation",
       corpus: "97 public FAQ entries and 11 professional guide sections for the authenticated Pro assistant. PostgreSQL/Supabase full-text search and text similarity, with a local fallback. Up to four sources are passed to the language model (LLM).",
       safeguards: "A minimum relevance threshold, validation of cited source IDs, and fallback answers or support referrals. Tests cover fabricated citations, injection attempts and public/Pro separation. Configurable CAG mode retains the RAG citation restrictions.",
@@ -280,6 +325,37 @@ export const cvContent = {
       ],
       tags: ["Next.js", "React", "TypeScript", "Tailwind", "Supabase", "PostgreSQL", "RAG/CAG", "Auth", "RLS", "Realtime", "Resend", "Vercel"],
     },
+    otherProjects: [
+      {
+        id: "revguessr",
+        name: "RevGuessr.com",
+        url: shared.revGuessr,
+        status: "Live",
+        kind: "Web game",
+        description: "A mobile-first web game where players identify a car from its engine sound. Time attack and sudden death modes, Elimination multiplayer for 2 to 12 players, weekly leaderboard, daily challenge and player-submitted sounds.",
+        features: [
+          "Catalogue of 185 engine sounds, moderated from an admin area",
+          "Real-time multiplayer: same sound for everyone, the slowest player is eliminated",
+          "Premium subscription with Stripe (test mode), interface in French, English and Spanish",
+          "471 Jest tests and database contract tests running on PGlite",
+        ],
+        tags: ["Next.js", "React", "TypeScript", "Supabase", "PostgreSQL", "NextAuth", "Stripe", "Zustand", "TanStack Query", "Jest", "Vercel"],
+      },
+      {
+        id: "paddock-studio",
+        name: "Paddock Studio",
+        status: "Release in preparation",
+        kind: "Racing simulator app",
+        description: "An in-game app for the Assetto Corsa racing simulator (Custom Shaders Patch): one-click time, date and weather atmospheres, a realistic visual filter, cameras, and a race engineer that adapts tyres, pressures and driver aids to the weather.",
+        features: [
+          "Atmosphere library with smooth transitions and personal scenes",
+          "Race engineer: compound, pressures, traction control and ABS based on weather",
+          "Frame-by-frame performance measurement to avoid stutter",
+          "Interface and guides in French, English and Spanish, automated release packaging",
+        ],
+        tags: ["Lua", "Custom Shaders Patch", "Python", "Assetto Corsa", "AI agents"],
+      },
+    ] satisfies SideProject[],
     methodSection: {
       eyebrow: "Method",
       title: "A rigorous delivery method, assisted by AI",
@@ -311,15 +387,15 @@ export const cvContent = {
       {
         id: "product-builder",
         title: "Full Stack Builder / JS/TS Developer",
-        company: "Independent · BonneOccaz.fr and a confidential project",
+        company: "Independent · BonneOccaz.fr, RevGuessr.com and Paddock Studio",
         period: "2024 — Present",
         note: "Projects started alongside my role at Normandie Structures in 2024–2025.",
-        description: "Two automotive web applications, including BonneOccaz, designed and built with the assistance of AI agents. The second project remains confidential at this stage.",
+        description: "Designed and shipped 2 automotive web applications, BonneOccaz and RevGuessr, with React, Next.js, TypeScript and Supabase/PostgreSQL, using AI agents to specify, review, refactor and test every release.",
         missions: [
-          "Designed 2 automotive applications, from idea to MVP and a beta in production, by scoping needs, journeys and backlog",
-          "AI-assisted development: specification, review, refactoring and testing of every release (React, Next.js, TypeScript, Supabase/PostgreSQL: Auth, RLS, Realtime)",
-          "Split every change into small increments, from specification to production release",
-          "Shipped a RAG/CAG assistant over 97 FAQ entries and 11 Pro sections, evaluated on 32 questions (top 3, 90% threshold)",
+          "Took BonneOccaz and RevGuessr from idea to MVP and into production, scoping needs, user journeys and backlog",
+          "Designed the RAG/CAG retrieval behind the BonneOccaz assistant: 97 FAQ entries and 11 Pro sections, relevance threshold, validated citations and injection tests, evaluated on 32 questions (top 3, 90% threshold)",
+          "Guided AI coding agents with project instructions, written specifications and automated checks before every release",
+          "Secured RevGuessr with 471 Jest tests and SQL contract tests; Supabase Realtime multiplayer for up to 12 players",
           "Hardened production through AI-assisted audits: regressions, access control and performance",
           "Automated delivery (Git/GitHub, CI/CD, Vercel, Resend) and maintained the applications in production",
         ],
@@ -331,7 +407,7 @@ export const cvContent = {
         company: "Normandie Structures",
         location: "Normandy, France",
         period: "2018 — 2025",
-        description: "Autonomous ownership of information systems, technical projects and business technology needs.",
+        description: "Autonomous ownership of IT systems, business requirements and technical solution rollouts, including support, incident management, user training and vendor coordination.",
         missions: [
           "Owned IT systems single-handedly for 7 years: hardware, software, network and business apps",
           "Gathered team requirements, then selected and deployed suitable solutions",
@@ -346,10 +422,8 @@ export const cvContent = {
         company: "Renault Cléon",
         location: "Cléon, France",
         period: "2016 — 2018",
-        description: "Built two business applications in an industrial environment.",
+        description: "Developed two business applications in an industrial environment: an ASP.NET MVC (C#) application for new-vehicle parking and a PHP application for stock and tool management with QR codes.",
         missions: [
-          "Developed an ASP.NET MVC (C#) application for new-vehicle parking management",
-          "Developed a PHP inventory and tooling application using QR codes",
           "Designed and operated the related MySQL and SQL Server databases",
           "Ran the full Agile cycle: requirements, specifications, development and testing",
         ],
@@ -372,15 +446,15 @@ export const cvContent = {
       languages: "Languages",
     },
     skills: [
-      { name: "Frontend & product", skills: ["React", "Next.js", "TypeScript", "JavaScript", "HTML5 / CSS3", "Tailwind CSS", "Responsive Design", "UX", "Product discovery", "MVP scoping", "Rapid prototyping"] },
-      { name: "Backend & data", skills: ["Node.js", "Supabase", "PostgreSQL", "SQL", "REST APIs", "Auth", "Storage", "RLS", "Realtime", "Data modelling"] },
-      { name: "AI agents & delivery", skills: ["AI coding agents", "Generative AI", "LLM", "Project instructions", "Testing & code review", "Git / GitHub", "CI/CD", "Vercel", "Resend", "RAG / CAG"] },
+      { name: "Frontend", skills: ["React", "Next.js", "TypeScript", "JavaScript", "Tailwind CSS", "HTML5 / CSS3", "Responsive Design", "UX", "Product discovery", "MVP scoping", "Rapid prototyping"] },
+      { name: "Backend & data", skills: ["Node.js", "Supabase", "PostgreSQL", "REST APIs", "SQL", "Auth", "Storage", "RLS", "Realtime", "Stripe", "Data modelling"] },
+      { name: "AI & quality", skills: ["Generative AI", "LLM", "RAG / CAG", "AI coding agents", "Testing & code review", "Project instructions", "Retrieval evaluation", "Jest", "Git / GitHub", "CI/CD", "Vercel", "Lua"] },
       { name: "Systems & collaboration", skills: ["IT strategy", "Project Management", "Business analysis", "Requirements gathering", "User support", "Training", "Vendor coordination", "Agile / Scrum"] },
     ] satisfies SkillCategory[],
     footer: {
       eyebrow: "Available to talk",
       title: "Let’s build something useful",
-      text: "I am looking for a Full-Stack JS/TS Developer or Product Engineer role with AI-assisted development at its core. I am also open to IT project manager and application manager roles, remote or in Normandy, France.",
+      text: "I am looking for a Full-Stack JS/TS Developer, AI Developer or Product Engineer role with AI-assisted development at its core. I am also open to IT project manager and application manager roles, remote or in Normandy, France.",
       email: "Email me",
       github: "View GitHub",
     },

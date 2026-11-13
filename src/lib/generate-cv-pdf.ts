@@ -11,8 +11,9 @@ const BODY_SIZE = 9.2;
 const BODY_LEADING = 4.15;
 
 /** Print-only trims keep one readable page; the website keeps the full lists. */
-const PDF_MISSION_LIMIT: Record<string, number> = { "renault-cleon": 3 };
-const PDF_MISSION_SKIP: Record<string, number[]> = { "product-builder": [2, 4] };
+// The descriptions of the two older roles already carry their scope, so print keeps at most one bullet.
+const PDF_MISSION_LIMIT: Record<string, number> = { "normandie-structures": 0, "renault-cleon": 1 };
+const PDF_MISSION_SKIP: Record<string, number[]> = { "product-builder": [0, 4] };
 const PDF_EDUCATION_WITHOUT_DESCRIPTION = ["bts-sio"];
 const PDF_SKILLS_PER_CATEGORY = 5;
 
@@ -40,17 +41,24 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
   y = sectionTitle(doc, locale === "fr" ? "PROFIL" : "PROFILE", X, y, W);
   y = paragraph(doc, personal.summary, X, y, W, BODY_SIZE, BODY_LEADING) + 2.6;
 
-  y = sectionTitle(doc, locale === "fr" ? "PROJET PHARE" : "FEATURED PROJECT", X, y, W);
-  doc.setFont("helvetica", "bold");
-  doc.setFontSize(10.5);
-  doc.setTextColor(...INK);
-  checkedText(doc, pdfText(content.project.name), X, y);
-  doc.setFont("helvetica", "normal");
-  doc.setFontSize(9);
-  doc.setTextColor(...COBALT);
-  checkedText(doc, pdfText(content.project.status), RIGHT, y, { align: "right" });
-  y += 4.6;
-  y = paragraph(doc, content.project.description, X, y, W, BODY_SIZE, BODY_LEADING) + 2.6;
+  y = sectionTitle(doc, locale === "fr" ? "PROJETS SÉLECTIONNÉS" : "SELECTED PROJECTS", X, y, W);
+  const projects = [
+    { name: content.project.name, status: content.project.status, description: content.project.description },
+    ...content.otherProjects.map((item) => ({ name: item.name, status: `${item.kind} · ${item.status}`, description: item.description })),
+  ];
+  for (const item of projects) {
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(9.8);
+    doc.setTextColor(...INK);
+    checkedText(doc, pdfText(item.name), X, y);
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(8.6);
+    doc.setTextColor(...COBALT);
+    checkedText(doc, pdfText(item.status), RIGHT, y, { align: "right" });
+    y += 4.2;
+    y = paragraph(doc, item.description, X, y, W, BODY_SIZE, BODY_LEADING) + 1.2;
+  }
+  y += 1.4;
 
   y = sectionTitle(doc, locale === "fr" ? "EXPÉRIENCE" : "EXPERIENCE", X, y, W);
   for (const experience of content.experiences) {
@@ -79,7 +87,7 @@ export function buildCvPdf(locale: Locale, generatedAt = new Date()) {
     for (const mission of missions.slice(0, PDF_MISSION_LIMIT[experience.id] ?? missions.length)) {
       y = bullet(doc, mission, X, y, W);
     }
-    y += 2.4;
+    y += 1.8;
   }
 
   y = sectionTitle(doc, content.skillsSection.education.toUpperCase(), X, y, W);
@@ -167,6 +175,7 @@ function header(doc: JsPdf, locale: Locale) {
   linkLine(doc, [
     ["bryandupressoir.vercel.app", personal.portfolio],
     ["bonneoccaz.fr", personal.bonneOccaz],
+    ["revguessr.com", personal.revGuessr],
     ["github.com/braiion", personal.github],
   ], 13, 45);
 }

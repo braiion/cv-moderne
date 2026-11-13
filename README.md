@@ -2,7 +2,7 @@
 
 Portfolio bilingue destiné aux recruteurs : parcours informatique, réalisations,
 compétences, contact et CV PDF d’une page. BonneOccaz est le produit présenté ;
-le second produit automobile reste confidentiel.
+RevGuessr et Paddock Studio figurent dans « Autres projets ».
 
 ## Fonctionnalités
 
@@ -67,8 +67,9 @@ ou la compatibilité avec tous les logiciels de recrutement.
 
 ## Contenu et confidentialité
 
-Ne pas inventer de chiffres, de résultats ni de compétences. Ne publier aucun nom,
-lien ou détail du second produit. Les informations techniques du module d’aide
+Ne pas inventer de chiffres, de résultats ni de compétences. RevGuessr (second
+produit, rendu public en novembre 2026) et Paddock Studio s’appuient sur la
+documentation de leurs dépôts. Les informations techniques du module d’aide
 BonneOccaz ont été fournies par Bryan : corpus versionné, accès public/Pro,
 recherche documentaire et garde-fous. Le seuil du pilote de recherche locale ne
 doit pas être présenté comme un taux d’exactitude des réponses générées.

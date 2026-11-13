@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 
 const origin = process.argv[2] || "http://localhost:3016";
-for (const [path, locale, phrase] of [["/", "fr", "Le second projet reste confidentiel"], ["/en", "en", "The second project remains confidential"]]) {
+for (const [path, locale, phrase] of [["/", "fr", "Autres projets"], ["/en", "en", "Other projects"]]) {
   const response = await fetch(new URL(path, origin));
   assert.equal(response.status, 200);
   const html = await response.text();
@@ -11,6 +11,7 @@ for (const [path, locale, phrase] of [["/", "fr", "Le second projet reste confid
   assert.equal(new URL(canonical).href, new URL(path, "https://bryandupressoir.vercel.app").href);
   assert.match(html, /hrefLang="en"[^>]*href="https:\/\/bryandupressoir.vercel.app\/en"/i);
   assert.ok(html.includes(phrase));
+  for (const project of ["RevGuessr", "Paddock Studio"]) assert.ok(html.includes(project), `Missing project: ${project}`);
   assert.ok(html.includes(`/api/cv?lang=${locale}`));
   assert.ok(html.includes("97"));
   assert.ok(html.includes("32"));

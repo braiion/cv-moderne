@@ -1154,13 +1154,73 @@ button {
   line-height: 1.6;
 }
 
-.confidential {
-  max-width: 70ch;
-  margin-top: 2.5rem;
-  padding-left: 1rem;
-  border-left: 1px solid var(--cobalt-text);
+.side-projects {
+  margin-top: clamp(3.5rem, 7vw, 6rem);
+  padding-top: 1.25rem;
+  border-top: 2px solid var(--rule);
+}
+
+.side-projects__head h3 {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-weight: 760;
+  font-variation-settings: "wdth" 80;
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+}
+
+.side-projects__head p {
+  max-width: 60ch;
+  margin-top: 0.5rem;
   color: var(--muted);
-  font-size: 0.9375rem;
+}
+
+.side-projects__grid {
+  display: grid;
+  gap: 1.5rem;
+  margin-top: 1.75rem;
+}
+
+.side-project {
+  display: flex;
+  flex-direction: column;
+  padding: clamp(1.25rem, 3vw, 2rem);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-xl);
+  background: var(--paper-raised);
+}
+
+.side-project h4 {
+  margin-top: 1rem;
+  font-size: clamp(1.75rem, 3.4vw, 2.5rem);
+  font-weight: 800;
+  font-variation-settings: "wdth" 75;
+  line-height: 1;
+  letter-spacing: -0.03em;
+}
+
+.side-project__description {
+  margin-top: 0.75rem;
+  color: var(--muted);
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.side-project__features {
+  margin: 1.25rem 0;
+}
+
+.side-project .slash-list {
+  margin-bottom: 1.25rem;
+}
+
+.side-project .text-link {
+  margin-top: auto;
+}
+
+@media (min-width: 840px) {
+  .side-projects__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* ---------- Experience ---------- */
@@ -1677,6 +1737,7 @@ button {
 
   .method__step.spot:hover,
   .evidence article.spot:hover,
+  .side-project.spot:hover,
   .skills article.spot:hover {
     border-color: color-mix(in srgb, var(--cobalt-text) 45%, var(--line));
     transform: translateY(-3px);

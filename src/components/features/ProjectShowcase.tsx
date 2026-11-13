@@ -11,7 +11,7 @@ import FlapText from "@/components/ui/FlapText";
 import { cvContent, type Locale } from "@/lib/cv-data";
 
 export default function ProjectShowcase({ locale }: { locale: Locale }) {
-  const { personal, project, projectsSection, costCard } = cvContent[locale];
+  const { personal, project, projectsSection, costCard, otherProjects } = cvContent[locale];
   const showcaseRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
   const { scrollYProgress } = useScroll({ target: showcaseRef, offset: ["start end", "end start"] });
@@ -140,7 +140,35 @@ export default function ProjectShowcase({ locale }: { locale: Locale }) {
           </article>
         ))}
       </div>
-      <p className="confidential">{projectsSection.confidential}</p>
+      <section className="side-projects" aria-labelledby="side-projects-title">
+        <header className="side-projects__head">
+          <h3 id="side-projects-title">{projectsSection.otherTitle}</h3>
+          <p>{projectsSection.otherDescription}</p>
+        </header>
+        <div className="side-projects__grid">
+          {otherProjects.map((item) => (
+            <article key={item.id} className="side-project spot">
+              <p className="case__meta">
+                <span className="case__status">{item.status}</span>
+                <span>{item.kind}</span>
+              </p>
+              <h4>{item.name}</h4>
+              <p className="side-project__description">{item.description}</p>
+              <ul className="case__features side-project__features">
+                {item.features.map((feature) => <li key={feature}>{feature}</li>)}
+              </ul>
+              <p className="slash-list slash-list--small">
+                {item.tags.map((tag) => <span key={tag}>{tag}</span>)}
+              </p>
+              {"url" in item && item.url && (
+                <a href={item.url} target="_blank" rel="noreferrer" className="text-link">
+                  {projectsSection.otherVisit} <ArrowUpRight size={18} aria-hidden="true" />
+                </a>
+              )}
+            </article>
+          ))}
+        </div>
+      </section>
     </AnimatedSection>
   );
 }

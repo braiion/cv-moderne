@@ -5,17 +5,18 @@ import { loadPdfSources } from "../scripts/cv-pdf.mjs";
 const { buildCvPdf, cvContent, shared } = loadPdfSources();
 const date = new Date("2026-09-09T12:00:00Z");
 
-for (const [locale, month, confidential] of [["fr", "septembre 2026", "confidentiel"], ["en", "September 2026", "confidential"]]) {
-  test(`${locale}: one-page CV with current date, confidentiality and working link annotations`, () => {
+for (const [locale, month] of [["fr", "septembre 2026"], ["en", "September 2026"]]) {
+  test(`${locale}: one-page CV with current date, selected projects and working link annotations`, () => {
     const doc = buildCvPdf(locale, date);
     assert.equal(doc.getNumberOfPages(), 1);
     const operators = doc.internal.pages.flat().join("\n");
     assert.ok(operators.includes(month));
-    assert.ok(operators.includes(confidential));
+    for (const project of ["BonneOccaz.fr", "RevGuessr.com", "Paddock Studio"]) assert.ok(operators.includes(project), `Missing project: ${project}`);
+    assert.ok(!/confidenti/i.test(operators));
     assert.ok(operators.includes("2016"));
     assert.ok(operators.includes("Renault"));
     const pdf = doc.output();
-    for (const url of [shared.portfolio, shared.bonneOccaz, shared.github]) {
+    for (const url of [shared.portfolio, shared.bonneOccaz, shared.revGuessr, shared.github]) {
       assert.ok(pdf.includes(`/URI (${url})`), `Missing clickable link: ${url}`);
     }
     assert.ok(pdf.includes(`/Lang (${locale === "fr" ? "fr-FR" : "en-GB"})`));
